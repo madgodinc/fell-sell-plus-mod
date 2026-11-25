@@ -2,11 +2,13 @@ using System;
 using HarmonyLib;
 using MelonLoader;
 
-[assembly: MelonInfo(typeof(FellSellPlus.Plugin), "Fell & Sell Plus", "1.0.0", "MGI")]
+[assembly: MelonInfo(typeof(FellSellPlus.Plugin), "Fell & Sell Plus", "1.0.1", "MGI")]
 [assembly: MelonGame("Art Games Studio SA", "Fell & Sell")]
 // MelonLoader would otherwise PatchAll this assembly on top of our own per-class loop, running
 // every hook twice (doubled HP gains, squared multipliers, duplicated tooltip lines).
 [assembly: HarmonyDontPatchAll]
+// The co-op mod (a separate assembly) uses the config layer, log and player data of this mod.
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("FellSellCoop")]
 
 namespace FellSellPlus;
 

@@ -20,6 +20,8 @@ internal static class FurniturePickupContextPatch
     static void Prefix(ItemPickup __instance)
     {
         FurniturePickup.ShelfFurniture = false;
+        if (__instance != null && __instance.itemData != null && __instance.itemData.IsFurniture)
+            CarriedFurniture.PickupUntil = UnityEngine.Time.unscaledTime + 3f;
         if (!ShopSettings.EmptyShelvesOnPickup.Value || __instance == null || __instance.itemData == null || !__instance.itemData.IsFurniture) return;
         // Shelves, tables and racks carry ShelfSlots; chests (their own storage) do not.
         FurniturePickup.ShelfFurniture = __instance.GetComponentsInChildren<ShelfSlot>(true).Length > 0;
@@ -68,11 +70,16 @@ internal static class FurnitureStoredItemsPatch
 // pick-up animation) or that sits on the placement ghost.
 internal static class CarriedFurniture
 {
+    // Set by the pick-up hook; a pick-up animation lasts about a second.
+    public static float PickupUntil = -1f;
+
     public static bool IsCarried(ShelfSlot slot)
     {
         if (slot == null) return false;
         var fpm = FurniturePlacementManager.Instance;
         var ghost = fpm != null ? fpm.CurrentGhost : null;
+        // Nothing is carried or placed: skip the per-slot parent search (customers call this a lot).
+        if (ghost == null && UnityEngine.Time.unscaledTime > PickupUntil) return false;
         if (ghost != null && slot.transform.IsChildOf(ghost.transform)) return true;
         var pickup = slot.GetComponentInParent<ItemPickup>();
         return pickup != null && pickup.IsBeingPickedUp;

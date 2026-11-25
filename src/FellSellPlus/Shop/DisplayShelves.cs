@@ -11,7 +11,7 @@ internal static class DisplaySlotsFilterPatch
 {
     static void Postfix(Il2CppSystem.Collections.Generic.List<ShelfSlot> __result)
     {
-        if (__result == null || !ShopSettings.DisplayShelves.Value) return;
+        if (__result == null || !ShopSettings.DisplayShelves.Value || !ShopStore.AnyDisplay) return;
         for (int i = __result.Count - 1; i >= 0; i--)
         {
             var s = __result[i];
@@ -39,7 +39,7 @@ internal static class DisplayPriceTagPatch
 {
     static void Postfix(ShelfSlot __instance)
     {
-        if (!ShopSettings.DisplayShelves.Value || __instance == null || __instance.priceText == null) return;
+        if (!ShopSettings.DisplayShelves.Value || __instance == null || __instance.priceText == null || !ShopStore.AnyDisplay) return;
         if (!__instance.IsEmpty && ShopStore.IsDisplay(__instance.transform.position))
             __instance.priceText.text = Ui.T("Витрина", "Display");
     }

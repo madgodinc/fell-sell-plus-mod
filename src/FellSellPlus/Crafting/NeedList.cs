@@ -17,14 +17,23 @@ internal static class NeedList
 
     static string FilePath => Path.Combine(MelonEnvironment.UserDataDirectory, "FellSellPlus", "need.json");
 
+    static float _nextCheck;
+    // Bumped whenever the set is (re)loaded or edited; caches built from the set compare it.
+    public static int Version;
+
     static HashSet<string> Set
     {
         get
         {
-            // Re-read when another module changed the file.
+            // Re-read when another module changed the file. The file is checked at most once a
+            // second: this getter runs for every recipe of every item while a chest or tooltip is
+            // open, and two disk calls each time froze the game.
+            if (_set != null && UnityEngine.Time.unscaledTime < _nextCheck) return _set;
+            _nextCheck = UnityEngine.Time.unscaledTime + 1f;
             var t = File.Exists(FilePath) ? File.GetLastWriteTimeUtc(FilePath) : DateTime.MinValue;
             if (_set != null && t == _stamp) return _set;
             _stamp = t;
+            Version++;
             _set = new HashSet<string>();
             try
             {
@@ -39,6 +48,9 @@ internal static class NeedList
 
     public static bool Has(RecipeData r) => r != null && Set.Contains(r.name);
 
+    // Re-reads the file if it changed (at most once a second) so Version is current.
+    public static void Refresh() { _ = Set; }
+
     public static bool Toggle(RecipeData r)
     {
         if (r == null) return false;
@@ -50,6 +62,7 @@ internal static class NeedList
             Directory.CreateDirectory(Path.GetDirectoryName(FilePath));
             File.WriteAllText(FilePath, JsonSerializer.Serialize(new Data { recipes = new List<string>(s) }));
             _stamp = File.GetLastWriteTimeUtc(FilePath);
+            Version++;
         }
         catch (Exception e) { Plugin.L.LogWarning($"need.json save failed: {e.Message}"); }
         return now;

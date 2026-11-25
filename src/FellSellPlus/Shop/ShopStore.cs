@@ -55,7 +55,10 @@ internal static class ShopStore
         catch (Exception e) { Plugin.L.LogWarning($"Shop store save failed: {e.Message}"); }
     }
 
-    public static bool IsDisplay(Vector3 p) { Sync(); return _display.Contains(Key(p)); }
+    public static bool IsDisplay(Vector3 p) { Sync(); return _display.Count > 0 && _display.Contains(Key(p)); }
+
+    // Cheap check for the hot hooks: customers ask for free slots many times a second.
+    public static bool AnyDisplay { get { Sync(); return _display.Count > 0; } }
 
     public static bool ToggleDisplay(Vector3 p)
     {

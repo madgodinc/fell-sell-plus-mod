@@ -143,18 +143,31 @@ internal static class LootRules
 internal static class NeedList
 {
     static List<RecipeData> _recipes;
+    static Dictionary<string, int> _need = new();
+    static int _needVersion = -1;
 
     // How many more of this item the Needed recipes still use (one craft each), after carried + chests.
     public static int Missing(string itemId)
     {
+        if (itemId == null) return 0;
+        Crafting.NeedList.Refresh();
+        if (_needVersion != Crafting.NeedList.Version) Rebuild();
+        if (!_need.TryGetValue(itemId, out var need)) return 0;
+        return Math.Max(0, need - ItemCounts.Carried(itemId) - ItemCounts.Stored(itemId));
+    }
+
+    // Item -> total amount the Needed recipes use. Cached: this runs for every slot of an open chest.
+    static void Rebuild()
+    {
+        _needVersion = Crafting.NeedList.Version;
         _recipes ??= new List<RecipeData>(Resources.FindObjectsOfTypeAll<RecipeData>());
-        int need = 0;
+        var need = new Dictionary<string, int>();
         foreach (var r in _recipes)
         {
             if (r == null || r.ingredients == null || !Crafting.NeedList.Has(r)) continue;
             foreach (var ing in r.ingredients)
-                if (ing.item != null && ing.item.name == itemId) need += ing.quantity;
+                if (ing.item != null) need[ing.item.name] = need.GetValueOrDefault(ing.item.name) + ing.quantity;
         }
-        return Math.Max(0, need - ItemCounts.Carried(itemId) - ItemCounts.Stored(itemId));
+        _need = need;
     }
 }

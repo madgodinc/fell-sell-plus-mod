@@ -43,7 +43,7 @@ internal static class EnemyBars
         if (cam == null) return;
         if (_canvas == null) _canvas = Shop.Ui.Canvas("FSP_EnemyBars", -5);
 
-        if (Time.unscaledTime >= _nextScan) { _nextScan = Time.unscaledTime + 0.5f; Scan(); }
+        if (Time.unscaledTime >= _nextScan) { _nextScan = Time.unscaledTime + 1f; Scan(); }
 
         float range = InfoSettings.EnemyHealthBarRange.Value;
         var dead = new List<System.IntPtr>();

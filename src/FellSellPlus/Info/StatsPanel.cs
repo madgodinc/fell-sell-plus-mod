@@ -15,13 +15,19 @@ internal static class StatsPanel
     static InventoryUI _inv;
     static float _next;
     static bool _broken;
+    static float _nextFind;
 
     public static void Tick()
     {
         if (_broken || !InfoSettings.StatsPanel.Value) return;
         try
         {
-            if (_inv == null) _inv = UnityEngine.Object.FindObjectOfType<InventoryUI>();
+            // A whole-scene search is expensive: at most twice a second while the window is missing.
+            if (_inv == null && UnityEngine.Time.unscaledTime >= _nextFind)
+            {
+                _nextFind = UnityEngine.Time.unscaledTime + 0.5f;
+                _inv = UnityEngine.Object.FindObjectOfType<InventoryUI>();
+            }
             bool show = _inv != null && _inv.inventoryWindowPanel != null && _inv.inventoryWindowPanel.activeInHierarchy
                         && PlayerStats.Instance != null
                         && !ChestOpen(); // the chest grid sits where the panel would go
