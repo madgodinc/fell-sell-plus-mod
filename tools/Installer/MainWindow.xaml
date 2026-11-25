@@ -1,0 +1,40 @@
+<Window x:Class="FellSellPlus.Setup.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Fell &amp; Sell Plus · Setup" Width="860" Height="580" ResizeMode="CanMinimize"
+        Background="{StaticResource Ground}" WindowStartupLocation="CenterScreen" WindowStyle="None">
+  <WindowChrome.WindowChrome>
+    <WindowChrome CaptionHeight="60" ResizeBorderThickness="0" GlassFrameThickness="0" CornerRadius="0" UseAeroCaptionButtons="False"/>
+  </WindowChrome.WindowChrome>
+  <Border BorderBrush="{StaticResource Line}" BorderThickness="1">
+    <Grid>
+      <Canvas x:Name="Sky" IsHitTestVisible="False" ClipToBounds="True"/>
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="60"/>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Margin="22,0,8,0">
+          <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <Image Source="Art/mgi-mark.png" Width="28" Height="30" RenderOptions.BitmapScalingMode="HighQuality"/>
+            <TextBlock Text="MGI" FontFamily="{StaticResource DisplayBold}" FontWeight="Bold" FontSize="16" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="{StaticResource Brand}"/>
+            <Border Width="1" Height="18" Background="{StaticResource LineHi}" Margin="14,0" VerticalAlignment="Center"/>
+            <TextBlock x:Name="ProductWord" FontFamily="{StaticResource Display}" FontSize="11" Foreground="{StaticResource Dim}" VerticalAlignment="Center"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" WindowChrome.IsHitTestVisibleInChrome="True">
+            <Border CornerRadius="999" Padding="3" Background="{StaticResource Well}" BorderBrush="{StaticResource Line}" BorderThickness="1" VerticalAlignment="Center">
+              <StackPanel x:Name="LangSeg" Orientation="Horizontal"/>
+            </Border>
+            <Button Style="{StaticResource Cap}" Margin="12,0,0,0" Click="Min_Click">
+              <Path Data="M0,0 L11,0" Stroke="#A59FBA" StrokeThickness="1.4"/>
+            </Button>
+            <Button Style="{StaticResource Cap}" Click="Close_Click">
+              <Path Data="M0,0 L10,10 M10,0 L0,10" Stroke="#A59FBA" StrokeThickness="1.4"/>
+            </Button>
+          </StackPanel>
+        </Grid>
+        <Grid x:Name="Body" Grid.Row="1" Margin="44,8,44,30"/>
+      </Grid>
+    </Grid>
+  </Border>
+</Window>

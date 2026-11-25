@@ -1,0 +1,1646 @@
+{
+ "sections": {
+  "Prayers": {
+   "ru": [
+    "Дары",
+    "Статуи, карты и новые дары"
+   ],
+   "en": [
+    "Prayers",
+    "Statues, cards and new prayers"
+   ]
+  },
+  "Skills": {
+   "ru": [
+    "Навыки",
+    "Новые навыки и книги"
+   ],
+   "en": [
+    "Skills",
+    "New skills and books"
+   ]
+  },
+  "Progression": {
+   "ru": [
+    "Прокачка у могилы",
+    "Наследие бабушки: базовые параметры за золото"
+   ],
+   "en": [
+    "Grandma's Legacy",
+    "Base stats bought with gold at the grave"
+   ]
+  },
+  "Challenge": {
+   "ru": [
+    "Сложность",
+    "Пресеты и множители боя, подземелья, леса, опыта и лавки"
+   ],
+   "en": [
+    "Challenge",
+    "Presets and multipliers for combat, dungeon, forest, XP and shop"
+   ]
+  },
+  "Loot": {
+   "ru": [
+    "Добыча",
+    "Что выпадает из сундуков подземелья"
+   ],
+   "en": [
+    "Loot",
+    "What dungeon chests drop"
+   ]
+  },
+  "LootFilter": {
+   "ru": [
+    "Фильтр добычи",
+    "Правила автоподбора предметов"
+   ],
+   "en": [
+    "Loot Filter",
+    "Auto-pickup rules"
+   ]
+  },
+  "Inventory": {
+   "ru": [
+    "Инвентарь",
+    "Быстрые слоты, вес, сундуки, подсказки"
+   ],
+   "en": [
+    "Inventory",
+    "Quick slots, weight, chests, tooltips"
+   ]
+  },
+  "Shop": {
+   "ru": [
+    "Лавка",
+    "Полки, касса, окно лавки, мебель"
+   ],
+   "en": [
+    "Shop",
+    "Shelves, checkout, shop window, furniture"
+   ]
+  },
+  "Crafting": {
+   "ru": [
+    "Крафт",
+    "Верстак: сортировка и фильтры"
+   ],
+   "en": [
+    "Crafting",
+    "Bench sorting and filters"
+   ]
+  },
+  "Info": {
+   "ru": [
+    "Инфо",
+    "Статы, шансы книг, подсказки, забеги"
+   ],
+   "en": [
+    "Info",
+    "Stats, book odds, hints, runs"
+   ]
+  },
+  "Coop": {
+   "ru": [
+    "Кооп",
+    "Совместная игра (прототип)"
+   ],
+   "en": [
+    "Co-op",
+    "Playing together (prototype)"
+   ]
+  },
+  "Dev": {
+   "ru": [
+    "Разработчик",
+    "Не трогать: только для отладки"
+   ],
+   "en": [
+    "Developer",
+    "Do not touch: debugging only"
+   ]
+  },
+  "Console": {
+   "ru": [
+    "Консоль загрузчика",
+    "Чёрное окно MelonLoader с логом"
+   ],
+   "en": [
+    "Loader console",
+    "MelonLoader's black log window"
+   ]
+  }
+ },
+ "groups": {
+  "Challenge": {
+   "ru": "Общее",
+   "en": "General"
+  },
+  "Challenge_Combat": {
+   "ru": "Бой",
+   "en": "Combat"
+  },
+  "Challenge_Dungeon": {
+   "ru": "Подземелье",
+   "en": "Dungeon"
+  },
+  "Challenge_Forest": {
+   "ru": "Лес",
+   "en": "Forest"
+  },
+  "Challenge_XP": {
+   "ru": "Опыт",
+   "en": "XP"
+  },
+  "Challenge_Shop": {
+   "ru": "Лавка",
+   "en": "Shop"
+  },
+  "Challenge_Loot": {
+   "ru": "Сундуки",
+   "en": "Chests"
+  }
+ },
+ "keys": {
+  "Prayers.CardsPerStatue": {
+   "ru": [
+    "Карт у статуи",
+    "Сколько даров предлагает статуя. В игре 3; больше 5 может не влезть на экран."
+   ],
+   "en": [
+    "Cards per statue",
+    "How many prayers a statue offers. The game uses 3; more than 5 may not fit."
+   ]
+  },
+  "Prayers.MaxActivePrayers": {
+   "ru": [
+    "Лимит даров в Dungeon+",
+    "Только Dungeon+: сколько даров можно держать до замены. В обычных забегах лимита нет."
+   ],
+   "en": [
+    "Prayer limit in Dungeon+",
+    "Dungeon+ only: prayers you can hold before replacing one. Normal runs have no limit."
+   ]
+  },
+  "Prayers.NewPrayers": {
+   "ru": [
+    "Новые дары",
+    "Добавить 11 даров мода в статуи: 6 добрых и 5 злых."
+   ],
+   "en": [
+    "New prayers",
+    "Add the mod's 11 prayers to statues: 6 good, 5 evil."
+   ]
+  },
+  "Progression.Enabled": {
+   "ru": [
+    "Прокачка у могилы",
+    "Покупка базовых параметров за золото: посмотри на камень могилы и нажми E."
+   ],
+   "en": [
+    "Grandma's Legacy",
+    "Buy base stats with gold: look at the gravestone and press E."
+   ]
+  },
+  "Progression.PrestigeTiers": {
+   "ru": [
+    "Лимит по престижу",
+    "Пары «престиж:лимит уровня» через запятую. Ниже первой пары покупать нельзя."
+   ],
+   "en": [
+    "Prestige tiers",
+    "Comma-separated prestige:level-cap pairs. Below the first pair nothing can be bought."
+   ]
+  },
+  "Progression.LevelCapPerBoss": {
+   "ru": [
+    "Уровней за босса",
+    "На сколько поднимается лимит за каждого убитого босса."
+   ],
+   "en": [
+    "Levels per boss",
+    "How much each defeated boss raises the level cap."
+   ]
+  },
+  "Progression.CostSchedule": {
+   "ru": [
+    "Цены уровней",
+    "Золото за 1-й, 2-й, 3-й… уровень по порядку, через запятую."
+   ],
+   "en": [
+    "Level costs",
+    "Gold for level 1, 2, 3… in order, comma-separated."
+   ]
+  },
+  "Progression.CostStepAfter": {
+   "ru": [
+    "Прибавка после списка",
+    "На сколько дорожает каждый уровень после списка цен."
+   ],
+   "en": [
+    "Step after the list",
+    "Extra gold per level after the cost list ends."
+   ]
+  },
+  "Progression.HealthPerLevel": {
+   "ru": [
+    "Здоровье за уровень",
+    "Сколько макс. здоровья даёт один уровень."
+   ],
+   "en": [
+    "Health per level",
+    "Max Health gained per level."
+   ]
+  },
+  "Progression.StaminaPerLevel": {
+   "ru": [
+    "Выносливость за уровень",
+    "Сколько макс. выносливости даёт один уровень."
+   ],
+   "en": [
+    "Stamina per level",
+    "Max Stamina gained per level."
+   ]
+  },
+  "Progression.ManaPerLevel": {
+   "ru": [
+    "Мана за уровень",
+    "Сколько макс. маны даёт один уровень."
+   ],
+   "en": [
+    "Mana per level",
+    "Max Mana gained per level."
+   ]
+  },
+  "Progression.HealthRegenPerLevel": {
+   "ru": [
+    "Восстановление здоровья за уровень",
+    "Прибавка к восстановлению здоровья в секунду."
+   ],
+   "en": [
+    "Health Regeneration per level",
+    "Added health regeneration per second."
+   ]
+  },
+  "Progression.StaminaRegenPerLevel": {
+   "ru": [
+    "Восстановление выносливости за уровень",
+    "Прибавка к восстановлению выносливости в секунду."
+   ],
+   "en": [
+    "Stamina Regeneration per level",
+    "Added stamina regeneration per second."
+   ]
+  },
+  "Progression.ManaRegenPerLevel": {
+   "ru": [
+    "Регенерация маны за уровень",
+    "Прибавка к регенерации маны в секунду."
+   ],
+   "en": [
+    "Mana Regeneration per level",
+    "Added mana regeneration per second."
+   ]
+  },
+  "Progression.DamagePercentPerLevel": {
+   "ru": [
+    "Урон за уровень, %",
+    "Процент урона от базы, складывается: 10 уровней = ×1.10."
+   ],
+   "en": [
+    "Damage per level, %",
+    "Percent of base damage, additive: 10 levels = x1.10."
+   ]
+  },
+  "Progression.SpeedPercentPerLevel": {
+   "ru": [
+    "Скорость за уровень, %",
+    "Процент к скорости передвижения за уровень."
+   ],
+   "en": [
+    "Move Speed per level, %",
+    "Percent of movement speed per level."
+   ]
+  },
+  "Progression.SpeedPercentCap": {
+   "ru": [
+    "Потолок скорости, %",
+    "Больше этого прокачка скорость не даст."
+   ],
+   "en": [
+    "Move Speed cap, %",
+    "Progression never adds more speed than this."
+   ]
+  },
+  "Challenge.Preset": {
+   "ru": [
+    "Пресет сложности",
+    "Основа для всех значений ниже. Значение «из пресета» берёт число из выбранного пресета."
+   ],
+   "en": [
+    "Challenge preset",
+    "Baseline for every value below. \"From preset\" takes the number from the chosen preset."
+   ]
+  },
+  "Challenge.OnlyHarderLock": {
+   "ru": [
+    "Только сложнее",
+    "Первая загрузка сейва запоминает значения; дальше этот сейв не станет легче."
+   ],
+   "en": [
+    "Only harder",
+    "The first load of a save records the values; that save never gets easier."
+   ]
+  },
+  "Challenge.ShowBadge": {
+   "ru": [
+    "Значок сложности",
+    "Показывать активную сложность в левом нижнем углу."
+   ],
+   "en": [
+    "Challenge badge",
+    "Show the active challenge in the bottom-left corner."
+   ]
+  },
+  "Challenge_Combat.EnemyHealth": {
+   "ru": [
+    "Здоровье врагов",
+    "Множитель здоровья врагов."
+   ],
+   "en": [
+    "Enemy Health",
+    "Enemy health multiplier."
+   ]
+  },
+  "Challenge_Combat.EnemyDamage": {
+   "ru": [
+    "Урон врагов",
+    "Урон по тебе от врагов и ловушек."
+   ],
+   "en": [
+    "Enemy Damage",
+    "Damage you take from enemies and traps."
+   ]
+  },
+  "Challenge_Combat.PlayerDamage": {
+   "ru": [
+    "Твой урон",
+    "Урон, который наносишь ты."
+   ],
+   "en": [
+    "Your Damage",
+    "Damage you deal."
+   ]
+  },
+  "Challenge_Combat.EnemySpeed": {
+   "ru": [
+    "Скорость врагов",
+    "Скорость передвижения врагов."
+   ],
+   "en": [
+    "Enemy Speed",
+    "Enemy movement speed."
+   ]
+  },
+  "Challenge_Combat.EnemyAttackRate": {
+   "ru": [
+    "Частота атак врагов",
+    "2 = враги бьют вдвое чаще."
+   ],
+   "en": [
+    "Enemy Attack Rate",
+    "2 = enemies attack twice as often."
+   ]
+  },
+  "Challenge_Combat.EnemiesLungeAndCombo": {
+   "ru": [
+    "Выпады и комбо у всех",
+    "Любой враг может делать выпады и серии ударов на любой сложности."
+   ],
+   "en": [
+    "Lunge and combo for all",
+    "Every enemy may lunge and combo on any difficulty."
+   ]
+  },
+  "Challenge_Combat.LoseGearOnDeath": {
+   "ru": [
+    "Потеря снаряжения при смерти",
+    "Надетые вещи теряются при смерти на любой сложности."
+   ],
+   "en": [
+    "Lose gear on death",
+    "Equipped gear is lost on death on any difficulty."
+   ]
+  },
+  "Challenge_Combat.BossHealth": {
+   "ru": [
+    "Здоровье боссов",
+    "Дополнительный множитель здоровья боссов, поверх врагов."
+   ],
+   "en": [
+    "Boss Health",
+    "Extra boss health multiplier on top of enemies."
+   ]
+  },
+  "Challenge_Combat.BossDamage": {
+   "ru": [
+    "Урон боссов",
+    "Дополнительный множитель урона боссов, поверх врагов."
+   ],
+   "en": [
+    "Boss Damage",
+    "Extra boss damage multiplier on top of enemies."
+   ]
+  },
+  "Challenge_Combat.ExtraEliteChance": {
+   "ru": [
+    "Доп. шанс элиты",
+    "Шанс (0-1), что обычный враг станет элитным."
+   ],
+   "en": [
+    "Extra elite chance",
+    "Chance (0-1) for a normal enemy to become elite."
+   ]
+  },
+  "Challenge_Combat.EliteSecondAffixChance": {
+   "ru": [
+    "Второе свойство элиты",
+    "Шанс (0-1) второго свойства у элиты от мода."
+   ],
+   "en": [
+    "Elite second affix",
+    "Chance (0-1) of a second affix on mod-made elites."
+   ]
+  },
+  "Challenge_Combat.ElitePlusChance": {
+   "ru": [
+    "Шанс «Элиты+»",
+    "Шанс (0-1), что элита от мода будет «Элитой+»."
+   ],
+   "en": [
+    "Elite+ chance",
+    "Chance (0-1) that a mod-made elite is Elite+."
+   ]
+  },
+  "Challenge_Combat.ElitesOutsideDungeonPlus": {
+   "ru": [
+    "Элиты вне Dungeon+",
+    "Дополнительные элиты и в обычных забегах, и в событиях."
+   ],
+   "en": [
+    "Elites outside Dungeon+",
+    "Extra elites in normal runs and events too."
+   ]
+  },
+  "Challenge_Combat.ArmorEffect": {
+   "ru": [
+    "Сила брони",
+    "0.7 = броня защищает на 30% хуже."
+   ],
+   "en": [
+    "Armor effect",
+    "0.7 = armor protects 30% worse."
+   ]
+  },
+  "Challenge_Combat.StaminaDrain": {
+   "ru": [
+    "Расход выносливости",
+    "Цена бега, прыжка, уклонения, удара и блока."
+   ],
+   "en": [
+    "Stamina drain",
+    "Cost of sprint, jump, dodge, attack and block."
+   ]
+  },
+  "Challenge_Combat.FurnitureCombatBonus": {
+   "ru": [
+    "Боевые бонусы мебели",
+    "Множитель бонусов мебели в подземелье."
+   ],
+   "en": [
+    "Furniture combat bonus",
+    "Multiplier on furniture dungeon bonuses."
+   ]
+  },
+  "Challenge_Dungeon.EnemyCount": {
+   "ru": [
+    "Врагов на этаже",
+    "Множитель числа врагов на этаже подземелья."
+   ],
+   "en": [
+    "Enemies per floor",
+    "Multiplier on enemies per dungeon floor."
+   ]
+  },
+  "Challenge_Dungeon.DeeperEnemyFloors": {
+   "ru": [
+    "Сильные враги раньше",
+    "На сколько этажей раньше появляются сильные типы врагов."
+   ],
+   "en": [
+    "Deeper enemies",
+    "Tougher enemy types appear this many floors earlier."
+   ]
+  },
+  "Challenge_Dungeon.TrapChance": {
+   "ru": [
+    "Шанс ловушек",
+    "Множитель шанса ловушек в коридорах."
+   ],
+   "en": [
+    "Trap chance",
+    "Corridor trap chance multiplier."
+   ]
+  },
+  "Challenge_Dungeon.EmptyChestChance": {
+   "ru": [
+    "Пустые сундуки",
+    "Вес пустых ячеек в сундуках подземелья."
+   ],
+   "en": [
+    "Empty chest chance",
+    "Weight of empty rolls in dungeon chests."
+   ]
+  },
+  "Challenge_Dungeon.RareLoot": {
+   "ru": [
+    "Редкая добыча",
+    "Вес необычных и лучше вещей и шанс рецептов в сундуках."
+   ],
+   "en": [
+    "Rare loot",
+    "Weight of uncommon-and-better items and recipe chance in chests."
+   ]
+  },
+  "Challenge_Dungeon.PrayerLimit": {
+   "ru": [
+    "Лимит даров за забег",
+    "Сколько даров можно взять у статуй в любом забеге. 99 = без лимита, 0 = статуи не работают."
+   ],
+   "en": [
+    "Prayer limit per run",
+    "Prayers you can take at statues in any run. 99 = no limit, 0 = statues unusable."
+   ]
+  },
+  "Challenge_Dungeon.EvilPrayersOnly": {
+   "ru": [
+    "Только злые дары",
+    "Добрые статуи не работают."
+   ],
+   "en": [
+    "Evil prayers only",
+    "Good statues cannot be used."
+   ]
+  },
+  "Challenge_Dungeon.ForcedEvilPrayers": {
+   "ru": [
+    "Принудительные злые дары",
+    "Сколько этажей за забег навязывают случайный злой дар при входе."
+   ],
+   "en": [
+    "Forced evil prayers",
+    "Floors per run that force a random evil prayer on arrival."
+   ]
+  },
+  "Challenge_Forest.EnemyCount": {
+   "ru": [
+    "Врагов в лесу",
+    "Множитель врагов на каждой точке появления в лесу."
+   ],
+   "en": [
+    "Forest enemies",
+    "Multiplier on enemies per forest spawn point."
+   ]
+  },
+  "Challenge_Forest.ToughEnemyChance": {
+   "ru": [
+    "Сильные враги в лесу",
+    "Множитель шанса сильных видов врагов в лесу."
+   ],
+   "en": [
+    "Tough forest enemies",
+    "Chance multiplier of the tougher forest enemies."
+   ]
+  },
+  "Challenge_Forest.RandomChests": {
+   "ru": [
+    "Сундуки в лесу",
+    "Множитель шанса случайных сундуков в лесу."
+   ],
+   "en": [
+    "Forest chests",
+    "Random forest chest chance multiplier."
+   ]
+  },
+  "Challenge_Forest.TreasureGoblins": {
+   "ru": [
+    "Гоблины с сокровищами",
+    "Множитель шанса появления гоблинов с сокровищами."
+   ],
+   "en": [
+    "Treasure goblins",
+    "Treasure goblin spawn chance multiplier."
+   ]
+  },
+  "Challenge_Forest.TripDamage": {
+   "ru": [
+    "Урон галлюцинаций",
+    "Урон от событий-галлюцинаций в лесу."
+   ],
+   "en": [
+    "Trip damage",
+    "Damage from forest hallucination events."
+   ]
+  },
+  "Challenge_XP.All": {
+   "ru": [
+    "Весь опыт",
+    "Множитель на любой получаемый опыт."
+   ],
+   "en": [
+    "All XP",
+    "Multiplier on every XP gain."
+   ]
+  },
+  "Challenge_XP.Sales": {
+   "ru": [
+    "Опыт за продажи",
+    "Опыт за сбор монет с прилавка."
+   ],
+   "en": [
+    "Sales XP",
+    "XP from collecting coins at the counter."
+   ]
+  },
+  "Challenge_XP.PerfectPrice": {
+   "ru": [
+    "Опыт за идеальную цену",
+    "Опыт за бонус идеальной цены."
+   ],
+   "en": [
+    "Perfect price XP",
+    "XP from perfect-price bonuses."
+   ]
+  },
+  "Challenge_XP.Combat": {
+   "ru": [
+    "Опыт за бой",
+    "Опыт за убийства."
+   ],
+   "en": [
+    "Combat XP",
+    "XP from kills."
+   ]
+  },
+  "Challenge_XP.Crafting": {
+   "ru": [
+    "Опыт за крафт",
+    "Опыт за создание предметов."
+   ],
+   "en": [
+    "Crafting XP",
+    "XP from crafting."
+   ]
+  },
+  "Challenge_XP.Loot": {
+   "ru": [
+    "Опыт за добычу",
+    "Опыт за сундуки и разбитые предметы."
+   ],
+   "en": [
+    "Loot XP",
+    "XP from chests and breakables."
+   ]
+  },
+  "Challenge_XP.Other": {
+   "ru": [
+    "Прочий опыт",
+    "Опыт за всё остальное: письма, приглашения…"
+   ],
+   "en": [
+    "Other XP",
+    "XP from everything else: letters, invites…"
+   ]
+  },
+  "Challenge_XP.XpToLevel": {
+   "ru": [
+    "Опыт до уровня",
+    "Сколько опыта нужно на каждый уровень."
+   ],
+   "en": [
+    "XP to level up",
+    "XP needed per level."
+   ]
+  },
+  "Challenge_Shop.SalePrices": {
+   "ru": [
+    "Цены продажи",
+    "Сколько готовы платить клиенты."
+   ],
+   "en": [
+    "Sale prices",
+    "What customers are willing to pay."
+   ]
+  },
+  "Challenge_Shop.ShoppingChance": {
+   "ru": [
+    "Шанс покупки",
+    "Шанс, что клиент что-то купит."
+   ],
+   "en": [
+    "Shopping chance",
+    "Chance that a customer buys something."
+   ]
+  },
+  "Challenge_Shop.FurniturePriceBonus": {
+   "ru": [
+    "Ценовой бонус мебели",
+    "Множитель надбавки к цене от мебели."
+   ],
+   "en": [
+    "Furniture price bonus",
+    "Multiplier on the price bonus from furniture."
+   ]
+  },
+  "Challenge_Shop.Tips": {
+   "ru": [
+    "Чаевые",
+    "Множитель чаевых от мебели."
+   ],
+   "en": [
+    "Tips",
+    "Tips from furniture."
+   ]
+  },
+  "Challenge_Shop.MaxBonusCopiesPerFurniture": {
+   "ru": [
+    "Копий мебели с бонусом",
+    "Бонус дают только первые N копий одной мебели. 99 = все."
+   ],
+   "en": [
+    "Bonus copies per furniture",
+    "Only the first N copies of a furniture give bonuses. 99 = all."
+   ]
+  },
+  "Challenge_Shop.VendorPrices": {
+   "ru": [
+    "Цены торговцев",
+    "Цены у торговцев в деревне."
+   ],
+   "en": [
+    "Merchant prices",
+    "Prices at town merchants."
+   ]
+  },
+  "Challenge_Shop.NoVendorBuying": {
+   "ru": [
+    "Торговцы не продают",
+    "У торговцев в деревне нельзя ничего купить."
+   ],
+   "en": [
+    "No buying from merchants",
+    "Town merchants refuse to sell."
+   ]
+  },
+  "Challenge_Loot.UncommonWeight": {
+   "ru": [
+    "Необычные вещи",
+    "Доп. вес необычных вещей в сундуках подземелья."
+   ],
+   "en": [
+    "Uncommon items",
+    "Extra weight of uncommon items in dungeon chests."
+   ]
+  },
+  "Challenge_Loot.RareWeight": {
+   "ru": [
+    "Редкие вещи",
+    "Доп. вес редких вещей в сундуках подземелья."
+   ],
+   "en": [
+    "Rare items",
+    "Extra weight of rare items in dungeon chests."
+   ]
+  },
+  "Challenge_Loot.EpicWeight": {
+   "ru": [
+    "Эпические вещи",
+    "Доп. вес эпических вещей в сундуках подземелья."
+   ],
+   "en": [
+    "Epic items",
+    "Extra weight of epic items in dungeon chests."
+   ]
+  },
+  "Challenge_Loot.LegendaryWeight": {
+   "ru": [
+    "Легендарные вещи",
+    "Доп. вес легендарных вещей в сундуках подземелья."
+   ],
+   "en": [
+    "Legendary items",
+    "Extra weight of legendary items in dungeon chests."
+   ]
+  },
+  "Challenge_Loot.ItemAmount": {
+   "ru": [
+    "Размер стопок",
+    "Сколько штук в каждой стопке из сундука."
+   ],
+   "en": [
+    "Stack size",
+    "How many items each chest stack holds."
+   ]
+  },
+  "Challenge_Loot.RecipeChance": {
+   "ru": [
+    "Шанс на рецепт",
+    "Множитель шанса рецепта в сундуках подземелья."
+   ],
+   "en": [
+    "Recipe Chance",
+    "Recipe chance multiplier in dungeon chests."
+   ]
+  },
+  "Challenge_Loot.ExtraDropChance": {
+   "ru": [
+    "Доп. шанс выпадения",
+    "Прибавка к шансу выпадения, в единицах игры."
+   ],
+   "en": [
+    "Extra Drop Chance",
+    "Added to the drop chance bonus, in game units."
+   ]
+  },
+  "LootFilter.Enabled": {
+   "ru": [
+    "Фильтр добычи",
+    "Правила подбора из файла loot_rules.json, перечитываются на ходу."
+   ],
+   "en": [
+    "Loot filter",
+    "Pickup rules from loot_rules.json, re-read while the game runs."
+   ]
+  },
+  "LootFilter.Alerts": {
+   "ru": [
+    "Оповещения",
+    "Строка в ленте подбора, когда достигнут лимит или собрано нужное."
+   ],
+   "en": [
+    "Alerts",
+    "A line in the pickup feed when a limit is reached or a need is covered."
+   ]
+  },
+  "LootFilter.WriteCatalogue": {
+   "ru": [
+    "Каталог предметов",
+    "Писать items_catalogue.txt со всеми id и названиями для правил."
+   ],
+   "en": [
+    "Item catalogue",
+    "Write items_catalogue.txt with every item id and name for the rules."
+   ]
+  },
+  "Inventory.QuickSlotRouting": {
+   "ru": [
+    "Новое в рюкзак",
+    "Подобранное и созданное идёт в рюкзак, а не в пустые быстрые слоты."
+   ],
+   "en": [
+    "New items to backpack",
+    "Picked-up and crafted items go to the backpack, not empty quick slots."
+   ]
+  },
+  "Inventory.PlaceablesToEmptyQuickSlots": {
+   "ru": [
+    "Мебель в быстрые слоты",
+    "Мебель для расстановки всё равно может занять пустой быстрый слот."
+   ],
+   "en": [
+    "Furniture to quick slots",
+    "Placeable furniture may still take an empty quick slot."
+   ]
+  },
+  "Inventory.ConsumablesToEmptyQuickSlots": {
+   "ru": [
+    "Зелья и еда в быстрые слоты",
+    "Зелья и еда тоже могут занять пустой быстрый слот."
+   ],
+   "en": [
+    "Consumables to quick slots",
+    "Potions and food may also take an empty quick slot."
+   ]
+  },
+  "Inventory.PickupRadiusMultiplier": {
+   "ru": [
+    "Радиус автоподбора",
+    "Множитель радиуса автоподбора. 1 = как в игре."
+   ],
+   "en": [
+    "Auto-pickup radius",
+    "Auto-pickup radius multiplier. 1 = game default."
+   ]
+  },
+  "Inventory.PickupScanLimit": {
+   "ru": [
+    "Объектов при подборе",
+    "Сколько объектов проверяет автоподбор. В игре 32, из-за чего в завалах вещи пропускаются."
+   ],
+   "en": [
+    "Pickup scan limit",
+    "Objects the auto-pickup checks. The game uses 32 and skips items in clutter."
+   ]
+  },
+  "Inventory.WeightBar": {
+   "ru": [
+    "Полоска веса",
+    "Вес внизу слева: оранжевая с 75%, красная с 95%."
+   ],
+   "en": [
+    "Weight bar",
+    "Carry weight at the lower left: orange at 75%, red at 95%."
+   ]
+  },
+  "Inventory.WeightBarWidth": {
+   "ru": [
+    "Длина полоски веса",
+    "В пикселях при 1920×1080."
+   ],
+   "en": [
+    "Weight bar length",
+    "Pixels at 1920x1080."
+   ]
+  },
+  "Inventory.WeightBarX": {
+   "ru": [
+    "Полоска веса: отступ слева",
+    "Расстояние от левого края экрана."
+   ],
+   "en": [
+    "Weight bar: left offset",
+    "Distance from the left edge."
+   ]
+  },
+  "Inventory.WeightBarY": {
+   "ru": [
+    "Полоска веса: отступ снизу",
+    "Расстояние от нижнего края экрана."
+   ],
+   "en": [
+    "Weight bar: bottom offset",
+    "Distance from the bottom edge."
+   ]
+  },
+  "Inventory.ChestDeposit": {
+   "ru": [
+    "Сложить в сундук",
+    "Клавиша у открытого сундука переносит туда всё, что в нём уже есть. Shift + клавиша включает автосклад."
+   ],
+   "en": [
+    "Chest deposit",
+    "A key at an open chest moves in everything it already holds. Shift + key toggles auto-deposit."
+   ]
+  },
+  "Inventory.DepositKey": {
+   "ru": [
+    "Клавиша «Сложить»",
+    "Клавиша складывания в сундук."
+   ],
+   "en": [
+    "Deposit key",
+    "Key to deposit into a chest."
+   ]
+  },
+  "Inventory.StackChestOnOpen": {
+   "ru": [
+    "Складывать стопки в сундуке",
+    "Объединять одинаковые вещи при открытии сундука."
+   ],
+   "en": [
+    "Stack chest on open",
+    "Merge identical items when a chest opens."
+   ]
+  },
+  "Inventory.DepositQuickSlots": {
+   "ru": [
+    "Складывать и быстрые слоты",
+    "Перенос в сундук берёт вещи и из быстрых слотов."
+   ],
+   "en": [
+    "Deposit quick slots",
+    "Deposit also takes items from quick slots."
+   ]
+  },
+  "Inventory.TooltipInfo": {
+   "ru": [
+    "Строки в подсказке предмета",
+    "Сколько у тебя и где, вес, нужно ли для рецептов, правило фильтра."
+   ],
+   "en": [
+    "Tooltip lines",
+    "How many you have and where, weight, recipe needs, filter rule."
+   ]
+  },
+  "Inventory.ShowIdealPrice": {
+   "ru": [
+    "Скрытая идеальная цена",
+    "Спойлер: показывать в подсказке скрытую цену предмета."
+   ],
+   "en": [
+    "Hidden ideal price",
+    "Spoiler: show the item's hidden price in the tooltip."
+   ]
+  },
+  "Inventory.KeepMarks": {
+   "ru": [
+    "Метка «Хранить»",
+    "Клавиша на предмете помечает его как «хранить»: он всегда последний на выброс."
+   ],
+   "en": [
+    "Keep marks",
+    "A key on an item marks it Keep: it is always last to purge."
+   ]
+  },
+  "Inventory.KeepKey": {
+   "ru": [
+    "Клавиша «Хранить»",
+    "Клавиша метки «хранить»."
+   ],
+   "en": [
+    "Keep key",
+    "Key for the Keep mark."
+   ]
+  },
+  "Inventory.PurgeInfo": {
+   "ru": [
+    "Ценность и «на выброс»",
+    "Подсказка показывает цену, золото за кг и место в очереди на выброс."
+   ],
+   "en": [
+    "Value and purge rank",
+    "Tooltip shows value, gold per kg and purge rank."
+   ]
+  },
+  "Inventory.PurgeSort": {
+   "ru": [
+    "Сортировка «на выброс»",
+    "Shift + кнопка сортировки: сначала самое дешёвое за кг."
+   ],
+   "en": [
+    "Purge sort",
+    "Shift + a sort button: cheapest per kg first."
+   ]
+  },
+  "Inventory.RememberSort": {
+   "ru": [
+    "Помнить сортировку",
+    "Последний выбранный способ сортировки сохраняется."
+   ],
+   "en": [
+    "Remember sort",
+    "The last chosen sort is kept."
+   ]
+  },
+  "Inventory.GroundItemInfo": {
+   "ru": [
+    "Вещи на земле",
+    "Взгляд на вещь показывает золото за кг или что выбросить ради неё."
+   ],
+   "en": [
+    "Items on the ground",
+    "Looking at an item shows gold per kg or what to drop for it."
+   ]
+  },
+  "Inventory.FixDungeonPrices": {
+   "ru": [
+    "Цены при загрузке в подземелье",
+    "Загружать известные цены, если сейв загружен в подземелье или лесу."
+   ],
+   "en": [
+    "Prices when loading in dungeon",
+    "Load known prices when a save loads in the dungeon or forest."
+   ]
+  },
+  "Shop.DisplayShelves": {
+   "ru": [
+    "Витрины",
+    "Удерживай клавишу, глядя на место на полке: клиенты с него не покупают."
+   ],
+   "en": [
+    "Display shelves",
+    "Hold the key while looking at a shelf slot: customers won't buy from it."
+   ]
+  },
+  "Shop.DisplayKey": {
+   "ru": [
+    "Клавиша витрины",
+    "Клавиша, которую удерживаешь для витрины."
+   ],
+   "en": [
+    "Display key",
+    "Key held to toggle a display."
+   ]
+  },
+  "Shop.CheckoutChoice": {
+   "ru": [
+    "Выбор кассы",
+    "Удерживай клавишу, глядя на прилавок, чтобы сделать его кассой."
+   ],
+   "en": [
+    "Checkout choice",
+    "Hold the key while looking at a counter to make it the checkout."
+   ]
+  },
+  "Shop.CheckoutKey": {
+   "ru": [
+    "Клавиша кассы",
+    "Клавиша выбора кассы."
+   ],
+   "en": [
+    "Checkout key",
+    "Key to pick the checkout counter."
+   ]
+  },
+  "Shop.HoldSeconds": {
+   "ru": [
+    "Сколько держать клавишу",
+    "Секунды удержания для витрины и кассы."
+   ],
+   "en": [
+    "Hold time",
+    "Seconds to hold the display/checkout keys."
+   ]
+  },
+  "Shop.LineHud": {
+   "ru": [
+    "Очередь на экране",
+    "Клиенты в очереди, сколько заплатят, монеты на прилавке."
+   ],
+   "en": [
+    "Queue on screen",
+    "Customers in the queue, what they will pay, coins on the counter."
+   ]
+  },
+  "Shop.LineHudX": {
+   "ru": [
+    "Очередь: отступ справа",
+    "Расстояние от правого края экрана."
+   ],
+   "en": [
+    "Queue: right offset",
+    "Distance from the right edge."
+   ]
+  },
+  "Shop.LineHudY": {
+   "ru": [
+    "Очередь: отступ сверху",
+    "Расстояние от верхнего края экрана."
+   ],
+   "en": [
+    "Queue: top offset",
+    "Distance from the top edge."
+   ]
+  },
+  "Shop.ShopWindow": {
+   "ru": [
+    "Окно лавки по TAB",
+    "TAB открывает окно лавки: цены, выставление товара, продажи."
+   ],
+   "en": [
+    "Shop window on TAB",
+    "TAB opens the shop window: prices, stocking, sales."
+   ]
+  },
+  "Shop.EmptyShelvesOnPickup": {
+   "ru": [
+    "Товар в сумку при переносе",
+    "Поднял стол или полку с товаром: вещи уходят в инвентарь со своими ценами."
+   ],
+   "en": [
+    "Goods to bag on pickup",
+    "Picking up furniture with goods moves them to the inventory with their prices."
+   ]
+  },
+  "Shop.IgnoreCarriedFurniture": {
+   "ru": [
+    "Не брать с переносимой мебели",
+    "Клиенты не покупают с мебели, которую ты несёшь."
+   ],
+   "en": [
+    "Ignore carried furniture",
+    "Customers don't take items from furniture you are carrying."
+   ]
+  },
+  "Shop.OutdoorDecor": {
+   "ru": [
+    "Декор на улице",
+    "Напольный декор можно ставить на землю рядом с лавкой."
+   ],
+   "en": [
+    "Outdoor decor",
+    "Floor decorations can be placed on the ground near the shop."
+   ]
+  },
+  "Shop.OutdoorDecorRange": {
+   "ru": [
+    "Дальность декора на улице",
+    "На сколько метров от лавки можно ставить декор."
+   ],
+   "en": [
+    "Outdoor decor range",
+    "How many metres from the shop decor may go."
+   ]
+  },
+  "Shop.BuyShopWithoutMoving": {
+   "ru": [
+    "Покупка лавки без переезда",
+    "Купить новую лавку, не переезжая. Переезд кнопкой «Сменить»."
+   ],
+   "en": [
+    "Buy shop without moving",
+    "Buy a new shop without moving in. Move with Change."
+   ]
+  },
+  "Shop.ServeInArrivalOrder": {
+   "ru": [
+    "Очередь по приходу",
+    "Клиенты платят в порядке прихода к кассе."
+   ],
+   "en": [
+    "Serve in arrival order",
+    "Customers pay in the order they reach the queue."
+   ]
+  },
+  "Crafting.Enabled": {
+   "ru": [
+    "Улучшения верстака",
+    "Главный переключатель улучшений крафта."
+   ],
+   "en": [
+    "Bench improvements",
+    "Master switch for crafting improvements."
+   ]
+  },
+  "Crafting.Sort": {
+   "ru": [
+    "Сортировка рецептов",
+    "Сортировать список, а не просто по алфавиту."
+   ],
+   "en": [
+    "Sort recipes",
+    "Sort the list instead of plain alphabetical."
+   ]
+  },
+  "Crafting.CraftableFirst": {
+   "ru": [
+    "Доступные сначала",
+    "Рецепты, которые можно создать сейчас, идут первыми."
+   ],
+   "en": [
+    "Craftable first",
+    "Recipes you can craft now come first."
+   ]
+  },
+  "Crafting.SinkCappedFurniture": {
+   "ru": [
+    "Набранную мебель вниз",
+    "Мебель, поставленная много раз, уходит в конец списка."
+   ],
+   "en": [
+    "Capped furniture last",
+    "Furniture placed enough times goes to the bottom."
+   ]
+  },
+  "Crafting.PlacedCap": {
+   "ru": [
+    "Сколько копий достаточно",
+    "Каждая следующая копия даёт половину бонуса предыдущей."
+   ],
+   "en": [
+    "Copies that count as done",
+    "Each extra copy gives half the bonus of the previous."
+   ]
+  },
+  "Crafting.RowInfo": {
+   "ru": [
+    "Размещено и есть",
+    "Показывать в строке рецепта «Размещено X/3» и «Есть Z»."
+   ],
+   "en": [
+    "Placed and stored",
+    "Show Placed X/3 and Stored Z on recipe rows."
+   ]
+  },
+  "Crafting.FadeCappedRows": {
+   "ru": [
+    "Притушить набранное",
+    "Бледнее показывать мебель, набравшую лимит."
+   ],
+   "en": [
+    "Fade capped rows",
+    "Fade furniture that reached the cap."
+   ]
+  },
+  "Crafting.FilterBar": {
+   "ru": [
+    "Фильтры справа",
+    "Колонка фильтров справа от верстака."
+   ],
+   "en": [
+    "Filter column",
+    "Filter column to the right of the bench."
+   ]
+  },
+  "Crafting.RememberFilters": {
+   "ru": [
+    "Помнить фильтры",
+    "Фильтры остаются между заходами к верстаку."
+   ],
+   "en": [
+    "Remember filters",
+    "Keep filters between visits to the bench."
+   ]
+  },
+  "Crafting.InstantList": {
+   "ru": [
+    "Список сразу",
+    "Показывать весь список сразу, без построчной анимации."
+   ],
+   "en": [
+    "Instant list",
+    "Show the whole list at once."
+   ]
+  },
+  "Crafting.NeedKey": {
+   "ru": [
+    "Клавиша «Нужно»",
+    "Клавиша у верстака: пометить рецепт как нужный."
+   ],
+   "en": [
+    "Need key",
+    "Key at the bench to mark a recipe as needed."
+   ]
+  },
+  "Info.StatsPanel": {
+   "ru": [
+    "Панель статов",
+    "Рядом с инвентарём: бонусы снаряжения и итоговые параметры."
+   ],
+   "en": [
+    "Stats panel",
+    "Next to the inventory: gear bonuses and effective stats."
+   ]
+  },
+  "Info.SkillBookOdds": {
+   "ru": [
+    "Шансы книг навыков",
+    "Взгляд на книгу показывает, что из неё может выпасть и с каким шансом."
+   ],
+   "en": [
+    "Skill book odds",
+    "Looking at a book lists what it can give and the chances."
+   ]
+  },
+  "Info.PrayerHints": {
+   "ru": [
+    "Подсказки на картах даров",
+    "Под картой: что изменится (было → станет), минусы красным."
+   ],
+   "en": [
+    "Prayer card hints",
+    "Under each card: before → after, costs in red."
+   ]
+  },
+  "Info.RunHistory": {
+   "ru": [
+    "Запись забегов",
+    "Сохранять каждый забег в подземелье и лес."
+   ],
+   "en": [
+    "Run history",
+    "Record every dungeon and forest run."
+   ]
+  },
+  "Info.RunSummary": {
+   "ru": [
+    "Итог забега",
+    "Экран итогов при возвращении в деревню."
+   ],
+   "en": [
+    "Run summary",
+    "Summary screen when you return to town."
+   ]
+  },
+  "Info.RunsWindowKey": {
+   "ru": [
+    "Клавиша окна забегов",
+    "Клавиша, открывающая окно забегов."
+   ],
+   "en": [
+    "Runs window key",
+    "Key that opens the runs window."
+   ]
+  },
+  "Info.LootValues": {
+   "ru": [
+    "Ценность добычи",
+    "Ценность добычи в записях забегов (со значком ~)."
+   ],
+   "en": [
+    "Loot values",
+    "Loot value in run records (marked ~)."
+   ]
+  },
+  "Info.SkillTileHints": {
+   "ru": [
+    "Подсказки на «?»",
+    "Наведи на неоткрытый навык: какие навыки там могут быть."
+   ],
+   "en": [
+    "Hints on ? tiles",
+    "Hover an undiscovered skill: which skills it could be."
+   ]
+  },
+  "Info.RevealSkillTiles": {
+   "ru": [
+    "Раскрыть «?»",
+    "Спойлер: показывать точный навык за каждым «?»."
+   ],
+   "en": [
+    "Reveal ? tiles",
+    "Spoiler: show the exact skill behind each ?."
+   ]
+  },
+  "Info.LootOdds": {
+   "ru": [
+    "Шансы добычи по этажам",
+    "Вкладка в окне забегов: шансы сундуков по биому и этажу."
+   ],
+   "en": [
+    "Loot odds per floor",
+    "Runs window tab: chest odds per biome and floor."
+   ]
+  },
+  "Coop.Enabled": {
+   "ru": [
+    "Кооп",
+    "Прототип: игроки видят друг друга, подземелье общее."
+   ],
+   "en": [
+    "Co-op",
+    "Prototype: players see each other, shared dungeon layout."
+   ]
+  },
+  "Coop.Role": {
+   "ru": [
+    "Роль",
+    "host: ведущий, client: гость."
+   ],
+   "en": [
+    "Role",
+    "host or client."
+   ]
+  },
+  "Coop.Transport": {
+   "ru": [
+    "Связь",
+    "steam: через интернет с друзьями в Steam. udp: локальная сеть и тесты."
+   ],
+   "en": [
+    "Transport",
+    "steam: over the internet with Steam friends. udp: LAN and tests."
+   ]
+  },
+  "Coop.HostAddress": {
+   "ru": [
+    "Адрес ведущего",
+    "Только udp: IP-адрес ведущего."
+   ],
+   "en": [
+    "Host address",
+    "udp only: the host's IP address."
+   ]
+  },
+  "Coop.Port": {
+   "ru": [
+    "Порт",
+    "Только udp: порт."
+   ],
+   "en": [
+    "Port",
+    "udp only: port."
+   ]
+  },
+  "Coop.FriendSteamIds": {
+   "ru": [
+    "SteamID друзей",
+    "Только steam: SteamID64 через запятую. Ведущий пишет всех, гость пишет ведущего."
+   ],
+   "en": [
+    "Friends' SteamIDs",
+    "steam only: comma-separated SteamID64. Host lists everyone, client lists the host."
+   ]
+  },
+  "Coop.PlayerName": {
+   "ru": [
+    "Имя игрока",
+    "Имя над твоим персонажем у других."
+   ],
+   "en": [
+    "Player name",
+    "Name shown above your character."
+   ]
+  },
+  "Dev.Commands": {
+   "ru": [
+    "Команды отладки",
+    "Тестовые команды из файла. Держать выключенным."
+   ],
+   "en": [
+    "Debug commands",
+    "Test commands from a file. Keep off."
+   ]
+  },
+  "Dev.SkipModules": {
+   "ru": [
+    "Отключить модули",
+    "Для поиска ошибок. Оставить пустым."
+   ],
+   "en": [
+    "Skip modules",
+    "For bisecting crashes. Leave empty."
+   ]
+  },
+  "Skills.MaxPlayerLevel": {
+   "ru": [
+    "Максимальный уровень персонажа",
+    "В игре потолок 30. При 120 уровнях и лестнице очков ниже к концу можно изучить все навыки."
+   ],
+   "en": [
+    "Max character level",
+    "The game caps it at 30. With 120 levels and the point ladder below, every skill can be learned by the end."
+   ]
+  },
+  "Skills.SkillPointsPerLevelAbove30": {
+   "ru": [
+    "Очков навыков за уровень после 30-го",
+    "До 30-го уровня игра даёт 1 очко за уровень."
+   ],
+   "en": [
+    "Skill points per level above 30",
+    "Up to level 30 the game gives 1 point per level."
+   ]
+  },
+  "Skills.BonusPointEveryFifthLevel": {
+   "ru": [
+    "Доп. очки каждый 5-й уровень после 30-го",
+    "Уровни 35, 40, 45... дают столько очков сверху."
+   ],
+   "en": [
+    "Bonus points every 5th level above 30",
+    "Levels 35, 40, 45... give this many extra points."
+   ]
+  },
+  "Info.EnemyHealthBars": {
+   "ru": [
+    "ХП-бары врагов",
+    "Полоска здоровья над головой каждого врага. За стенами не видна."
+   ],
+   "en": [
+    "Enemy health bars",
+    "A health bar over every enemy's head. Hidden behind walls."
+   ]
+  },
+  "Info.EnemyHealthBarRange": {
+   "ru": [
+    "Дальность ХП-баров",
+    "С какого расстояния (в метрах) видны полоски здоровья врагов."
+   ],
+   "en": [
+    "Health bar range",
+    "How far away (in meters) enemy health bars still show."
+   ]
+  },
+  "Info.EnemyHealthBarsOnlyDamaged": {
+   "ru": [
+    "Только раненые",
+    "Показывать полоску только после того, как враг получил урон."
+   ],
+   "en": [
+    "Only damaged enemies",
+    "Show the bar only after the enemy has taken damage."
+   ]
+  },
+  "Console.ShowLoaderConsole": {
+   "ru": [
+    "Показывать консоль",
+    "Чёрное окно с логом рядом с игрой. Для игры не нужно: лог всегда пишется в MelonLoader/Latest.log."
+   ],
+   "en": [
+    "Show the console",
+    "The black log window next to the game. Not needed to play: the log always goes to MelonLoader/Latest.log."
+   ]
+  }
+ }
+}

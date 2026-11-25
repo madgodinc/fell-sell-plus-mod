@@ -1,0 +1,38 @@
+FELL & SELL PLUS 1.0.0
+Ручная установка / Manual install
+Автор / Author: MGI (Mad God Inc)
+
+
+РУССКИЙ
+
+Проще всего поставить мод через FellSellPlus-1.0.0-Setup.exe. Этот архив для тех, кто хочет поставить всё сам.
+
+1. Закройте игру.
+2. Откройте папку игры: в Steam нажмите правой кнопкой на Fell & Sell, затем «Управление», «Просмотреть локальные файлы».
+3. Скопируйте всё содержимое архива в папку игры, туда, где лежит "Fell & Sell.exe". Если Windows спросит, замените файлы.
+4. Нужен .NET 8 Desktop Runtime (x64) или новее. Если его нет, скачайте с сайта Microsoft:
+   https://dotnet.microsoft.com/download/dotnet/8.0
+5. Запустите игру. Первый запуск длится от 2 до 5 минут: загрузчик модов готовит код игры, и видно его чёрное окно. Дождитесь меню. Со следующего запуска окна не будет.
+
+Настройки: в папке игры UserData\FellSellPlus\Configurator\FellSellPlusConfigurator.exe. Можно сделать ярлык на рабочий стол. Меняйте настройки при закрытой игре.
+
+Удаление: кнопка «вернуть игру как было» внизу программы настроек. Или удалите из папки игры вручную: MelonLoader, Mods, Plugins, UserLibs, UserData и version.dll. Сохранения остаются.
+
+
+ENGLISH
+
+The easiest way is FellSellPlus-1.0.0-Setup.exe. This archive is for players who prefer to install by hand.
+
+1. Close the game.
+2. Open the game folder: in Steam, right-click Fell & Sell, then Manage, Browse local files.
+3. Copy everything from this archive into the game folder, where "Fell & Sell.exe" is. Replace files if Windows asks.
+4. You need the .NET 8 Desktop Runtime (x64) or newer. If it is missing, get it from Microsoft:
+   https://dotnet.microsoft.com/download/dotnet/8.0
+5. Start the game. The first launch takes 2 to 5 minutes while the mod loader prepares the game code; its black window is visible. Wait for the menu. From the next launch on the window stays hidden.
+
+Settings: UserData\FellSellPlus\Configurator\FellSellPlusConfigurator.exe in the game folder. You can make a desktop shortcut. Change settings with the game closed.
+
+Uninstall: the "restore the original game" button at the bottom of the settings app. Or delete these from the game folder by hand: MelonLoader, Mods, Plugins, UserLibs, UserData and version.dll. Saves stay.
+
+
+Some ideas were inspired by kellewic's Fell & Sell mods.

@@ -1,0 +1,9 @@
+bin/
+obj/
+lib/
+vendor/
+publish/
+dist/
+*.pdb
+*.user
+tools/Installer/payload.zip

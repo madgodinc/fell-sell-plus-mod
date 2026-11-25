@@ -1,0 +1,1478 @@
+{
+ "entries": [
+  {
+   "section": "FellSellPlus_Console",
+   "key": "ShowLoaderConsole",
+   "type": "Boolean",
+   "default": false,
+   "description": "Show MelonLoader's black console window with the log. Off for players; the log is always in MelonLoader/Latest.log."
+  },
+  {
+   "section": "FellSellPlus_Dev",
+   "key": "SkipModules",
+   "type": "String",
+   "default": "",
+   "description": "Developer bisect: comma-separated namespaces (e.g. Inventory,Shop) whose patches and ticks are disabled. Leave empty."
+  },
+  {
+   "section": "FellSellPlus_Prayers",
+   "key": "CardsPerStatue",
+   "type": "Int32",
+   "default": 3,
+   "description": "How many prayers a statue offers (vanilla 3). More than 5 may not fit on screen.",
+   "min": 1,
+   "max": 8
+  },
+  {
+   "section": "FellSellPlus_Prayers",
+   "key": "MaxActivePrayers",
+   "type": "Int32",
+   "default": 5,
+   "description": "Dungeon+ only: how many prayers you can hold before the game asks you to replace one (vanilla 5). Normal runs have no cap in the game.",
+   "min": 1,
+   "max": 20
+  },
+  {
+   "section": "FellSellPlus_Challenge",
+   "key": "Preset",
+   "type": "String",
+   "default": "Off",
+   "description": "Baseline for every Challenge value: Off, Veteran, Nightmare, Blasphemous, Insane. Each key below is -1 by default (= take the preset); set a number to override it, easier or harder."
+  },
+  {
+   "section": "FellSellPlus_Challenge",
+   "key": "OnlyHarderLock",
+   "type": "Boolean",
+   "default": false,
+   "description": "Per-save lock: the first load records the values; later the save never gets easier than that. Reset by deleting UserData/FellSellPlus/challenge_slot<N>.json."
+  },
+  {
+   "section": "FellSellPlus_Challenge",
+   "key": "ShowBadge",
+   "type": "Boolean",
+   "default": true,
+   "description": "Show the active challenge in the bottom-left corner."
+  },
+  {
+   "section": "FellSellPlus_Challenge_Combat",
+   "key": "EnemyHealth",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 20.0,
+   "description": "Enemy max health multiplier.",
+   "vanilla": 1.0,
+   "presets": [
+    1.2,
+    1.4,
+    1.7,
+    2.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Combat",
+   "key": "EnemyDamage",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 20.0,
+   "description": "Damage you take from enemies and traps.",
+   "vanilla": 1.0,
+   "presets": [
+    1.15,
+    1.35,
+    1.6,
+    2.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Combat",
+   "key": "PlayerDamage",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 20.0,
+   "description": "Damage you deal.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    0.95,
+    0.9,
+    0.8
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Combat",
+   "key": "EnemySpeed",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 4.0,
+   "description": "Enemy movement speed.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.05,
+    1.1,
+    1.2
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Combat",
+   "key": "EnemyAttackRate",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 5.0,
+   "description": "Enemy attack frequency (2 = attacks twice as often).",
+   "vanilla": 1.0,
+   "presets": [
+    1.1,
+    1.2,
+    1.3,
+    1.4
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Combat",
+   "key": "EnemiesLungeAndCombo",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 1.0,
+   "description": "Every enemy may lunge and combo regardless of difficulty (0/1).",
+   "vanilla": 0.0,
+   "presets": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Combat",
+   "key": "LoseGearOnDeath",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 1.0,
+   "description": "Lose equipped gear on death on any difficulty (0/1).",
+   "vanilla": 0.0,
+   "presets": [
+    0.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Combat",
+   "key": "BossHealth",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 20.0,
+   "description": "Extra boss health multiplier (on top of EnemyHealth).",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.15,
+    1.3,
+    1.5
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Combat",
+   "key": "BossDamage",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 20.0,
+   "description": "Extra boss damage multiplier (on top of EnemyDamage).",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.15,
+    1.3,
+    1.5
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Combat",
+   "key": "ExtraEliteChance",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 1.0,
+   "description": "Additional chance (0-1) for a normal enemy to become elite.",
+   "vanilla": 0.0,
+   "presets": [
+    0.05,
+    0.1,
+    0.2,
+    0.3
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Combat",
+   "key": "EliteSecondAffixChance",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 1.0,
+   "description": "Chance (0-1) that a mod-made elite gets a second affix.",
+   "vanilla": 0.0,
+   "presets": [
+    0.0,
+    0.2,
+    0.4,
+    0.6
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Combat",
+   "key": "ElitePlusChance",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 1.0,
+   "description": "Chance (0-1) that a mod-made elite is Elite+.",
+   "vanilla": 0.0,
+   "presets": [
+    0.0,
+    0.05,
+    0.1,
+    0.15
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Combat",
+   "key": "ElitesOutsideDungeonPlus",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 1.0,
+   "description": "Extra elites also in normal runs and events (0/1).",
+   "vanilla": 0.0,
+   "presets": [
+    0.0,
+    0.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Combat",
+   "key": "ArmorEffect",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 3.0,
+   "description": "How much your armor counts (0.7 = armor works 30% worse).",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    0.9,
+    0.8,
+    0.7
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Combat",
+   "key": "StaminaDrain",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 5.0,
+   "description": "Stamina cost of sprint, jump, dodge, attack and block.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.1,
+    1.2,
+    1.3
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Combat",
+   "key": "FurnitureCombatBonus",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 5.0,
+   "description": "Multiplier on furniture dungeon bonuses.",
+   "vanilla": 1.0,
+   "presets": [
+    0.9,
+    0.8,
+    0.65,
+    0.5
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Dungeon",
+   "key": "EnemyCount",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 5.0,
+   "description": "Enemies per dungeon floor.",
+   "vanilla": 1.0,
+   "presets": [
+    1.15,
+    1.3,
+    1.5,
+    2.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Dungeon",
+   "key": "DeeperEnemyFloors",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 20.0,
+   "description": "Tougher enemy types appear this many floors earlier.",
+   "vanilla": 0.0,
+   "presets": [
+    0.0,
+    1.0,
+    2.0,
+    4.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Dungeon",
+   "key": "TrapChance",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "Corridor trap chance multiplier.",
+   "vanilla": 1.0,
+   "presets": [
+    1.5,
+    2.0,
+    2.5,
+    3.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Dungeon",
+   "key": "EmptyChestChance",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "Weight of empty rolls in dungeon chests.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.25,
+    1.5,
+    2.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Dungeon",
+   "key": "RareLoot",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 20.0,
+   "description": "Weight of uncommon-and-better items and recipe chance in dungeon chests.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    0.9,
+    0.8,
+    0.7
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Dungeon",
+   "key": "PrayerLimit",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 99.0,
+   "description": "Most prayers taken at statues per run, any run (99 = no limit, 0 = statues unusable).",
+   "vanilla": 99.0,
+   "presets": [
+    99.0,
+    99.0,
+    4.0,
+    2.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Dungeon",
+   "key": "EvilPrayersOnly",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 1.0,
+   "description": "Good statues cannot be used (0/1).",
+   "vanilla": 0.0,
+   "presets": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Dungeon",
+   "key": "ForcedEvilPrayers",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 30.0,
+   "description": "Per run, this many floors force one random evil prayer on arrival.",
+   "vanilla": 0.0,
+   "presets": [
+    0.0,
+    0.0,
+    2.0,
+    5.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Forest",
+   "key": "EnemyCount",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 5.0,
+   "description": "Enemies per forest spawn point.",
+   "vanilla": 1.0,
+   "presets": [
+    1.15,
+    1.3,
+    1.5,
+    2.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Forest",
+   "key": "ToughEnemyChance",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "Chance multiplier of the tougher forest enemy tiers.",
+   "vanilla": 1.0,
+   "presets": [
+    1.25,
+    1.5,
+    1.75,
+    2.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Forest",
+   "key": "RandomChests",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "Random forest chest chance multiplier.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    0.85,
+    0.7,
+    0.5
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Forest",
+   "key": "TreasureGoblins",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "Treasure goblin spawn chance multiplier.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    0.85,
+    0.7,
+    0.5
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Forest",
+   "key": "TripDamage",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "Damage from hallucination (trip) events.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.25,
+    1.5,
+    2.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_XP",
+   "key": "All",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "Multiplier on every XP gain.",
+   "vanilla": 1.0,
+   "presets": [
+    0.85,
+    0.75,
+    0.6,
+    0.5
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_XP",
+   "key": "Sales",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "XP from collecting sales at the counter.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_XP",
+   "key": "PerfectPrice",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "XP from perfect-price bonuses (reason text contains 'perfect').",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_XP",
+   "key": "Combat",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "XP from kills.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_XP",
+   "key": "Crafting",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "XP from crafting.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_XP",
+   "key": "Loot",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "XP from chests and breakables.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_XP",
+   "key": "Other",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "XP from everything else (letters, invites...).",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_XP",
+   "key": "XpToLevel",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "XP needed per level.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.15,
+    1.3,
+    1.5
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Shop",
+   "key": "SalePrices",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 5.0,
+   "description": "What customers are willing to pay (their hidden ideal price).",
+   "vanilla": 1.0,
+   "presets": [
+    0.9,
+    0.85,
+    0.75,
+    0.65
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Shop",
+   "key": "ShoppingChance",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 5.0,
+   "description": "Chance a customer shops.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    0.9,
+    0.8,
+    0.7
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Shop",
+   "key": "FurniturePriceBonus",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "Multiplier on the sale-price bonus your furniture gives.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    0.85,
+    0.7,
+    0.5
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Shop",
+   "key": "Tips",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "Tips from furniture.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    0.75,
+    0.5,
+    0.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Shop",
+   "key": "MaxBonusCopiesPerFurniture",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 99.0,
+   "description": "Only the first N copies of a furniture item give bonuses (99 = all).",
+   "vanilla": 99.0,
+   "presets": [
+    99.0,
+    3.0,
+    2.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Shop",
+   "key": "VendorPrices",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "Prices at town vendors.",
+   "vanilla": 1.0,
+   "presets": [
+    1.25,
+    1.5,
+    1.75,
+    2.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Shop",
+   "key": "NoVendorBuying",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 1.0,
+   "description": "Town vendors refuse to sell (0/1).",
+   "vanilla": 0.0,
+   "presets": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Loot",
+   "key": "UncommonWeight",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 20.0,
+   "description": "Extra weight of uncommon items in dungeon chests.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Loot",
+   "key": "RareWeight",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 20.0,
+   "description": "Extra weight of rare items in dungeon chests.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Loot",
+   "key": "EpicWeight",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 20.0,
+   "description": "Extra weight of epic items in dungeon chests.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Loot",
+   "key": "LegendaryWeight",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 20.0,
+   "description": "Extra weight of legendary items in dungeon chests.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Loot",
+   "key": "ItemAmount",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "Stack size of items rolled in dungeon chests.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Loot",
+   "key": "RecipeChance",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 10.0,
+   "description": "Extra recipe chance multiplier in dungeon chests.",
+   "vanilla": 1.0,
+   "presets": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Challenge_Loot",
+   "key": "ExtraDropChance",
+   "type": "Single",
+   "default": -1.0,
+   "min": -1.0,
+   "max": 500.0,
+   "description": "Added to the drop-chance bonus (game units).",
+   "vanilla": 0.0,
+   "presets": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "section": "FellSellPlus_Crafting",
+   "key": "Enabled",
+   "type": "Boolean",
+   "default": true,
+   "description": "Master switch for the crafting bench improvements."
+  },
+  {
+   "section": "FellSellPlus_Crafting",
+   "key": "Sort",
+   "type": "Boolean",
+   "default": true,
+   "description": "Sort the recipe list instead of plain alphabetical."
+  },
+  {
+   "section": "FellSellPlus_Crafting",
+   "key": "CraftableFirst",
+   "type": "Boolean",
+   "default": true,
+   "description": "Recipes you can craft right now come first."
+  },
+  {
+   "section": "FellSellPlus_Crafting",
+   "key": "SinkCappedFurniture",
+   "type": "Boolean",
+   "default": true,
+   "description": "Furniture placed PlacedCap or more times goes to the bottom."
+  },
+  {
+   "section": "FellSellPlus_Crafting",
+   "key": "PlacedCap",
+   "type": "Int32",
+   "default": 3,
+   "description": "Placed copies that count as done (each extra copy gives half the bonus of the previous).",
+   "min": 1,
+   "max": 10
+  },
+  {
+   "section": "FellSellPlus_Crafting",
+   "key": "RowInfo",
+   "type": "Boolean",
+   "default": true,
+   "description": "Show 'Placed X/3' and 'Stored Z' on recipe rows."
+  },
+  {
+   "section": "FellSellPlus_Crafting",
+   "key": "FadeCappedRows",
+   "type": "Boolean",
+   "default": true,
+   "description": "Fade rows whose furniture reached the cap."
+  },
+  {
+   "section": "FellSellPlus_Crafting",
+   "key": "FilterBar",
+   "type": "Boolean",
+   "default": true,
+   "description": "Show the filter bar under the recipe list."
+  },
+  {
+   "section": "FellSellPlus_Crafting",
+   "key": "RememberFilters",
+   "type": "Boolean",
+   "default": false,
+   "description": "Keep filters between visits to the bench."
+  },
+  {
+   "section": "FellSellPlus_Crafting",
+   "key": "InstantList",
+   "type": "Boolean",
+   "default": true,
+   "description": "Show the whole recipe list at once instead of row by row."
+  },
+  {
+   "section": "FellSellPlus_Crafting",
+   "key": "NeedKey",
+   "type": "String",
+   "default": "N",
+   "description": "Key at the bench that marks the selected recipe as Need."
+  },
+  {
+   "section": "FellSellPlus_Dev",
+   "key": "Commands",
+   "type": "Boolean",
+   "default": false,
+   "description": "Developer test commands from UserData/FellSellPlus/dev_cmd.txt. Leave off."
+  },
+  {
+   "section": "FellSellPlus_Info",
+   "key": "StatsPanel",
+   "type": "Boolean",
+   "default": true,
+   "description": "Extra panel next to the inventory (I): gear bonus totals and effective stats."
+  },
+  {
+   "section": "FellSellPlus_Info",
+   "key": "SkillBookOdds",
+   "type": "Boolean",
+   "default": true,
+   "description": "Looking at a skill book lists every skill it can still roll, with exact chances."
+  },
+  {
+   "section": "FellSellPlus_Info",
+   "key": "PrayerHints",
+   "type": "Boolean",
+   "default": true,
+   "description": "Under each prayer card: what it changes for you now (before -> after), costs in red, a star if it is the only useful card."
+  },
+  {
+   "section": "FellSellPlus_Info",
+   "key": "RunHistory",
+   "type": "Boolean",
+   "default": true,
+   "description": "Record every dungeon and forest run (UserData/FellSellPlus/runs)."
+  },
+  {
+   "section": "FellSellPlus_Info",
+   "key": "RunSummary",
+   "type": "Boolean",
+   "default": true,
+   "description": "Show a summary screen when you come back to town."
+  },
+  {
+   "section": "FellSellPlus_Info",
+   "key": "RunsWindowKey",
+   "type": "String",
+   "default": "J",
+   "description": "Key that opens the runs window (Unity Input System key name, e.g. J, F7)."
+  },
+  {
+   "section": "FellSellPlus_Info",
+   "key": "LootValues",
+   "type": "Boolean",
+   "default": true,
+   "description": "Show loot value in run records, from the item's hidden ideal price (marked with ~)."
+  },
+  {
+   "section": "FellSellPlus_Info",
+   "key": "SkillTileHints",
+   "type": "Boolean",
+   "default": true,
+   "description": "Skills page: hovering an undiscovered ? tile lists which skills it could be, with book chances."
+  },
+  {
+   "section": "FellSellPlus_Info",
+   "key": "RevealSkillTiles",
+   "type": "Boolean",
+   "default": false,
+   "description": "Spoiler: mark the exact skill behind each ? tile."
+  },
+  {
+   "section": "FellSellPlus_Info",
+   "key": "LootOdds",
+   "type": "Boolean",
+   "default": true,
+   "description": "Runs window tab 6: dungeon chest odds per biome and floor, measured with the game's own roll (UserData/FellSellPlus/loot_tables.json)."
+  },
+  {
+   "section": "FellSellPlus_Info",
+   "key": "EnemyHealthBars",
+   "type": "Boolean",
+   "default": true,
+   "description": "Health bar over every enemy's head (hidden behind walls)."
+  },
+  {
+   "section": "FellSellPlus_Info",
+   "key": "EnemyHealthBarRange",
+   "type": "Int32",
+   "default": 15,
+   "description": "Farthest distance, in meters, at which enemy health bars show.",
+   "min": 5,
+   "max": 80
+  },
+  {
+   "section": "FellSellPlus_Info",
+   "key": "EnemyHealthBarsOnlyDamaged",
+   "type": "Boolean",
+   "default": false,
+   "description": "Show an enemy's bar only after it has taken damage."
+  },
+  {
+   "section": "FellSellPlus_LootFilter",
+   "key": "Enabled",
+   "type": "Boolean",
+   "default": true,
+   "description": "Per-item pickup rules from UserData/FellSellPlus/loot_rules.json (hot-reloaded while the game runs)."
+  },
+  {
+   "section": "FellSellPlus_LootFilter",
+   "key": "Alerts",
+   "type": "Boolean",
+   "default": true,
+   "description": "Show a line in the pickup feed when a Total / ThisRun limit is reached or a Need is covered."
+  },
+  {
+   "section": "FellSellPlus_LootFilter",
+   "key": "WriteCatalogue",
+   "type": "Boolean",
+   "default": true,
+   "description": "Write UserData/FellSellPlus/items_catalogue.txt (every item id with English/Russian names) when a save loads."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "QuickSlotRouting",
+   "type": "Boolean",
+   "default": true,
+   "description": "Picked-up and crafted items go to the backpack instead of empty quick slots. Existing quick slot stacks still top up."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "PlaceablesToEmptyQuickSlots",
+   "type": "Boolean",
+   "default": true,
+   "description": "With routing on, placeable furniture may still take an empty quick slot."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "ConsumablesToEmptyQuickSlots",
+   "type": "Boolean",
+   "default": false,
+   "description": "With routing on, potions and food may still take an empty quick slot."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "PickupRadiusMultiplier",
+   "type": "Single",
+   "default": 2.0,
+   "description": "Auto-pickup radius multiplier (1 = game default).",
+   "min": 0.5,
+   "max": 5.0
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "PickupScanLimit",
+   "type": "Int32",
+   "default": 512,
+   "description": "Colliders the auto-pickup scan looks at (game: 32, which skips items in cluttered rooms).",
+   "min": 32,
+   "max": 2048
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "WeightBar",
+   "type": "Boolean",
+   "default": true,
+   "description": "Carry weight bar at the lower left (orange at 75%, red at 95%)."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "WeightBarWidth",
+   "type": "Single",
+   "default": 420.0,
+   "description": "Weight bar length in pixels (1920x1080 reference)."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "WeightBarX",
+   "type": "Single",
+   "default": 40.0,
+   "description": "Weight bar distance from the left edge."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "WeightBarY",
+   "type": "Single",
+   "default": 40.0,
+   "description": "Weight bar distance from the bottom edge."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "ChestDeposit",
+   "type": "Boolean",
+   "default": true,
+   "description": "Deposit button / key in chests: moves everything the chest already holds from your bag into it. Shift+key toggles Auto for that chest."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "DepositKey",
+   "type": "String",
+   "default": "G",
+   "description": "Key for Deposit while a chest is open (UnityEngine.KeyCode name)."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "StackChestOnOpen",
+   "type": "Boolean",
+   "default": true,
+   "description": "Run the game's Stack on every chest when it opens."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "DepositQuickSlots",
+   "type": "Boolean",
+   "default": false,
+   "description": "Deposit also takes matching items from quick slots."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "TooltipInfo",
+   "type": "Boolean",
+   "default": true,
+   "description": "Extra item tooltip lines: how many you have and where, carried weight, Needed recipes, loot rule."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "ShowIdealPrice",
+   "type": "Boolean",
+   "default": false,
+   "description": "Tooltip shows the item's hidden ideal price (spoiler)."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "KeepMarks",
+   "type": "Boolean",
+   "default": true,
+   "description": "Mark items as Keep by pressing KeepKey while hovering them (UserData/FellSellPlus/keep.json). Kept items rank last for Purge."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "KeepKey",
+   "type": "String",
+   "default": "K",
+   "description": "Key for Keep (UnityEngine.InputSystem Key name)."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "PurgeInfo",
+   "type": "Boolean",
+   "default": true,
+   "description": "Tooltip shows value (best price a customer accepted), gold per kg and the Purge rank (1 = get rid of first)."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "PurgeSort",
+   "type": "Boolean",
+   "default": true,
+   "description": "Hold Shift while clicking a sort button to sort by Purge order (lowest gold/kg first, then unknown, Needed, Keep)."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "RememberSort",
+   "type": "Boolean",
+   "default": true,
+   "description": "The inventory and chest sort criterion/direction you last picked are kept (UserData/FellSellPlus/sort.json)."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "GroundItemInfo",
+   "type": "Boolean",
+   "default": true,
+   "description": "Looking at a loose item shows its gold/kg and Purge rank, or what to drop to make room for it."
+  },
+  {
+   "section": "FellSellPlus_Inventory",
+   "key": "FixDungeonPrices",
+   "type": "Boolean",
+   "default": true,
+   "description": "Load known prices when a save is loaded inside the dungeon/forest (the game skips this until town)."
+  },
+  {
+   "section": "FellSellPlus_Prayers",
+   "key": "NewPrayers",
+   "type": "Boolean",
+   "default": true,
+   "description": "Add the mod's new prayers to the statues (6 good, 5 evil)."
+  },
+  {
+   "section": "FellSellPlus_Progression",
+   "key": "Enabled",
+   "type": "Boolean",
+   "default": true,
+   "description": "Gold-bought base stat upgrades at Grandma's grave (look at the gravestone, press E)."
+  },
+  {
+   "section": "FellSellPlus_Progression",
+   "key": "PrestigeTiers",
+   "type": "String",
+   "default": "0:5, 0.5:10, 1:15, 2:25, 3:35, 4:45, 5:50",
+   "description": "Shop prestige -> max level of each stat, as prestige:cap pairs. Below the first pair nothing can be bought."
+  },
+  {
+   "section": "FellSellPlus_Progression",
+   "key": "LevelCapPerBoss",
+   "type": "Int32",
+   "default": 5,
+   "description": "Extra max level per defeated boss (3 bosses + Grandma).",
+   "min": 0,
+   "max": 1000
+  },
+  {
+   "section": "FellSellPlus_Progression",
+   "key": "CostSchedule",
+   "type": "String",
+   "default": "50, 75, 100, 150, 300, 500, 750, 1000",
+   "description": "Gold cost of levels 1, 2, 3... in order. Levels past the list keep adding CostStepAfter."
+  },
+  {
+   "section": "FellSellPlus_Progression",
+   "key": "CostStepAfter",
+   "type": "Int32",
+   "default": 500,
+   "description": "Added to the cost for every level past the CostSchedule list.",
+   "min": 0,
+   "max": 1000000
+  },
+  {
+   "section": "FellSellPlus_Progression",
+   "key": "HealthPerLevel",
+   "type": "Single",
+   "default": 1.0,
+   "description": "Max health per level."
+  },
+  {
+   "section": "FellSellPlus_Progression",
+   "key": "StaminaPerLevel",
+   "type": "Single",
+   "default": 1.0,
+   "description": "Max stamina per level."
+  },
+  {
+   "section": "FellSellPlus_Progression",
+   "key": "ManaPerLevel",
+   "type": "Single",
+   "default": 1.0,
+   "description": "Max mana per level."
+  },
+  {
+   "section": "FellSellPlus_Progression",
+   "key": "HealthRegenPerLevel",
+   "type": "Single",
+   "default": 0.1,
+   "description": "Health regeneration per second per level."
+  },
+  {
+   "section": "FellSellPlus_Progression",
+   "key": "StaminaRegenPerLevel",
+   "type": "Single",
+   "default": 0.1,
+   "description": "Stamina regeneration per second per level."
+  },
+  {
+   "section": "FellSellPlus_Progression",
+   "key": "ManaRegenPerLevel",
+   "type": "Single",
+   "default": 0.1,
+   "description": "Mana regeneration per second per level."
+  },
+  {
+   "section": "FellSellPlus_Progression",
+   "key": "DamagePercentPerLevel",
+   "type": "Single",
+   "default": 1.0,
+   "description": "Damage % of base per level, additive (10 levels = x1.10)."
+  },
+  {
+   "section": "FellSellPlus_Progression",
+   "key": "SpeedPercentPerLevel",
+   "type": "Single",
+   "default": 0.5,
+   "description": "Movement speed % per level, additive."
+  },
+  {
+   "section": "FellSellPlus_Progression",
+   "key": "SpeedPercentCap",
+   "type": "Single",
+   "default": 25.0,
+   "description": "Hard cap on the movement speed bonus, in %.",
+   "min": 0.0,
+   "max": 100.0
+  },
+  {
+   "section": "FellSellPlus_Shop",
+   "key": "DisplayShelves",
+   "type": "Boolean",
+   "default": true,
+   "description": "Hold DisplayKey while looking at a shelf slot to make it a display: customers don't buy from it."
+  },
+  {
+   "section": "FellSellPlus_Shop",
+   "key": "DisplayKey",
+   "type": "String",
+   "default": "U",
+   "description": "Key held to toggle a display shelf (Unity Input System key name)."
+  },
+  {
+   "section": "FellSellPlus_Shop",
+   "key": "CheckoutChoice",
+   "type": "Boolean",
+   "default": true,
+   "description": "Hold CheckoutKey while looking at a counter to make it the checkout; remembered per save."
+  },
+  {
+   "section": "FellSellPlus_Shop",
+   "key": "CheckoutKey",
+   "type": "String",
+   "default": "P",
+   "description": "Key held to pick the checkout counter."
+  },
+  {
+   "section": "FellSellPlus_Shop",
+   "key": "HoldSeconds",
+   "type": "Single",
+   "default": 0.6,
+   "description": "How long the display/checkout keys must be held.",
+   "min": 0.1,
+   "max": 3.0
+  },
+  {
+   "section": "FellSellPlus_Shop",
+   "key": "LineHud",
+   "type": "Boolean",
+   "default": true,
+   "description": "In town, show the checkout line (customers in pay order with what they'll pay) and coins waiting."
+  },
+  {
+   "section": "FellSellPlus_Shop",
+   "key": "LineHudX",
+   "type": "Single",
+   "default": 24.0,
+   "description": "Line panel distance from the right screen edge (1920x1080 units)."
+  },
+  {
+   "section": "FellSellPlus_Shop",
+   "key": "LineHudY",
+   "type": "Single",
+   "default": 140.0,
+   "description": "Line panel distance from the top screen edge (1920x1080 units)."
+  },
+  {
+   "section": "FellSellPlus_Shop",
+   "key": "ShopWindow",
+   "type": "Boolean",
+   "default": true,
+   "description": "TAB opens a window that stays open (Shop / Sales / Restock) instead of the hold-to-view sales list."
+  },
+  {
+   "section": "FellSellPlus_Shop",
+   "key": "EmptyShelvesOnPickup",
+   "type": "Boolean",
+   "default": true,
+   "description": "Picking up a table, shelf or rack with items puts those items in your inventory with the prices you set; what doesn't fit stays on the furniture."
+  },
+  {
+   "section": "FellSellPlus_Shop",
+   "key": "IgnoreCarriedFurniture",
+   "type": "Boolean",
+   "default": true,
+   "description": "Customers don't take items from furniture you are picking up or placing."
+  },
+  {
+   "section": "FellSellPlus_Shop",
+   "key": "OutdoorDecor",
+   "type": "Boolean",
+   "default": true,
+   "description": "Floor decorations (plants, rugs, chairs, statues...) can be placed outside on the ground near the shop."
+  },
+  {
+   "section": "FellSellPlus_Shop",
+   "key": "OutdoorDecorRange",
+   "type": "Single",
+   "default": 4.5,
+   "description": "How far outside the shop floor decorations may go, in metres.",
+   "min": 0.5,
+   "max": 20.0
+  },
+  {
+   "section": "FellSellPlus_Shop",
+   "key": "BuyShopWithoutMoving",
+   "type": "Boolean",
+   "default": true,
+   "description": "At the construction workbench, Buy only buys the new shop; choose it again and press Change to move in."
+  },
+  {
+   "section": "FellSellPlus_Shop",
+   "key": "ServeInArrivalOrder",
+   "type": "Boolean",
+   "default": true,
+   "description": "Customers pay in the order they reach the checkout line, instead of the order they picked their item."
+  },
+  {
+   "section": "FellSellPlus_Skills",
+   "key": "MaxPlayerLevel",
+   "type": "Int32",
+   "default": 120,
+   "description": "Highest character level (the game's own cap is 30).",
+   "min": 30,
+   "max": 300
+  },
+  {
+   "section": "FellSellPlus_Skills",
+   "key": "SkillPointsPerLevelAbove30",
+   "type": "Int32",
+   "default": 2,
+   "description": "Skill points for each level above 30 (the game gives 1 per level).",
+   "min": 1,
+   "max": 10
+  },
+  {
+   "section": "FellSellPlus_Skills",
+   "key": "BonusPointEveryFifthLevel",
+   "type": "Int32",
+   "default": 2,
+   "description": "Extra skill points on every 5th level above 30 (35, 40, ...).",
+   "min": 0,
+   "max": 10
+  }
+ ]
+}
