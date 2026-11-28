@@ -60,8 +60,8 @@ public partial class MainWindow : Window
 
     void RenderLang()
     {
-        ProductWord.Text = Spaced("FELL & SELL PLUS") + "   " + Version;
-        Title = L("Fell & Sell Plus · Установка", "Fell & Sell Plus · Setup");
+        ProductWord.Text = Spaced("FELL & SELL CONFIGURATOR") + "   " + Version;
+        Title = L("Fell & Sell Configurator · Установка", "Fell & Sell Configurator · Setup");
         LangSeg.Children.Clear();
         foreach (var (code, label) in new[] { ("ru", "RU"), ("en", "EN") })
         {
@@ -143,8 +143,8 @@ public partial class MainWindow : Window
                  {
                      L("MelonLoader (загрузчик модов), если его ещё нет", "MelonLoader (the mod loader), if it is not there yet"),
                      L("сам мод и программа настроек с ярлыком на рабочем столе", "the mod itself and the settings app with a desktop shortcut"),
-                     L(".NET от Microsoft, если его нет на компьютере (скачается сам)", "Microsoft .NET, if the PC does not have it (downloaded for you)"),
-                     L("перед установкой ваши сохранения копируются в «Документы\\Fell & Sell Plus»", "your saves are copied to \"Documents\\Fell & Sell Plus\" first"),
+                     L("проверка .NET 8: если его нет, откроется страница Microsoft для установки", "a .NET 8 check: if it is missing, Microsoft's download page opens"),
+                     L("перед установкой ваши сохранения копируются в «Документы\\Fell & Sell Configurator»", "your saves are copied to \"Documents\\Fell & Sell Configurator\" first"),
                  })
             what.Children.Add(Bullet(line, wrapWidth: 400));
         lower.Children.Add(what);
@@ -250,12 +250,12 @@ public partial class MainWindow : Window
         if (!Setup.IsGame(_game)) { UpdateFound(); return; }
         if (Setup.GameRunning())
         {
-            MessageBox.Show(this, L("Закройте игру и нажмите «Установить» ещё раз.", "Close the game, then press Install again."), "Fell & Sell Plus");
+            MessageBox.Show(this, L("Закройте игру и нажмите «Установить» ещё раз.", "Close the game, then press Install again."), "Fell & Sell Configurator");
             return;
         }
         if (Process.GetProcessesByName("FellSellPlusConfigurator").Length > 0)
         {
-            MessageBox.Show(this, L("Закройте программу настроек Fell & Sell Plus и нажмите ещё раз.", "Close the Fell & Sell Plus settings app, then press again."), "Fell & Sell Plus");
+            MessageBox.Show(this, L("Закройте программу настроек Fell & Sell Configurator и нажмите ещё раз.", "Close the Fell & Sell Configurator app, then press again."), "Fell & Sell Configurator");
             return;
         }
         foreach (var a in Setup.Addons) // not shown yet (elevated relaunch without the list): keep what is there
@@ -283,11 +283,14 @@ public partial class MainWindow : Window
                 Step("saves", "ok", backup != null ? L("Сохранения скопированы", "Saves backed up") : L("Сохранений пока нет", "No saves yet"));
 
                 Step("net", "run");
-                if (Setup.HasDesktopRuntime()) Step("net", "ok", L(".NET уже есть", ".NET is already installed"));
+                // The setup never downloads or runs anything itself (antivirus heuristics flag that):
+                // without .NET it opens Microsoft's download page for the player.
+                bool needNet = !Setup.HasDesktopRuntime();
+                if (!needNet) Step("net", "ok", L(".NET уже есть", ".NET is already installed"));
                 else
                 {
-                    Setup.InstallRuntime(phase => Step("net", "run", phase == "download" ? L("Скачиваю .NET с сайта Microsoft…", "Downloading .NET from Microsoft…") : L("Устанавливаю .NET (Windows спросит разрешение)…", "Installing .NET (Windows will ask for permission)…")));
-                    Step("net", "ok", L(".NET установлен", ".NET installed"));
+                    Step("net", "skip", L("Нужен .NET 8 Desktop Runtime: откроется страница Microsoft, установите его оттуда", "The .NET 8 Desktop Runtime is needed: Microsoft's page opens, install it from there"));
+                    try { Process.Start(new ProcessStartInfo(Setup.RuntimePage) { UseShellExecute = true }); } catch { }
                 }
 
                 Step("files", "run");
@@ -298,7 +301,7 @@ public partial class MainWindow : Window
 
                 Step("links", "run");
                 Setup.Shortcuts(game);
-                Step("links", "ok", L("Ярлык «Fell & Sell Plus Settings» на рабочем столе", "\"Fell & Sell Plus Settings\" shortcut on the desktop"));
+                Step("links", "ok", L("Ярлык «Fell & Sell Configurator» на рабочем столе", "\"Fell & Sell Configurator\" shortcut on the desktop"));
                 // Straight into the settings app: it shows the first-launch note itself.
                 Dispatcher.Invoke(() =>
                 {
@@ -324,7 +327,7 @@ public partial class MainWindow : Window
             Process.Start(new ProcessStartInfo(Process.GetCurrentProcess().MainModule.FileName, args) { UseShellExecute = true, Verb = "runas" });
             Close();
         }
-        catch { MessageBox.Show(this, L("Нужны права администратора, чтобы писать в папку игры.", "Administrator rights are needed to write to the game folder."), "Fell & Sell Plus"); }
+        catch { MessageBox.Show(this, L("Нужны права администратора, чтобы писать в папку игры.", "Administrator rights are needed to write to the game folder."), "Fell & Sell Configurator"); }
     }
 
     // ---------- state 3: done / error ----------
@@ -344,8 +347,8 @@ public partial class MainWindow : Window
         });
         sp.Children.Add(new TextBlock
         {
-            Text = L("Настройки: ярлык «Fell & Sell Plus Settings» на рабочем столе. Меняйте их при закрытой игре.",
-                     "Settings: the \"Fell & Sell Plus Settings\" shortcut on the desktop. Change them with the game closed."),
+            Text = L("Настройки: ярлык «Fell & Sell Configurator» на рабочем столе. Меняйте их при закрытой игре.",
+                     "Settings: the \"Fell & Sell Configurator\" shortcut on the desktop. Change them with the game closed."),
             FontSize = 13.5, Foreground = B("Dim"), TextWrapping = TextWrapping.Wrap, MaxWidth = 720, HorizontalAlignment = HorizontalAlignment.Left, Margin = new Thickness(0, 14, 0, 0),
         });
         Body.Children.Add(sp);
@@ -379,14 +382,14 @@ public partial class MainWindow : Window
     {
         bool others = Setup.OtherMods(_game);
         var r = MessageBox.Show(this, others
-                ? L("Удалить Fell & Sell Plus?\n\nУ вас есть другие моды, поэтому загрузчик MelonLoader останется.\nСохранения не трогаются.",
-                    "Remove Fell & Sell Plus?\n\nYou have other mods, so MelonLoader stays.\nSaves are not touched.")
+                ? L("Удалить Fell & Sell Configurator?\n\nУ вас есть другие моды, поэтому загрузчик MelonLoader останется.\nСохранения не трогаются.",
+                    "Remove Fell & Sell Configurator?\n\nYou have other mods, so MelonLoader stays.\nSaves are not touched.")
                 : L("Вернуть игру как было?\n\nБудут удалены мод, MelonLoader, программа настроек и ярлыки. Игра будет запускаться как обычная.\nСохранения не трогаются.",
                     "Restore the original game?\n\nThe mod, MelonLoader, the settings app and its shortcuts will be removed. The game will start as it shipped.\nSaves are not touched."),
-            "Fell & Sell Plus", MessageBoxButton.OKCancel);
+            "Fell & Sell Configurator", MessageBoxButton.OKCancel);
         if (r != MessageBoxResult.OK) return;
         if (Setup.GameRunning() || Process.GetProcessesByName("FellSellPlusConfigurator").Length > 0)
-        { MessageBox.Show(this, L("Сначала закройте игру и программу настроек.", "Close the game and the settings app first."), "Fell & Sell Plus"); return; }
+        { MessageBox.Show(this, L("Сначала закройте игру и программу настроек.", "Close the game and the settings app first."), "Fell & Sell Configurator"); return; }
         bool ml = !others;
         if (!Setup.CanWrite(_game)) { Elevate("--game=\"" + _game + "\" --uninstall" + (ml ? " --ml" : "")); return; }
         RunUninstall(ml);

@@ -2,7 +2,7 @@ using System;
 using HarmonyLib;
 using MelonLoader;
 
-[assembly: MelonInfo(typeof(FellSellCoop.CoopPlugin), "Fell & Sell Coop", "0.1.0", "MGI")]
+[assembly: MelonInfo(typeof(FellSellCoop.CoopPlugin), "Fell & Sell Coop", "1.0.0", "MGI")]
 [assembly: MelonGame("Art Games Studio SA", "Fell & Sell")]
 [assembly: MelonAdditionalDependencies("FellSellPlus")]
 [assembly: MelonOptionalDependencies("FellSellCharacter", "FellSellHorde")]

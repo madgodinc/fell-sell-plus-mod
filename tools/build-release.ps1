@@ -1,4 +1,4 @@
-# Builds the player release: dist/FellSellPlus-<version>-Setup.exe, one file with MelonLoader, the mod
+# Builds the player release: dist/FellSellConfigurator-<version>-Setup.exe, one file with MelonLoader, the mod
 # and the configurator inside. Game art is not included (the mod exports it on the player's PC).
 $ErrorActionPreference = "Stop"
 $root = Split-Path $PSScriptRoot -Parent
@@ -40,13 +40,13 @@ Write-Host "4/4 setup"
 dotnet build "$root\tools\Installer\Installer.csproj" -c Release -v q -nologo | Out-Null
 if ($LASTEXITCODE) { throw "setup build failed" }
 New-Item -ItemType Directory -Force "$root\dist" | Out-Null
-$out = "$root\dist\FellSellPlus-$ver-Setup.exe"
+$out = "$root\dist\FellSellConfigurator-$ver-Setup.exe"
 Copy-Item "$root\tools\Installer\bin\Release\net48\FellSellPlus-Setup.exe" $out -Force
 # Nexus takes archives only: the setup also goes out as a zip holding just the exe.
-$setupZip = "$root\dist\FellSellPlus-$ver-Setup.zip"
+$setupZip = "$root\dist\FellSellConfigurator-$ver-Setup.zip"
 if (Test-Path $setupZip) { Remove-Item $setupZip -Force }
 $za = [System.IO.Compression.ZipFile]::Open($setupZip, "Create")
-[System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($za, $out, "FellSellPlus-$ver-Setup.exe", "Optimal") | Out-Null
+[System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($za, $out, "FellSellConfigurator-$ver-Setup.exe", "Optimal") | Out-Null
 $za.Dispose()
 "{0}  {1:N1} MB" -f $out, ((Get-Item $out).Length / 1MB)
 
@@ -58,7 +58,7 @@ New-Item -ItemType Directory -Force "$stage\Optional" | Out-Null
 Move-Item "$stage\Addons\FellSellCoop.dll" "$stage\Optional\" -Force
 Move-Item "$stage\Addons\*" "$stage\Mods\" -Force
 Remove-Item "$stage\Addons" -Recurse -Force
-$manual = "$root\dist\FellSellPlus-$ver-Manual.zip"
+$manual = "$root\dist\FellSellConfigurator-$ver-Manual.zip"
 if (Test-Path $manual) { Remove-Item $manual -Force }
 [System.IO.Compression.ZipFile]::CreateFromDirectory($stage, $manual, [System.IO.Compression.CompressionLevel]::Optimal, $false)
 Remove-Item $stage -Recurse -Force

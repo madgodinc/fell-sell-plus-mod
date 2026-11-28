@@ -3,7 +3,7 @@ using System;
 using HarmonyLib;
 using MelonLoader;
 
-[assembly: MelonInfo(typeof(FellSellHorde.Plugin), "Fell & Sell Horde", "1.0.1", "MGI")]
+[assembly: MelonInfo(typeof(FellSellHorde.Plugin), "Fell & Sell Horde", "1.0.0", "MGI")]
 [assembly: MelonGame("Art Games Studio SA", "Fell & Sell")]
 [assembly: HarmonyDontPatchAll]
 

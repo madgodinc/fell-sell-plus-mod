@@ -1,4 +1,4 @@
-# Fell & Sell Horde 1.0.1
+# Fell & Sell Horde 1.0.0
 
 Бесконечный режим для Fell & Sell: арена в зале первого босса и волны врагов, которые не кончаются.
 
@@ -18,7 +18,7 @@
 
 ## Установка
 
-1. Нужен MelonLoader 0.7 для Fell & Sell. Если стоит Fell & Sell Plus, он уже есть.
+1. Нужен MelonLoader 0.7 для Fell & Sell. Если стоит Fell & Sell Configurator, он уже есть.
 2. Положи `FellSellHorde.dll` в папку `Mods` в папке игры.
 
 ## Удаление
@@ -27,7 +27,7 @@
 
 ---
 
-# Fell & Sell Horde 1.0.1 (English)
+# Fell & Sell Horde 1.0.0 (English)
 
 An endless mode for Fell & Sell: an arena in the first boss's hall and waves that never stop.
 
@@ -47,7 +47,7 @@ With a friend: if the Fell & Sell Coop add-on is installed, "Invite a friend" in
 
 ## Install
 
-1. You need MelonLoader 0.7 for Fell & Sell (Fell & Sell Plus already installs it).
+1. You need MelonLoader 0.7 for Fell & Sell (Fell & Sell Configurator already installs it).
 2. Put `FellSellHorde.dll` into the game's `Mods` folder.
 
 ## Uninstall

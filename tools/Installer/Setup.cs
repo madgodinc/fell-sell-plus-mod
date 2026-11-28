@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Net;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Microsoft.Win32;
@@ -16,7 +15,8 @@ internal static class Setup
 {
     public const string AppId = "4627110";
     public const string GameExe = "Fell & Sell.exe";
-    const string ShortcutName = "Fell & Sell Plus Settings.lnk";
+    const string ShortcutName = "Fell & Sell Configurator.lnk";
+    const string OldShortcutName = "Fell & Sell Plus Settings.lnk"; // before the rename
 
     // ---- finding the game ----
 
@@ -77,7 +77,7 @@ internal static class Setup
                 DescRu = "камера за плечом на V и редактор облика героя на F7", DescEn = "over-the-shoulder camera on V and a hero editor on F7" },
         // Co-op is early (0.1): off on a fresh install, so its patches load only for players who want it.
         new() { File = "FellSellCoop.dll", OnByDefault = false, Requires = "FellSellCharacter.dll", NameRu = "Кооператив", NameEn = "Co-op",
-                DescRu = "подземелье и лес вдвоём с другом из Steam, вход в главном меню", DescEn = "dungeon and forest with a Steam friend, started from the main menu" },
+                DescRu = "подземелье и лес с другом из Steam: Esc, «Позвать друга»", DescEn = "dungeon and forest with a Steam friend: Esc, Invite a friend" },
     };
 
     // The configurator parks a switched-off add-on here: MelonLoader only loads the dlls in Mods.
@@ -132,25 +132,12 @@ internal static class Setup
 
     static int Major(string v) => int.TryParse(v.Split('.')[0], out var m) ? m : 0;
 
-    public const string RuntimeUrl = "https://aka.ms/dotnet/8.0/windowsdesktop-runtime-win-x64.exe";
-
-    // Downloads Microsoft's installer and runs it quietly (Windows asks for admin once).
-    public static void InstallRuntime(Action<string> say)
-    {
-        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-        var file = Path.Combine(Path.GetTempPath(), "windowsdesktop-runtime-8-x64.exe");
-        say("download");
-        using (var wc = new WebClient()) wc.DownloadFile(RuntimeUrl, file);
-        say("install");
-        var p = Process.Start(new ProcessStartInfo(file, "/install /quiet /norestart") { UseShellExecute = true, Verb = "runas" });
-        p.WaitForExit();
-        if (p.ExitCode != 0 && p.ExitCode != 3010) throw new Exception(".NET installer exit code " + p.ExitCode);
-    }
+    public const string RuntimePage = "https://dotnet.microsoft.com/download/dotnet/8.0";
 
     // ---- install ----
 
     public static string SavesDir => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData", "LocalLow", "Art Games Studio SA", "Fell _ Sell");
-    public static string BackupRoot => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fell & Sell Plus", "Save backups");
+    public static string BackupRoot => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fell & Sell Configurator", "Save backups");
 
     public static string BackupSaves()
     {
@@ -203,8 +190,15 @@ internal static class Setup
         yield return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), ShortcutName);
     }
 
+    static IEnumerable<string> OldShortcutPaths()
+    {
+        yield return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), OldShortcutName);
+        yield return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), OldShortcutName);
+    }
+
     public static void Shortcuts(string game)
     {
+        foreach (var old in OldShortcutPaths()) Delete(old);
         var exe = ConfiguratorExe(game);
         var shell = Activator.CreateInstance(Type.GetTypeFromProgID("WScript.Shell"));
         foreach (var lnk in ShortcutPaths())
@@ -212,7 +206,7 @@ internal static class Setup
             dynamic sc = shell.GetType().InvokeMember("CreateShortcut", BindingFlags.InvokeMethod, null, shell, new object[] { lnk });
             sc.TargetPath = exe;
             sc.WorkingDirectory = Path.GetDirectoryName(exe);
-            sc.Description = "Fell & Sell Plus settings";
+            sc.Description = "Fell & Sell Configurator";
             sc.Save();
         }
     }
@@ -224,7 +218,7 @@ internal static class Setup
         Delete(Path.Combine(game, "Mods", "FellSellPlus.dll"));
         foreach (var a in Addons) Delete(Path.Combine(game, "Mods", a.File));
         DeleteDir(Path.Combine(game, "UserData", "FellSellPlus"));
-        foreach (var lnk in ShortcutPaths()) Delete(lnk);
+        foreach (var lnk in ShortcutPaths().Concat(OldShortcutPaths())) Delete(lnk);
         if (!melonLoaderToo) return;
         // No other mods: everything MelonLoader added goes, so the game starts as it shipped.
         foreach (var d in new[] { "MelonLoader", "Mods", "Plugins", "UserLibs", "UserData" }) DeleteDir(Path.Combine(game, d));

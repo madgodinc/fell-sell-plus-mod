@@ -1,7 +1,7 @@
 <Window x:Class="FellSellPlus.Configurator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Fell &amp; Sell Plus · Settings" Width="1440" Height="920" MinWidth="1100" MinHeight="680"
+        Title="Fell &amp; Sell Configurator · Settings" Width="1440" Height="920" MinWidth="1100" MinHeight="680"
         Background="{StaticResource Ground}" WindowStartupLocation="CenterScreen"
         WindowStyle="None" ResizeMode="CanResize" Icon="Art/mgi-mark.png">
   <WindowChrome.WindowChrome>

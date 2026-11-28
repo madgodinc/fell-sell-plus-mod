@@ -1,6 +1,6 @@
-# Fell & Sell Plus
+# Fell & Sell Configurator
 
-MelonLoader mods for [Fell & Sell](https://store.steampowered.com/app/4627110/) by MGI (Mad God Inc). Fell & Sell Plus is the base: new prayers and skills, a level cap of 120, permanent upgrades at Grandma's grave, a shop window, a loot filter, crafting filters, enemy health bars and difficulty presets. Four add-ons come with it and can be switched on or off in the settings app: Bows, Horde (an endless mode), Character (third person and a look editor) and Co-op (two players over Steam). A one-click setup installs everything.
+MelonLoader mods for [Fell & Sell](https://store.steampowered.com/app/4627110/) by MGI (Mad God Inc). Fell & Sell Configurator (formerly Fell & Sell Plus) is the base: new prayers and skills, a level cap of 120, permanent upgrades at Grandma's grave, a shop window, a loot filter, crafting filters, enemy health bars and difficulty presets. Four add-ons come with it and can be switched on or off in the settings app: Bows, Horde (an endless mode), Character (third person and a look editor) and Co-op (two players over Steam). A one-click setup installs everything.
 
 Players: download the setup from the mod's Nexus Mods page. This repository holds the source code.
 
@@ -33,7 +33,7 @@ Requirements: Windows, the .NET 8 SDK, Fell & Sell on Steam.
    ```powershell
    powershell -ExecutionPolicy Bypass -File tools/build-release.ps1
    ```
-   The script builds the mod, publishes the settings app, packs both together with MelonLoader into the setup and writes `dist/FellSellPlus-<version>-Setup.exe` and `dist/FellSellPlus-<version>-Manual.zip`.
+   The script builds the mod, publishes the settings app, packs both together with MelonLoader into the setup and writes `dist/FellSellConfigurator-<version>-Setup.exe` and `dist/FellSellConfigurator-<version>-Manual.zip`.
 
 One mod only: `dotnet build src/<Mod> -c Release` gives `src/<Mod>/bin/Release/net6.0/<Mod>.dll` (copy it to `<game>/Mods`).
 
@@ -42,7 +42,7 @@ One mod only: `dotnet build src/<Mod> -c Release` gives `src/<Mod>/bin/Release/n
 - Finds the game through the Steam registry keys and `libraryfolders.vdf`, or lets the player pick the folder.
 - Copies the player's saves to `Documents\Fell & Sell Plus\Save backups`.
 - If the Windows Desktop Runtime 8 or newer is missing, downloads Microsoft's official installer from `aka.ms` and runs it.
-- Unpacks MelonLoader, the mod and the settings app into the game folder and creates a "Fell & Sell Plus Settings" shortcut.
+- Unpacks MelonLoader, the mod and the settings app into the game folder and creates a "Fell & Sell Configurator" shortcut.
 - Copies the add-ons the player keeps switched on into `Mods` (Co-op is off by default and brings Character along). The settings app switches add-ons later by moving their dll between `Mods` and `UserData/FellSellPlus/DisabledMods`.
 - Uninstall removes all of that again; saves are never touched.
 

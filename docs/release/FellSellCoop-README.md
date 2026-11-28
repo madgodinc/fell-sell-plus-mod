@@ -1,19 +1,19 @@
-# Fell & Sell Coop 0.1.0
+# Fell & Sell Coop 1.0.0
 
 Совместная игра для Fell & Sell: походы в подземелье, в лес и на арену орды вдвоём через Steam. Версия ранняя, проверена на двух игроках.
 
 ## Что нужно
 
 - MelonLoader 0.7 для Fell & Sell.
-- **Fell & Sell Plus 1.1.0. Без него мод не загрузится.**
+- **Fell & Sell Configurator 1.0.0. Без него мод не загрузится.**
 - Игра в Steam у каждого игрока, игроки в друзьях друг у друга.
 - Одинаковые версии модов у всех игроков.
 
 По желанию, у всех игроков сразу:
 
 - Fell & Sell Character 1.0.0: напарник выглядит как его герой и держит своё оружие. Без него напарник показан фигурой жителя.
-- Fell & Sell Horde 1.0.1: орда вдвоём.
-- Fell & Sell Bows 1.0.1: луки в совместной игре.
+- Fell & Sell Horde 1.0.0: орда вдвоём.
+- Fell & Sell Bows 1.0.0: луки в совместной игре.
 
 ## Как играть
 
@@ -62,7 +62,7 @@
 
 ## Установка
 
-1. Поставь Fell & Sell Plus 1.1.0 (вместе с ним ставится MelonLoader).
+1. Поставь Fell & Sell Configurator 1.0.0 (вместе с ним ставится MelonLoader).
 2. Положи `FellSellCoop.dll` в папку `Mods` в папке игры, рядом с `FellSellPlus.dll`.
 
 Настройки лежат в `UserData/MelonPreferences.cfg`, раздел `[FellSellPlus_Coop]`. Для игры через Steam менять их не нужно. Там же включается игра по локальной сети (`Transport = "udp"`, адрес и порт хоста).
@@ -73,22 +73,22 @@
 
 ---
 
-# Fell & Sell Coop 0.1.0 (English)
+# Fell & Sell Coop 1.0.0 (English)
 
 Co-op for Fell & Sell: dungeon, forest and horde arena runs for two players over Steam. This is an early version, tested with two players.
 
 ## Requirements
 
 - MelonLoader 0.7 for Fell & Sell.
-- **Fell & Sell Plus 1.1.0. The mod does not load without it.**
+- **Fell & Sell Configurator 1.0.0. The mod does not load without it.**
 - Every player owns the game on Steam, and the players are Steam friends.
 - The same mod versions for every player.
 
 Optional, for all players at once:
 
 - Fell & Sell Character 1.0.0: your partner looks like their hero and holds their own weapons. Without it a partner is shown as a villager figure.
-- Fell & Sell Horde 1.0.1: horde runs together.
-- Fell & Sell Bows 1.0.1: bows in co-op.
+- Fell & Sell Horde 1.0.0: horde runs together.
+- Fell & Sell Bows 1.0.0: bows in co-op.
 
 ## How to play
 
@@ -137,7 +137,7 @@ Spikes that rise on a timer. Storm lightning. Destructible props. Chests are per
 
 ## Install
 
-1. Install Fell & Sell Plus 1.1.0 (it brings MelonLoader).
+1. Install Fell & Sell Configurator 1.0.0 (it brings MelonLoader).
 2. Put `FellSellCoop.dll` into the game's `Mods` folder, next to `FellSellPlus.dll`.
 
 Settings are in `UserData/MelonPreferences.cfg` under `[FellSellPlus_Coop]`. Steam play needs no changes there. LAN play is switched on there too (`Transport = "udp"`, the host's address and port).

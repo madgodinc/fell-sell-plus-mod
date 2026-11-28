@@ -1,11 +1,11 @@
-FELL & SELL PLUS 1.1.0
+FELL & SELL CONFIGURATOR 1.0.0
 Ручная установка / Manual install
 Автор / Author: MGI (Mad God Inc)
 
 
 РУССКИЙ
 
-Проще всего поставить мод через FellSellPlus-1.1.0-Setup.exe. Этот архив для тех, кто хочет поставить всё сам.
+Проще всего поставить мод через FellSellConfigurator-1.0.0-Setup.exe. Этот архив для тех, кто хочет поставить всё сам.
 
 1. Закройте игру.
 2. Откройте папку игры: в Steam нажмите правой кнопкой на Fell & Sell, затем «Управление», «Просмотреть локальные файлы».
@@ -23,7 +23,7 @@ FELL & SELL PLUS 1.1.0
 
 ENGLISH
 
-The easiest way is FellSellPlus-1.1.0-Setup.exe. This archive is for players who prefer to install by hand.
+The easiest way is FellSellConfigurator-1.0.0-Setup.exe. This archive is for players who prefer to install by hand.
 
 1. Close the game.
 2. Open the game folder: in Steam, right-click Fell & Sell, then Manage, Browse local files.

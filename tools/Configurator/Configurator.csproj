@@ -8,10 +8,10 @@
     <AssemblyName>FellSellPlusConfigurator</AssemblyName>
     <RootNamespace>FellSellPlus.Configurator</RootNamespace>
     <ApplicationIcon>Art\mgi.ico</ApplicationIcon>
-    <Version>1.1.0</Version>
+    <Version>1.0.0</Version>
     <Company>MGI (Mad God Inc)</Company>
     <Authors>MGI</Authors>
-    <Product>Fell &amp; Sell Plus Configurator</Product>
+    <Product>Fell &amp; Sell Configurator</Product>
     <!-- Runs on any newer installed Windows Desktop runtime (Mad has .NET 10 only). -->
     <RollForward>LatestMajor</RollForward>
   </PropertyGroup>

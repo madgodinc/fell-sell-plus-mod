@@ -46,10 +46,10 @@ draw = ImageDraw.Draw(bg)
 
 # Game wordmark (the game's own logo) and PLUS in the brand gradient.
 logo = Image.open(f"{sprites}/FellSellLogo.png").convert("RGBA")
-logo.thumbnail((900, 200), Image.LANCZOS)
+logo.thumbnail((700, 170), Image.LANCZOS)
 ly = 110 + DY
-font_b = ImageFont.truetype(f"{cfg}/Fonts/Unbounded-Bold.ttf", 118)
-plus = "PLUS"
+font_b = ImageFont.truetype(f"{cfg}/Fonts/Unbounded-Bold.ttf", 66)
+plus = "CONFIGURATOR"
 pb = font_b.getbbox(plus)
 pw, ph = pb[2] - pb[0], pb[3] - pb[1]
 grad = Image.new("RGBA", (pw + 20, ph + 40))

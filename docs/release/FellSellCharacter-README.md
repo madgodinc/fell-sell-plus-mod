@@ -27,11 +27,11 @@
 - Внешность хранится в файле мода, а не в сохранении.
 - В игре нет анимации прыжка для человека, поэтому прыжок выглядит почти как стойка.
 - Броня из инвентаря не меняет тело героя. Его меняет только редактор.
-- Клавиши и положение камеры меняются в `UserData/MelonPreferences.cfg`, раздел `[FellSellCharacter]`, или на странице дополнений в программе настроек Fell & Sell Plus.
+- Клавиши и положение камеры меняются в `UserData/MelonPreferences.cfg`, раздел `[FellSellCharacter]`, или на странице дополнений в программе настроек Fell & Sell Configurator.
 
 ## Установка
 
-1. Нужен MelonLoader 0.7 для Fell & Sell. Если стоит Fell & Sell Plus, он уже есть. Сам Fell & Sell Plus не обязателен.
+1. Нужен MelonLoader 0.7 для Fell & Sell. Если стоит Fell & Sell Configurator, он уже есть. Сам Fell & Sell Configurator не обязателен.
 2. Положи `FellSellCharacter.dll` в папку `Mods` в папке игры.
 
 ## Удаление
@@ -69,11 +69,11 @@ All 638 parts come from the game's own files.
 - The look is saved in the mod's own file, not in your save.
 - The game has no human jump animation, so a jump looks close to standing.
 - Armour you equip does not change the hero's body. Only the editor does.
-- Keys and camera offsets can be changed in `UserData/MelonPreferences.cfg` under `[FellSellCharacter]`, or on the Add-ons page of the Fell & Sell Plus settings app.
+- Keys and camera offsets can be changed in `UserData/MelonPreferences.cfg` under `[FellSellCharacter]`, or on the Add-ons page of the Fell & Sell Configurator settings app.
 
 ## Install
 
-1. You need MelonLoader 0.7 for Fell & Sell (Fell & Sell Plus already installs it). Fell & Sell Plus itself is not required.
+1. You need MelonLoader 0.7 for Fell & Sell (Fell & Sell Configurator already installs it). Fell & Sell Configurator itself is not required.
 2. Put `FellSellCharacter.dll` into the game's `Mods` folder.
 
 ## Uninstall

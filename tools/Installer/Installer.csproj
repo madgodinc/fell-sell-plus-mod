@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <!-- Fell & Sell Plus setup: one exe that installs MelonLoader, the mod and the configurator.
+  <!-- Fell & Sell Configurator setup: one exe that installs MelonLoader, the mod and the configurator.
        .NET Framework 4.8 ships with every Windows 10/11, so the setup runs before any .NET is installed. -->
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -12,10 +12,10 @@
     <RootNamespace>FellSellPlus.Setup</RootNamespace>
     <ApplicationIcon>..\Configurator\Art\mgi.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Version>1.1.0</Version>
+    <Version>1.0.0</Version>
     <Company>MGI (Mad God Inc)</Company>
     <Authors>MGI</Authors>
-    <Product>Fell &amp; Sell Plus Setup</Product>
+    <Product>Fell &amp; Sell Configurator Setup</Product>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.IO.Compression" />

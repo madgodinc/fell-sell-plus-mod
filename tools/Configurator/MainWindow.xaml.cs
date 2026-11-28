@@ -66,7 +66,7 @@ public partial class MainWindow : Window
         Closing += (_, e) =>
         {
             if (!_dirty) return;
-            var r = MessageBox.Show(L("Есть несохранённые изменения. Сохранить?", "There are unsaved changes. Save them?"), "Fell & Sell Plus",
+            var r = MessageBox.Show(L("Есть несохранённые изменения. Сохранить?", "There are unsaved changes. Save them?"), "Fell & Sell Configurator",
                 MessageBoxButton.YesNoCancel);
             if (r == MessageBoxResult.Cancel) e.Cancel = true;
             else if (r == MessageBoxResult.Yes) Save();
@@ -173,8 +173,8 @@ public partial class MainWindow : Window
 
     void RenderAll()
     {
-        ProductWord.Text = Spaced("FELL & SELL PLUS");
-        Title = L("Fell & Sell Plus · Настройки", "Fell & Sell Plus · Settings");
+        ProductWord.Text = Spaced("FELL & SELL CONFIGURATOR");
+        Title = L("Fell & Sell Configurator · Настройки", "Fell & Sell Configurator · Settings");
         Credit.Text = Spaced(L("РАЗРАБОТЧИК MGI · MAD GOD INC", "MADE BY MGI · MAD GOD INC")) + "   v" + Version();
         BrowseBtn.Content = L("изменить папку игры", "change game folder");
         RestoreBtn.Content = L("вернуть игру как было", "restore the original game");
@@ -410,8 +410,8 @@ public partial class MainWindow : Window
             Page.Children.Add(Note(L("Папка игры не найдена. Нажмите «изменить папку игры» внизу и укажите папку, где лежит «Fell & Sell.exe». Пока можно смотреть настройки, но не сохранять.",
                                      "Game folder not found. Use \"change game folder\" below and pick the folder with \"Fell & Sell.exe\". You can browse settings but not save."), true));
         if (JustInstalled)
-            Page.Children.Add(Note(L("Мод установлен. Первый запуск игры после установки длится от 2 до 5 минут: загрузчик модов готовит код игры, и вы увидите его чёрное окно. Это нормально, дождитесь меню. Потом игра запускается как обычно. Ваши сохранения скопированы в «Документы\\Fell & Sell Plus».",
-                                     "The mod is installed. The first game launch after installing takes 2 to 5 minutes: the mod loader prepares the game code and you will see its black window. That is normal, wait for the menu. After that the game starts as usual. Your saves were copied to \"Documents\\Fell & Sell Plus\"."), true));
+            Page.Children.Add(Note(L("Мод установлен. Первый запуск игры после установки длится от 2 до 5 минут: загрузчик модов готовит код игры, и вы увидите его чёрное окно. Это нормально, дождитесь меню. Потом игра запускается как обычно. Ваши сохранения скопированы в «Документы\\Fell & Sell Configurator».",
+                                     "The mod is installed. The first game launch after installing takes 2 to 5 minutes: the mod loader prepares the game code and you will see its black window. That is normal, wait for the menu. After that the game starts as usual. Your saves were copied to \"Documents\\Fell & Sell Configurator\"."), true));
         if (_game != null && !HasArt)
             Page.Children.Add(Note(L("Картинки из игры появятся после первого запуска игры с модом: мод сам возьмёт их из игры, когда вы зайдёте в деревню.",
                                      "Pictures from the game appear after you first run the game with the mod: the mod takes them from the game once you reach the village."), false));
@@ -614,7 +614,7 @@ public partial class MainWindow : Window
         text.Children.Add(new TextBlock { Text = L(a.NameRu, a.NameEn), FontFamily = F("TextSemi"), FontSize = 15, TextWrapping = TextWrapping.Wrap });
         text.Children.Add(new TextBlock
         {
-            Text = present ? L(a.HintRu, a.HintEn) : L("Не установлено. Поставьте через установщик Fell & Sell Plus.", "Not installed. Add it with the Fell & Sell Plus setup."),
+            Text = present ? L(a.HintRu, a.HintEn) : L("Не установлено. Поставьте через установщик Fell & Sell Configurator.", "Not installed. Add it with the Fell & Sell Configurator setup."),
             FontSize = 12.5, Foreground = B("Dim"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 3, 0, 0), LineHeight = 18,
         });
         Grid.SetColumn(text, 1);
@@ -626,12 +626,12 @@ public partial class MainWindow : Window
         {
             if (System.Diagnostics.Process.GetProcessesByName("Fell & Sell").Length > 0)
             {
-                MessageBox.Show(this, L("Закройте игру, потом переключайте дополнения.", "Close the game first, then switch add-ons."), "Fell & Sell Plus");
+                MessageBox.Show(this, L("Закройте игру, потом переключайте дополнения.", "Close the game first, then switch add-ons."), "Fell & Sell Configurator");
                 cb.IsChecked = on;
                 return;
             }
             try { Addons.Set(_game, a, cb.IsChecked == true); }
-            catch (Exception e) { MessageBox.Show(this, e.Message, "Fell & Sell Plus"); }
+            catch (Exception e) { MessageBox.Show(this, e.Message, "Fell & Sell Configurator"); }
             RenderPage();
         };
         Grid.SetColumn(cb, 2);
@@ -881,8 +881,8 @@ public partial class MainWindow : Window
         if (Data.GameRunning()) { MessageBox.Show(this, L("Сначала закройте игру.", "Close the game first."), Title); return; }
         bool others = Restore.OtherMods(_game);
         var text = others
-            ? L("Удалить Fell & Sell Plus и эту программу?\n\nУ вас есть другие моды, поэтому загрузчик MelonLoader останется, чтобы они работали.\nСохранения не трогаются.",
-                "Remove Fell & Sell Plus and this app?\n\nYou have other mods, so the MelonLoader loader stays for them.\nSaves are not touched.")
+            ? L("Удалить Fell & Sell Configurator и эту программу?\n\nУ вас есть другие моды, поэтому загрузчик MelonLoader останется, чтобы они работали.\nСохранения не трогаются.",
+                "Remove Fell & Sell Configurator and this app?\n\nYou have other mods, so the MelonLoader loader stays for them.\nSaves are not touched.")
             : L("Вернуть игру как было?\n\nБудут удалены мод, загрузчик MelonLoader, эта программа и ярлыки. Игра будет запускаться как обычная.\nСохранения не трогаются.",
                 "Restore the original game?\n\nThe mod, the MelonLoader loader, this app and its shortcuts will be removed. The game will start as it shipped.\nSaves are not touched.");
         if (MessageBox.Show(this, text, Title, MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK) return;

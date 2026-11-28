@@ -305,8 +305,8 @@ public static class Addons
             "Камера за правым плечом (клавиша V) и редактор облика героя: F7 или гардероб у калитки лавки.",
             "A camera over the right shoulder (V key) and a hero look editor: F7 or the wardrobe by the shop gate."),
         new("FellSellCoop.dll", "Кооператив", "Co-op",
-            "Подземелье и лес вдвоём с другом из Steam: враги общие, добыча у каждого своя. Пункт «Кооператив» в главном меню игры. Ранняя версия.",
-            "The dungeon and the forest with a Steam friend: shared enemies, your own loot. Started from the Co-op entry in the game's main menu. An early version.", Requires: "FellSellCharacter.dll"),
+            "Подземелье и лес вдвоём с другом из Steam: враги общие, добыча у каждого своя. В деревне: Esc, «Позвать друга»; друг жмёт «… играет: присоединиться». Ранняя версия.",
+            "The dungeon and the forest with a Steam friend: shared enemies, your own loot. In the village: Esc, Invite a friend; your friend clicks \"... is playing: join\". An early version.", Requires: "FellSellCharacter.dll"),
     };
 
     static string Mods(string game, Addon a) => Path.Combine(game, "Mods", a.File);
@@ -347,6 +347,8 @@ public static class Restore
         foreach (var a in Addons.All) File.Delete(Path.Combine(game, "Mods", a.File));
         foreach (var lnk in new[]
                  {
+                     Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "Fell & Sell Configurator.lnk"),
+                     Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "Fell & Sell Configurator.lnk"),
                      Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "Fell & Sell Plus Settings.lnk"),
                      Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "Fell & Sell Plus Settings.lnk"),
                  })

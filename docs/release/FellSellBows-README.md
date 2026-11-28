@@ -1,4 +1,4 @@
-# Fell & Sell Bows 1.0.1
+# Fell & Sell Bows 1.0.0
 
 Три лука для Fell & Sell. Лук двуручный, держится в левой руке. Зажми левую кнопку мыши, чтобы натянуть тетиву, и отпусти, чтобы выстрелить.
 
@@ -15,7 +15,7 @@
 
 ## Установка
 
-1. Нужен MelonLoader 0.7 для Fell & Sell. Если стоит Fell & Sell Plus, он уже есть.
+1. Нужен MelonLoader 0.7 для Fell & Sell. Если стоит Fell & Sell Configurator, он уже есть.
 2. Положи `FellSellBows.dll` в папку `Mods` в папке игры.
 
 ## Удаление
@@ -24,7 +24,7 @@
 
 ---
 
-# Fell & Sell Bows 1.0.1 (English)
+# Fell & Sell Bows 1.0.0 (English)
 
 Three bows for Fell & Sell. A bow is two-handed and sits in the left hand. Hold the left mouse button to draw, release to shoot.
 
@@ -41,7 +41,7 @@ Three bows for Fell & Sell. A bow is two-handed and sits in the left hand. Hold 
 
 ## Install
 
-1. You need MelonLoader 0.7 for Fell & Sell (Fell & Sell Plus already installs it).
+1. You need MelonLoader 0.7 for Fell & Sell (Fell & Sell Configurator already installs it).
 2. Put `FellSellBows.dll` into the game's `Mods` folder.
 
 ## Uninstall
