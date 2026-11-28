@@ -81,3 +81,30 @@ internal static class NewGamePatch { static void Postfix() => ProgressionState.O
 
 [HarmonyPatch(typeof(SaveManager), nameof(SaveManager.DeleteSlotData), typeof(int))]
 internal static class DeleteSlotPatch { static void Postfix(int slot) => ProgressionState.DeleteSlot(slot); }
+
+// Carry weight: the getter every weight check and the inventory UI read (to be confirmed in game:
+// if it turns out inlined, raise InventoryManager.maxWeight instead).
+[HarmonyPatch(typeof(InventoryManager), nameof(InventoryManager.EffectiveMaxWeight), MethodType.Getter)]
+internal static class CarryWeightPatch
+{
+    static void Postfix(ref float __result)
+    {
+        if (ProgressionSettings.Enabled.Value) __result += ProgressionState.Bonus(Stat.CarryWeight);
+    }
+}
+
+// Attack speed: the per-weapon speed factor PlayerCombat uses for attack timing and animation.
+[HarmonyPatch(typeof(PlayerCombat), nameof(PlayerCombat.GetWeaponSpeedFactor))]
+internal static class AttackSpeedPatch
+{
+    static bool _logged;
+    static void Postfix(ItemData item, ref float __result)
+    {
+        if (!ProgressionSettings.Enabled.Value) return;
+        float before = __result;
+        __result *= ProgressionState.AttackSpeedMultiplier;
+        if (_logged) return;
+        _logged = true;
+        Plugin.L.LogInfo($"Attack speed factor for {item?.name}: {before:0.###} -> {__result:0.###}");
+    }
+}

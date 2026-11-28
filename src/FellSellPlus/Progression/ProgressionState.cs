@@ -6,7 +6,7 @@ using S = FellSellPlus.Progression.ProgressionSettings;
 
 namespace FellSellPlus.Progression;
 
-internal enum Stat { MaxHealth, MaxStamina, MaxMana, HealthRegen, StaminaRegen, ManaRegen, Damage, MoveSpeed }
+internal enum Stat { MaxHealth, MaxStamina, MaxMana, HealthRegen, StaminaRegen, ManaRegen, Damage, MoveSpeed, CarryWeight, AttackSpeed }
 
 // Purchased levels for the current save slot. Stored inside the game's own save and written
 // only when the game itself saves, so reloading an unsaved game rolls back gold and levels together.
@@ -32,18 +32,30 @@ internal static class ProgressionState
         Stat.ManaRegen => S.ManaRegenPerLevel.Value,
         Stat.Damage => S.DamagePercentPerLevel.Value,
         Stat.MoveSpeed => S.SpeedPercentPerLevel.Value,
+        Stat.CarryWeight => S.CarryWeightPerLevel.Value,
+        Stat.AttackSpeed => S.AttackSpeedPercentPerLevel.Value,
         _ => 0f,
     };
 
-    // Flat amount for pools/regen, percent for damage/speed.
+    // Hard cap on the bonus, or null when the stat has none.
+    static float? BonusCap(Stat s) => s switch
+    {
+        Stat.MoveSpeed => S.SpeedPercentCap.Value,
+        Stat.AttackSpeed => S.AttackSpeedPercentCap.Value,
+        _ => null,
+    };
+
+    // Flat amount for pools/regen/carry weight, percent for damage and both speeds.
     public static float Bonus(Stat s)
     {
         float b = Level(s) * PerLevel(s);
-        return s == Stat.MoveSpeed ? Math.Min(b, S.SpeedPercentCap.Value) : b;
+        var cap = BonusCap(s);
+        return cap.HasValue ? Math.Min(b, cap.Value) : b;
     }
 
     public static float DamageMultiplier => 1f + Bonus(Stat.Damage) / 100f;
     public static float SpeedMultiplier => 1f + Bonus(Stat.MoveSpeed) / 100f;
+    public static float AttackSpeedMultiplier => 1f + Bonus(Stat.AttackSpeed) / 100f;
 
     // Prestige tiers, e.g. "0:5, 0.5:10, 1:15": the highest tier reached gives the cap.
     public static List<(float prestige, int cap)> Tiers()
@@ -77,8 +89,9 @@ internal static class ProgressionState
     public static int Cap(Stat s)
     {
         int cap = TierCap() + S.LevelCapPerBoss.Value * GameQuery.BossesKilled();
-        if (s == Stat.MoveSpeed && PerLevel(s) > 0f)
-            cap = Math.Min(cap, (int)Math.Ceiling(S.SpeedPercentCap.Value / PerLevel(s)));
+        var bonusCap = BonusCap(s);
+        if (bonusCap.HasValue && PerLevel(s) > 0f)
+            cap = Math.Min(cap, (int)Math.Ceiling(bonusCap.Value / PerLevel(s)));
         return cap;
     }
 

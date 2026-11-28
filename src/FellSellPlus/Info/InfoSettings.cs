@@ -14,6 +14,7 @@ internal static class InfoSettings
     public static ConfigEntry<bool> RevealSkillTiles;
     public static ConfigEntry<bool> LootOdds;
     public static ConfigEntry<bool> EnemyHealthBars;
+    public static ConfigEntry<bool> SwordInStoneHint;
     public static ConfigEntry<int> EnemyHealthBarRange;
     public static ConfigEntry<bool> EnemyHealthBarsOnlyDamaged;
 
@@ -39,6 +40,8 @@ internal static class InfoSettings
             "Spoiler: mark the exact skill behind each ? tile.");
         LootOdds = cfg.Bind("Info", "LootOdds", true,
             "Runs window tab 6: dungeon chest odds per biome and floor, measured with the game's own roll (UserData/FellSellPlus/loot_tables.json).");
+        SwordInStoneHint = cfg.Bind("Info", "SwordInStoneHint", true,
+            "Looking at the sword in a stone (forest) shows pulls done / needed, the cost of a pull and the pause before progress drains.");
         EnemyHealthBars = cfg.Bind("Info", "EnemyHealthBars", true,
             "Health bar over every enemy's head (hidden behind walls).");
         EnemyHealthBarRange = cfg.Bind("Info", "EnemyHealthBarRange", 15,

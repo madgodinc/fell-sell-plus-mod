@@ -17,6 +17,10 @@ internal static class SkillUtil
 
     public static Transform Player => PlayerStats.Instance != null ? PlayerStats.Instance.transform : null;
 
+    // Set by the co-op mod around blows that are bookkeeping, not this player's hits (a copy of the
+    // host's enemy dying, a partner's hit applied on the host): on-hit skills and run statistics skip them.
+    internal static bool SyntheticBlow;
+
     public static EmeraldHealth HealthOf(GameObject go) =>
         go == null ? null : go.GetComponentInParent<EmeraldHealth>();
 

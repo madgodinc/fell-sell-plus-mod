@@ -12,7 +12,7 @@
     <RootNamespace>FellSellPlus.Setup</RootNamespace>
     <ApplicationIcon>..\Configurator\Art\mgi.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <Company>MGI (Mad God Inc)</Company>
     <Authors>MGI</Authors>
     <Product>Fell &amp; Sell Plus Setup</Product>

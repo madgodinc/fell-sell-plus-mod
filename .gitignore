@@ -2,8 +2,14 @@ bin/
 obj/
 lib/
 vendor/
+backups/
+*.user
+community/
 publish/
 dist/
 *.pdb
-*.user
+tools/assets/out/
 tools/Installer/payload.zip
+__pycache__/
+docs/coop-shots/
+docs/character-shots/

@@ -1027,6 +1027,13 @@
   },
   {
    "section": "FellSellPlus_Info",
+   "key": "SwordInStoneHint",
+   "type": "Boolean",
+   "default": true,
+   "description": "Looking at the sword in a stone (forest) shows pulls done / needed, the cost of a pull and the pause before progress drains."
+  },
+  {
+   "section": "FellSellPlus_Info",
    "key": "EnemyHealthBars",
    "type": "Boolean",
    "default": true,
@@ -1335,6 +1342,29 @@
    "type": "Single",
    "default": 25.0,
    "description": "Hard cap on the movement speed bonus, in %.",
+   "min": 0.0,
+   "max": 100.0
+  },
+  {
+   "section": "FellSellPlus_Progression",
+   "key": "CarryWeightPerLevel",
+   "type": "Single",
+   "default": 5.0,
+   "description": "Max carry weight per level."
+  },
+  {
+   "section": "FellSellPlus_Progression",
+   "key": "AttackSpeedPercentPerLevel",
+   "type": "Single",
+   "default": 0.5,
+   "description": "Attack speed % per level, additive."
+  },
+  {
+   "section": "FellSellPlus_Progression",
+   "key": "AttackSpeedPercentCap",
+   "type": "Single",
+   "default": 25.0,
+   "description": "Hard cap on the attack speed bonus, in %.",
    "min": 0.0,
    "max": 100.0
   },

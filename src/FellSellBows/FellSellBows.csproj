@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Fell & Sell Bows: a standalone MelonLoader mod (does not need Fell & Sell Plus). -->
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>FellSellBows</AssemblyName>
+    <RootNamespace>FellSellBows</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Version>1.0.1</Version>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Ml>..\..\lib\ml</Ml>
+    <Il2>$(Ml)\il2cpp</Il2>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../Shared/SaveBackup.cs" />
+    <!-- The old F8 pose editor (worked on the previous IK pipeline); kept for reference, not compiled. -->
+    <!-- The bow mesh without its built-in string (tools/bow_nostring.py); the mod draws a string that bends. -->
+    <EmbeddedResource Include="bow_nostring.bin" />
+    <!-- Each bow's own model (tools/bow_variants.py) and drawn icon (art/*.png decoded by tools/bow_icons.py). -->
+    <EmbeddedResource Include="bow_hunter.bin;bow_swift.bin;bow_heavy.bin" />
+    <EmbeddedResource Include="icon_*.rgba" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="$(Ml)\MelonLoader.dll" Private="false" />
+    <Reference Include="$(Ml)\0Harmony.dll" Private="false" />
+    <Reference Include="$(Ml)\Il2CppInterop.Runtime.dll" Private="false" />
+    <Reference Include="$(Ml)\Il2CppInterop.Common.dll" Private="false" />
+    <Reference Include="$(Il2)\Assembly-CSharp.dll" Private="false" />
+    <Reference Include="$(Il2)\Il2Cppmscorlib.dll" Private="false" />
+    <Reference Include="$(Il2)\Il2CppSystem.Core.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.ImageConversionModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.AnimationModule.dll" Private="false" />
+    <Reference Include="$(Il2)\Unity.InputSystem.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.IMGUIModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.TextRenderingModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.PhysicsModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.AudioModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.ParticleSystemModule.dll" Private="false" />
+    <Reference Include="$(Il2)\Unity.Localization.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.UIElementsModule.dll" Private="false" />
+  </ItemGroup>
+</Project>

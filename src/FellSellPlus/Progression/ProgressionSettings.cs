@@ -19,6 +19,9 @@ internal static class ProgressionSettings
     public static ConfigEntry<float> DamagePercentPerLevel;
     public static ConfigEntry<float> SpeedPercentPerLevel;
     public static ConfigEntry<float> SpeedPercentCap;
+    public static ConfigEntry<float> CarryWeightPerLevel;
+    public static ConfigEntry<float> AttackSpeedPercentPerLevel;
+    public static ConfigEntry<float> AttackSpeedPercentCap;
 
 
     public static void Bind(ConfigFile cfg)
@@ -44,6 +47,10 @@ internal static class ProgressionSettings
         SpeedPercentPerLevel = cfg.Bind(s, "SpeedPercentPerLevel", 0.5f, "Movement speed % per level, additive.");
         SpeedPercentCap = cfg.Bind(s, "SpeedPercentCap", 25f,
             new ConfigDescription("Hard cap on the movement speed bonus, in %.", new AcceptableValueRange<float>(0f, 100f)));
+        CarryWeightPerLevel = cfg.Bind(s, "CarryWeightPerLevel", 5f, "Max carry weight per level.");
+        AttackSpeedPercentPerLevel = cfg.Bind(s, "AttackSpeedPercentPerLevel", 0.5f, "Attack speed % per level, additive.");
+        AttackSpeedPercentCap = cfg.Bind(s, "AttackSpeedPercentCap", 25f,
+            new ConfigDescription("Hard cap on the attack speed bonus, in %.", new AcceptableValueRange<float>(0f, 100f)));
 
     }
 }

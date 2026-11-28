@@ -32,6 +32,7 @@ internal static class ShopModule
             Checkout.Maintain();
             QueueOrder.Tick();
             LineHud.Tick();
+            QueueWatchdog.Tick();
             if (_toastRoot != null && Time.unscaledTime > _toastUntil) HideToast();
         }
         catch (Exception e) { Plugin.L.LogWarning($"Shop tick: {e.Message}"); }

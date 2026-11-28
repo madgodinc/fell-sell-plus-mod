@@ -119,6 +119,8 @@ internal static class ProgressionWindow
         Stat.ManaRegen => Ru ? "Регенерация маны" : "Mana Regeneration",
         Stat.Damage => Ru ? "Урон" : "Damage",
         Stat.MoveSpeed => Ru ? "Скорость передвижения" : "Move Speed",
+        Stat.CarryWeight => Ru ? "Переносимый вес" : "Carry Weight",
+        Stat.AttackSpeed => Ru ? "Скорость атаки" : "Attack Speed",
         _ => s.ToString(),
     };
 
@@ -127,7 +129,7 @@ internal static class ProgressionWindow
         float b = ProgressionState.Bonus(s);
         return s switch
         {
-            Stat.Damage or Stat.MoveSpeed => $"+{b:0.#}%",
+            Stat.Damage or Stat.MoveSpeed or Stat.AttackSpeed => $"+{b:0.#}%",
             Stat.HealthRegen or Stat.StaminaRegen or Stat.ManaRegen => $"+{b:0.0}/{(Ru ? "с" : "s")}",
             _ => $"+{b:0}",
         };
@@ -158,7 +160,7 @@ internal static class ProgressionWindow
             var dim = Rect("Dim", _root.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
             dim.gameObject.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.55f);
 
-            var panel = Rect("Panel", _root.transform, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(820, 640));
+            var panel = Rect("Panel", _root.transform, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(820, 160 + ProgressionState.All.Length * 52 + 70));
             var bg = panel.gameObject.AddComponent<Image>();
             if (panelImg != null && panelImg.sprite != null) { bg.sprite = panelImg.sprite; bg.type = panelImg.type; bg.color = panelImg.color; }
             else bg.color = PanelFallback;

@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Fell & Sell Coop: a separate MelonLoader mod that runs on top of Fell & Sell Plus. -->
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>FellSellCoop</AssemblyName>
+    <RootNamespace>FellSellCoop</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Version>0.1.0</Version>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Ml>..\..\lib\ml</Ml>
+    <Il2>$(Ml)\il2cpp</Il2>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\FellSellPlus\GlobalUsings.cs" Link="GlobalUsings.cs" />
+    <ProjectReference Include="..\FellSellPlus\FellSellPlus.csproj" Private="false" />
+    <!-- Optional at run time: used for player bodies when installed (Coop/CharacterBridge.cs). -->
+    <ProjectReference Include="..\FellSellCharacter\FellSellCharacter.csproj" Private="false" />
+    <!-- Optional at run time: horde runs together (Coop/HordeBridge.cs). -->
+    <ProjectReference Include="..\FellSellHorde\FellSellHorde.csproj" Private="false" />
+    <Reference Include="$(Ml)\MelonLoader.dll" Private="false" />
+    <Reference Include="$(Ml)\0Harmony.dll" Private="false" />
+    <Reference Include="$(Ml)\Il2CppInterop.Runtime.dll" Private="false" />
+    <Reference Include="$(Ml)\Il2CppInterop.Common.dll" Private="false" />
+    <Reference Include="$(Il2)\Assembly-CSharp.dll" Private="false" />
+    <Reference Include="$(Il2)\Assembly-CSharp-firstpass.dll" Private="false" />
+    <Reference Include="$(Il2)\Il2Cppmscorlib.dll" Private="false" />
+    <Reference Include="$(Il2)\Il2CppSystem.Core.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.PhysicsModule.dll" Private="false" />
+    <Reference Include="$(Il2)\Unity.TextMeshPro.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.UI.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.UIModule.dll" Private="false" />
+    <Reference Include="$(Il2)\Unity.InputSystem.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.AnimationModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.AIModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.AudioModule.dll" Private="false" />
+  </ItemGroup>
+</Project>

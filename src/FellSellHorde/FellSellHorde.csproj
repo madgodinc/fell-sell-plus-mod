@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Fell & Sell Horde: endless wave mode, a standalone MelonLoader mod. -->
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>FellSellHorde</AssemblyName>
+    <RootNamespace>FellSellHorde</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Version>1.0.1</Version>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Ml>..\..\lib\ml</Ml>
+    <Il2>$(Ml)\il2cpp</Il2>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../Shared/SaveBackup.cs" />
+    <Reference Include="$(Ml)\MelonLoader.dll" Private="false" />
+    <Reference Include="$(Ml)\0Harmony.dll" Private="false" />
+    <Reference Include="$(Ml)\Il2CppInterop.Runtime.dll" Private="false" />
+    <Reference Include="$(Ml)\Il2CppInterop.Common.dll" Private="false" />
+    <Reference Include="$(Il2)\Assembly-CSharp.dll" Private="false" />
+    <Reference Include="$(Il2)\Il2Cppmscorlib.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.PhysicsModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.AudioModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.ParticleSystemModule.dll" Private="false" />
+    <Reference Include="$(Il2)\Unity.Localization.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.UIElementsModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.AIModule.dll" Private="false" />
+    <Reference Include="$(Il2)\Unity.AI.Navigation.dll" Private="false" />
+    <Reference Include="$(Il2)\Unity.TextMeshPro.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.UI.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.UIModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.IMGUIModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.TextRenderingModule.dll" Private="false" />
+    <Reference Include="$(Il2)\Unity.InputSystem.dll" Private="false" />
+    <Reference Include="$(Il2)\Assembly-CSharp-firstpass.dll" Private="false" />
+  </ItemGroup>
+</Project>

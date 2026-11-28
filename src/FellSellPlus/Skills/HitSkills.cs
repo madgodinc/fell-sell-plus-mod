@@ -22,7 +22,7 @@ internal static class PlayerHitSkillsPatch
 
     static void Prefix(EmeraldHealth __instance, ref int __0, Transform __1, bool __3, bool __4)
     {
-        if (_inside || __instance == null || __4 || __0 <= 0) return;
+        if (_inside || SkillUtil.SyntheticBlow || __instance == null || __4 || __0 <= 0) return;
         var player = SkillUtil.Player;
         if (player == null || __1 == null || !(__1 == player || __1.IsChildOf(player))) return;
         try

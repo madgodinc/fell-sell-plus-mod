@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Fell & Sell Character: third-person view and a character editor. Standalone MelonLoader mod. -->
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>FellSellCharacter</AssemblyName>
+    <RootNamespace>FellSellCharacter</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Version>1.0.0</Version>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Ml>..\..\lib\ml</Ml>
+    <Il2>$(Ml)\il2cpp</Il2>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../Shared/SaveBackup.cs" />
+    <!-- Part catalogue, colour swatches and presets taken from the game's Sidekick database (tools/character_data.py). -->
+    <EmbeddedResource Include="data\*.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="$(Ml)\MelonLoader.dll" Private="false" />
+    <Reference Include="$(Ml)\0Harmony.dll" Private="false" />
+    <Reference Include="$(Ml)\Il2CppInterop.Runtime.dll" Private="false" />
+    <Reference Include="$(Ml)\Il2CppInterop.Common.dll" Private="false" />
+    <Reference Include="$(Il2)\Assembly-CSharp.dll" Private="false" />
+    <Reference Include="$(Il2)\Il2Cppmscorlib.dll" Private="false" />
+    <Reference Include="$(Il2)\Il2CppSystem.Core.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.AnimationModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.PhysicsModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.UI.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.UIModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.TextRenderingModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.ParticleSystemModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.InputLegacyModule.dll" Private="false" />
+    <Reference Include="$(Il2)\Unity.TextMeshPro.dll" Private="false" />
+    <Reference Include="$(Il2)\Unity.InputSystem.dll" Private="false" />
+    <Reference Include="$(Il2)\Unity.Localization.dll" Private="false" />
+    <Reference Include="$(Il2)\Unity.Cinemachine.dll" Private="false" />
+    <Reference Include="$(Il2)\Unity.RenderPipelines.Core.Runtime.dll" Private="false" />
+    <Reference Include="$(Il2)\Unity.RenderPipelines.Universal.Runtime.dll" Private="false" />
+  </ItemGroup>
+</Project>

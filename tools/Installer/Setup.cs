@@ -58,6 +58,62 @@ internal static class Setup
 
     public static bool Installed(string game) => IsGame(game) && File.Exists(Path.Combine(game, "Mods", "FellSellPlus.dll"));
 
+    // ---- add-on mods (separate dlls, each works without the others) ----
+
+    public sealed class Addon
+    {
+        public string File, NameRu, NameEn, DescRu, DescEn;
+        public bool OnByDefault = true; // for a fresh install
+        public string Requires;           // another add-on switched on with this one
+    }
+
+    public static readonly Addon[] Addons =
+    {
+        new() { File = "FellSellBows.dll", NameRu = "Луки", NameEn = "Bows",
+                DescRu = "три лука: натяжение на левой кнопке, крафт, свои иконки", DescEn = "three bows: hold to draw, craftable, own icons" },
+        new() { File = "FellSellHorde.dll", NameRu = "Бесконечный режим", NameEn = "Endless horde",
+                DescRu = "волны врагов на арене, вход у статуи жнеца возле лавки", DescEn = "endless waves in an arena, entered at the reaper statue by the shop" },
+        new() { File = "FellSellCharacter.dll", NameRu = "Вид от третьего лица", NameEn = "Third person",
+                DescRu = "камера за плечом на V и редактор облика героя на F7", DescEn = "over-the-shoulder camera on V and a hero editor on F7" },
+        // Co-op is early (0.1): off on a fresh install, so its patches load only for players who want it.
+        new() { File = "FellSellCoop.dll", OnByDefault = false, Requires = "FellSellCharacter.dll", NameRu = "Кооператив", NameEn = "Co-op",
+                DescRu = "подземелье и лес вдвоём с другом из Steam, вход в главном меню", DescEn = "dungeon and forest with a Steam friend, started from the main menu" },
+    };
+
+    // The configurator parks a switched-off add-on here: MelonLoader only loads the dlls in Mods.
+    public static string DisabledDir(string game) => Path.Combine(game, "UserData", "FellSellPlus", "DisabledMods");
+
+    public static bool AddonPresent(string game, Addon a) =>
+        IsGame(game) && (File.Exists(Path.Combine(game, "Mods", a.File)) || File.Exists(Path.Combine(DisabledDir(game), a.File)));
+
+    public static bool AddonEnabled(string game, Addon a) => IsGame(game) && File.Exists(Path.Combine(game, "Mods", a.File));
+
+    // On: the payload's copy goes into Mods. Off: removed from Mods and from the parked folder.
+    public static void InstallAddons(string game, IDictionary<string, bool> wanted)
+    {
+        using var s = Assembly.GetExecutingAssembly().GetManifestResourceStream("payload.zip")
+                      ?? throw new Exception("payload.zip is missing from the setup");
+        using var zip = new ZipArchive(s, ZipArchiveMode.Read);
+        // Co-op draws partners with the third-person add-on: it comes along.
+        foreach (var a in Addons)
+            if (a.Requires != null && wanted.TryGetValue(a.File, out var need) && need) wanted[a.Requires] = true;
+        foreach (var a in Addons)
+        {
+            var inMods = Path.Combine(game, "Mods", a.File);
+            var parked = Path.Combine(DisabledDir(game), a.File);
+            Delete(parked);
+            if (wanted.TryGetValue(a.File, out var on) && on)
+            {
+                // Entry names use either separator, depending on the tool that packed the payload.
+                var e = zip.Entries.FirstOrDefault(x => x.FullName.Replace('\\', '/').Equals("Addons/" + a.File, StringComparison.OrdinalIgnoreCase))
+                        ?? throw new Exception(a.File + " is missing from the setup");
+                Directory.CreateDirectory(Path.GetDirectoryName(inMods));
+                e.ExtractToFile(inMods, true);
+            }
+            else Delete(inMods);
+        }
+    }
+
     // ---- .NET ----
 
     // MelonLoader needs the .NET runtime (6 or newer); the configurator needs the Windows Desktop
@@ -119,6 +175,7 @@ internal static class Setup
         using var zip = new ZipArchive(s, ZipArchiveMode.Read);
         foreach (var e in zip.Entries)
         {
+            if (e.FullName.Replace('\\', '/').StartsWith("Addons/", StringComparison.OrdinalIgnoreCase)) continue; // InstallAddons decides
             var target = Path.GetFullPath(Path.Combine(game, e.FullName));
             if (!target.StartsWith(Path.GetFullPath(game), StringComparison.OrdinalIgnoreCase)) continue;
             if (e.FullName.EndsWith("/")) { Directory.CreateDirectory(target); continue; }
@@ -165,6 +222,7 @@ internal static class Setup
     public static void Uninstall(string game, bool melonLoaderToo)
     {
         Delete(Path.Combine(game, "Mods", "FellSellPlus.dll"));
+        foreach (var a in Addons) Delete(Path.Combine(game, "Mods", a.File));
         DeleteDir(Path.Combine(game, "UserData", "FellSellPlus"));
         foreach (var lnk in ShortcutPaths()) Delete(lnk);
         if (!melonLoaderToo) return;
@@ -176,7 +234,8 @@ internal static class Setup
     public static bool OtherMods(string game)
     {
         var mods = Path.Combine(game, "Mods");
-        return Directory.Exists(mods) && Directory.GetFiles(mods, "*.dll").Any(f => !Path.GetFileName(f).Equals("FellSellPlus.dll", StringComparison.OrdinalIgnoreCase));
+        bool Ours(string f) => f.Equals("FellSellPlus.dll", StringComparison.OrdinalIgnoreCase) || Addons.Any(a => a.File.Equals(f, StringComparison.OrdinalIgnoreCase));
+        return Directory.Exists(mods) && Directory.GetFiles(mods, "*.dll").Any(f => !Ours(Path.GetFileName(f)));
     }
 
     static void Delete(string f) { if (File.Exists(f)) File.Delete(f); }

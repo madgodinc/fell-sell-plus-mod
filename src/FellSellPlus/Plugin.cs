@@ -2,7 +2,7 @@ using System;
 using HarmonyLib;
 using MelonLoader;
 
-[assembly: MelonInfo(typeof(FellSellPlus.Plugin), "Fell & Sell Plus", "1.0.1", "MGI")]
+[assembly: MelonInfo(typeof(FellSellPlus.Plugin), "Fell & Sell Plus", "1.1.0", "MGI")]
 [assembly: MelonGame("Art Games Studio SA", "Fell & Sell")]
 // MelonLoader would otherwise PatchAll this assembly on top of our own per-class loop, running
 // every hook twice (doubled HP gains, squared multipliers, duplicated tooltip lines).
@@ -20,6 +20,7 @@ public class Plugin : MelonMod
 
     public override void OnInitializeMelon()
     {
+        FellSellShared.SaveBackup.Run(LoggerInstance); // before anything can touch a save
         RuntimeGuard.Ensure();
         Settings.Bind(Config);
         Prayers.NewPrayers.Bind(Config);

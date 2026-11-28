@@ -6,7 +6,7 @@
     <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <PropertyGroup>
@@ -18,6 +18,7 @@
     <Compile Remove="Challenge/**;Info/**;Inventory/**;Shop/**;Crafting/**" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="../Shared/SaveBackup.cs" />
     <Reference Include="$(Ml)\MelonLoader.dll" Private="false" />
     <Reference Include="$(Ml)\0Harmony.dll" Private="false" />
     <Reference Include="$(Ml)\Il2CppInterop.Runtime.dll" Private="false" />
@@ -28,6 +29,7 @@
     <Reference Include="$(Il2)\UnityEngine.CoreModule.dll" Private="false" />
     <Reference Include="$(Il2)\UnityEngine.ImageConversionModule.dll" Private="false" />
     <Reference Include="$(Il2)\UnityEngine.PhysicsModule.dll" Private="false" />
+    <Reference Include="$(Il2)\UnityEngine.AIModule.dll" Private="false" />
     <Reference Include="$(Il2)\Unity.Localization.dll" Private="false" />
     <Reference Include="$(Il2)\Unity.TextMeshPro.dll" Private="false" />
     <Reference Include="$(Il2)\UnityEngine.UI.dll" Private="false" />

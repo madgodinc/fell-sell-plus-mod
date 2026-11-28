@@ -1,7 +1,7 @@
 <Window x:Class="FellSellPlus.Setup.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Fell &amp; Sell Plus · Setup" Width="860" Height="580" ResizeMode="CanMinimize"
+        Title="Fell &amp; Sell Plus · Setup" Width="860" Height="710" ResizeMode="CanMinimize"
         Background="{StaticResource Ground}" WindowStartupLocation="CenterScreen" WindowStyle="None">
   <WindowChrome.WindowChrome>
     <WindowChrome CaptionHeight="60" ResizeBorderThickness="0" GlassFrameThickness="0" CornerRadius="0" UseAeroCaptionButtons="False"/>

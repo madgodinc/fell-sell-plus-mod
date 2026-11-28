@@ -1,11 +1,11 @@
-FELL & SELL PLUS 1.0.0
+FELL & SELL PLUS 1.1.0
 Ручная установка / Manual install
 Автор / Author: MGI (Mad God Inc)
 
 
 РУССКИЙ
 
-Проще всего поставить мод через FellSellPlus-1.0.0-Setup.exe. Этот архив для тех, кто хочет поставить всё сам.
+Проще всего поставить мод через FellSellPlus-1.1.0-Setup.exe. Этот архив для тех, кто хочет поставить всё сам.
 
 1. Закройте игру.
 2. Откройте папку игры: в Steam нажмите правой кнопкой на Fell & Sell, затем «Управление», «Просмотреть локальные файлы».
@@ -14,6 +14,8 @@ FELL & SELL PLUS 1.0.0
    https://dotnet.microsoft.com/download/dotnet/8.0
 5. Запустите игру. Первый запуск длится от 2 до 5 минут: загрузчик модов готовит код игры, и видно его чёрное окно. Дождитесь меню. Со следующего запуска окна не будет.
 
+Дополнения: луки, орда и вид от третьего лица уже лежат в Mods. Ненужное можно удалить оттуда. Кооператив (версия 0.1) лежит отдельно в папке Optional: чтобы включить его, перенесите FellSellCoop.dll в Mods. Папку Optional в игру копировать не обязательно.
+
 Настройки: в папке игры UserData\FellSellPlus\Configurator\FellSellPlusConfigurator.exe. Можно сделать ярлык на рабочий стол. Меняйте настройки при закрытой игре.
 
 Удаление: кнопка «вернуть игру как было» внизу программы настроек. Или удалите из папки игры вручную: MelonLoader, Mods, Plugins, UserLibs, UserData и version.dll. Сохранения остаются.
@@ -21,7 +23,7 @@ FELL & SELL PLUS 1.0.0
 
 ENGLISH
 
-The easiest way is FellSellPlus-1.0.0-Setup.exe. This archive is for players who prefer to install by hand.
+The easiest way is FellSellPlus-1.1.0-Setup.exe. This archive is for players who prefer to install by hand.
 
 1. Close the game.
 2. Open the game folder: in Steam, right-click Fell & Sell, then Manage, Browse local files.
@@ -29,6 +31,8 @@ The easiest way is FellSellPlus-1.0.0-Setup.exe. This archive is for players who
 4. You need the .NET 8 Desktop Runtime (x64) or newer. If it is missing, get it from Microsoft:
    https://dotnet.microsoft.com/download/dotnet/8.0
 5. Start the game. The first launch takes 2 to 5 minutes while the mod loader prepares the game code; its black window is visible. Wait for the menu. From the next launch on the window stays hidden.
+
+Add-ons: bows, horde and the third-person view are already in Mods; delete any you do not want. Co-op (version 0.1) waits in the Optional folder: to turn it on, move FellSellCoop.dll into Mods. The Optional folder itself does not need to go into the game.
 
 Settings: UserData\FellSellPlus\Configurator\FellSellPlusConfigurator.exe in the game folder. You can make a desktop shortcut. Change settings with the game closed.
 

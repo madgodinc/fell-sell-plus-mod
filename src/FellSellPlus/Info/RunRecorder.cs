@@ -214,14 +214,18 @@ internal static class RunRecorder
     [HarmonyPatch(typeof(EmeraldHealth), "DamageInternal")]
     static class DealtHook
     {
-        static void Prefix(EmeraldHealth __instance, int __0, Transform __1, bool __3, bool __4)
+        static void Prefix(EmeraldHealth __instance, out int __state) => __state = __instance != null ? __instance.CurrentHealth : 0;
+
+        // Counted after the blow and only when it took health: a blocked blow comes through here with
+        // its full amount, and the Bows mod lands a shield-piercing arrow a second time after a block.
+        static void Postfix(EmeraldHealth __instance, int __0, Transform __1, bool __3, bool __4, int __state)
         {
             var r = Current;
-            if (r == null || __instance == null || __0 <= 0) return;
+            if (r == null || __instance == null || __0 <= 0 || Skills.SkillUtil.SyntheticBlow) return;
             try
             {
-                int hpLeft = __instance.CurrentHealth;
-                if (hpLeft <= 0) return;
+                int hpLeft = __state;
+                if (hpLeft <= 0 || __instance.CurrentHealth >= hpLeft) return;
                 string src = __4 ? "Trap" : WeaponName();
                 r.DamageDealt += __0;
                 r.Overkill += Math.Max(0, __0 - hpLeft);
@@ -233,7 +237,13 @@ internal static class RunRecorder
 
         static string WeaponName()
         {
+            // A two-handed weapon held in the left hand (the Bows mod's bows) leaves the right slot empty.
             var w = InventoryManager.Instance?.rightHandSlot?.item;
+            if (w == null)
+            {
+                w = InventoryManager.Instance?.leftHandSlot?.item;
+                try { if (w != null && w.subTypes != null && w.subTypes.Contains(ItemSubType.Shield)) w = null; } catch { }
+            }
             if (w == null) return "Unarmed";
             try { var n = w.GetDisplayName(); if (!string.IsNullOrEmpty(n)) return n; } catch { }
             return CleanName(w.name);

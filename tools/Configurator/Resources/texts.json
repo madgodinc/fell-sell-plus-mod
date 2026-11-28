@@ -129,6 +129,16 @@
     "Loader console",
     "MelonLoader's black log window"
    ]
+  },
+  "Addons": {
+   "ru": [
+    "Дополнения",
+    "Луки, орда, третье лицо, кооператив"
+   ],
+   "en": [
+    "Add-ons",
+    "Bows, horde, third person, co-op"
+   ]
   }
  },
  "groups": {
@@ -159,6 +169,18 @@
   "Challenge_Loot": {
    "ru": "Сундуки",
    "en": "Chests"
+  },
+  "FellSellHorde": {
+   "ru": "Бесконечный режим",
+   "en": "Endless horde"
+  },
+  "FellSellCharacter": {
+   "ru": "Вид от третьего лица",
+   "en": "Third person"
+  },
+  "Coop": {
+   "ru": "Кооператив",
+   "en": "Co-op"
   }
  },
  "keys": {
@@ -330,6 +352,36 @@
    "en": [
     "Move Speed cap, %",
     "Progression never adds more speed than this."
+   ]
+  },
+  "Progression.CarryWeightPerLevel": {
+   "ru": [
+    "Переносимый вес за уровень",
+    "Сколько веса добавляет каждый уровень."
+   ],
+   "en": [
+    "Carry Weight per level",
+    "Carry weight added by each level."
+   ]
+  },
+  "Progression.AttackSpeedPercentPerLevel": {
+   "ru": [
+    "Скорость атаки за уровень, %",
+    "Сколько процентов скорости атаки даёт каждый уровень."
+   ],
+   "en": [
+    "Attack Speed per level, %",
+    "Attack speed % added by each level."
+   ]
+  },
+  "Progression.AttackSpeedPercentCap": {
+   "ru": [
+    "Потолок скорости атаки, %",
+    "Больше этого прокачка скорость атаки не даст."
+   ],
+   "en": [
+    "Attack Speed cap, %",
+    "Leveling never gives more attack speed than this."
    ]
   },
   "Challenge.Preset": {
@@ -1544,12 +1596,12 @@
   },
   "Coop.PlayerName": {
    "ru": [
-    "Имя игрока",
-    "Имя над твоим персонажем у других."
+    "Имя над героем",
+    "Так вас видят напарники. Пока стоит Player, берётся имя из Steam."
    ],
    "en": [
-    "Player name",
-    "Name shown above your character."
+    "Name above your hero",
+    "What your partners see. While it says Player, your Steam name is used."
    ]
   },
   "Dev.Commands": {
@@ -1640,6 +1692,186 @@
    "en": [
     "Show the console",
     "The black log window next to the game. Not needed to play: the log always goes to MelonLoader/Latest.log."
+   ]
+  },
+  "Info.SwordInStoneHint": {
+   "ru": [
+    "Подсказка у меча в камне",
+    "Когда смотришь на меч в камне в лесу: сколько рывков сделано и нужно, сколько стоит рывок и сколько можно ждать, пока прогресс не начнёт откатываться."
+   ],
+   "en": [
+    "Sword in the stone hint",
+    "Looking at the sword in a stone in the forest shows pulls done and needed, the cost of a pull and how long you can pause before progress drains."
+   ]
+  },
+  "FellSellHorde.MaxAlive": {
+   "ru": [
+    "Врагов одновременно",
+    "Сколько врагов орды может быть живо сразу. Остальные из волны ждут, пока кто-то умрёт."
+   ],
+   "en": [
+    "Enemies at once",
+    "How many horde enemies can be alive together. The rest of the wave waits until some die."
+   ]
+  },
+  "FellSellHorde.IntermissionSeconds": {
+   "ru": [
+    "Пауза между волнами",
+    "Секунды между концом одной волны и началом следующей."
+   ],
+   "en": [
+    "Pause between waves",
+    "Seconds between the end of one wave and the start of the next."
+   ]
+  },
+  "FellSellHorde.SpawnInterval": {
+   "ru": [
+    "Темп появления",
+    "Секунды между появлением врагов одной волны. Меньше значит волна накатывает быстрее."
+   ],
+   "en": [
+    "Spawn pace",
+    "Seconds between enemies of one wave appearing. Lower means the wave rolls in faster."
+   ]
+  },
+  "FellSellHorde.PauseOnChoice": {
+   "ru": [
+    "Пауза на выборе дара",
+    "Игра стоит, пока открыт выбор добра или зла и карты молитв."
+   ],
+   "en": [
+    "Pause on a gift",
+    "The game stands still while the good or evil choice and the prayer cards are open."
+   ]
+  },
+  "FellSellCharacter.ViewKey": {
+   "ru": [
+    "Клавиша вида",
+    "Переключает вид от первого и третьего лица."
+   ],
+   "en": [
+    "View key",
+    "Switches between first and third person."
+   ]
+  },
+  "FellSellCharacter.EditorKey": {
+   "ru": [
+    "Клавиша редактора",
+    "Открывает редактор облика где угодно. Пусто: только у гардероба в деревне."
+   ],
+   "en": [
+    "Editor key",
+    "Opens the look editor anywhere. Empty: only at the wardrobe in the village."
+   ]
+  },
+  "FellSellCharacter.Distance": {
+   "ru": [
+    "Расстояние камеры",
+    "Метры за спиной героя. У стен камера подходит ближе сама."
+   ],
+   "en": [
+    "Camera distance",
+    "Metres behind the hero. Walls pull the camera closer."
+   ]
+  },
+  "FellSellCharacter.ShoulderRight": {
+   "ru": [
+    "Сдвиг вправо",
+    "На сколько метров камера правее головы героя."
+   ],
+   "en": [
+    "Shift right",
+    "How many metres right of the hero's head the camera sits."
+   ]
+  },
+  "FellSellCharacter.ShoulderUp": {
+   "ru": [
+    "Сдвиг вверх",
+    "На сколько метров камера выше глаз героя."
+   ],
+   "en": [
+    "Shift up",
+    "How many metres above the hero's eyes the camera sits."
+   ]
+  },
+  "FellSellCharacter.Wardrobe": {
+   "ru": [
+    "Гардероб в деревне",
+    "Стойка у калитки лавки, которая открывает редактор облика."
+   ],
+   "en": [
+    "Wardrobe in the village",
+    "A stand by the shop gate that opens the look editor."
+   ]
+  },
+  "Coop.MenuButton": {
+   "ru": [
+    "Пункт «Кооператив» в главном меню",
+    "Окно, где можно создать игру, войти к другу из Steam или позвать его. Выбор действует до выхода из игры."
+   ],
+   "en": [
+    "Co-op entry in the main menu",
+    "A window to host a game, join a Steam friend or invite one. The choice lasts until you quit the game."
+   ]
+  },
+  "Coop.FollowIntoRuns": {
+   "ru": [
+    "Идти за хостом в подземелье",
+    "Когда хост входит в подземелье или в лес из деревни, гостя через 5 секунд переносит следом."
+   ],
+   "en": [
+    "Follow the host into a run",
+    "When the host enters the dungeon or the forest from the village, a guest is taken along 5 seconds later."
+   ]
+  },
+  "Coop.WaitForPlayers": {
+   "ru": [
+    "Ждать всех на этаже",
+    "Этаж начинается, когда его загрузили все игроки. До этого на экране «Ждём игроков»."
+   ],
+   "en": [
+    "Wait for everyone on a floor",
+    "A floor starts once every player has loaded it. Until then the screen says \"Waiting for players\"."
+   ]
+  },
+  "Coop.NoPause": {
+   "ru": [
+    "Меню не останавливает игру",
+    "Пока рядом напарник, пауза, инвентарь и карта открываются, но мир не замирает."
+   ],
+   "en": [
+    "Menus do not stop the game",
+    "While a partner is connected, the pause menu, inventory and map open but the world keeps running."
+   ]
+  },
+  "Coop.LootCut": {
+   "ru": [
+    "Срез добычи вдвоём",
+    "Доля добычи, которая пропадает, пока вы играете с напарником. 0.3 = на 30% меньше с врагов и из сундуков, 0 = без среза. Добыча у каждого своя."
+   ],
+   "en": [
+    "Loot cut with a partner",
+    "Share of loot removed while you play with a partner. 0.3 = 30% less from enemies and chests, 0 = no cut. Everyone gets his own loot."
+   ]
+  },
+  "Coop.ReviveRadius": {
+   "ru": [
+    "Подъём у портала, метры",
+    "Павшего поднимает напарник, который встал так близко к кругу портала."
+   ],
+   "en": [
+    "Revive at the portal, metres",
+    "A fallen player gets up when a partner stands this close to the portal circle."
+   ]
+  },
+  "Coop.ReviveSeconds": {
+   "ru": [
+    "Подъём в зале босса, секунды",
+    "Пока зал босса заперт, до портала не дойти: напарник поднимает павшего, постояв рядом столько секунд."
+   ],
+   "en": [
+    "Revive in a boss room, seconds",
+    "While the boss room is locked the portal is out of reach: a partner revives by standing next to the fallen player this long."
    ]
   }
  }

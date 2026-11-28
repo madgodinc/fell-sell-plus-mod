@@ -26,7 +26,7 @@ public partial class MainWindow : Window
     FontFamily F(string k) => (FontFamily)FindResource(k);
     static string Version => typeof(MainWindow).Assembly.GetName().Version.ToString(3);
 
-    // Relaunched elevated when the game folder is protected: --game=<dir> [--uninstall] [--ml]
+    // Relaunched elevated when the game folder is protected: --game=<dir> [--uninstall] [--ml] [--addons=<dll>:1,<dll>:0]
     readonly string _argGame;
     readonly bool _argUninstall, _argMl;
 
@@ -40,6 +40,12 @@ public partial class MainWindow : Window
             if (a.StartsWith("--game=")) _argGame = a.Substring(7);
             if (a == "--uninstall") _argUninstall = true;
             if (a == "--ml") _argMl = true;
+            if (a.StartsWith("--addons="))
+                foreach (var kv in a.Substring(9).Split(','))
+                {
+                    var p = kv.Split(':');
+                    if (p.Length == 2) _addonChoice[p[0]] = p[1] == "1";
+                }
         }
         _game = Setup.IsGame(_argGame) ? _argGame : Setup.FindGame();
         Loaded += (_, _) =>
@@ -97,6 +103,7 @@ public partial class MainWindow : Window
     // ---------- state 1: choose ----------
 
     TextBox _path;
+    readonly Dictionary<string, bool> _addonChoice = new();
     TextBlock _found;
 
     void RenderChoose()
@@ -128,7 +135,10 @@ public partial class MainWindow : Window
         _found = new TextBlock { FontSize = 13, Margin = new Thickness(4, 10, 0, 0) };
         sp.Children.Add(_found);
 
-        var what = new StackPanel { Margin = new Thickness(0, 24, 0, 0) };
+        var lower = new Grid { Margin = new Thickness(0, 24, 0, 0) };
+        lower.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+        lower.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
+        var what = new StackPanel { Margin = new Thickness(0, 0, 28, 0) };
         foreach (var line in new[]
                  {
                      L("MelonLoader (загрузчик модов), если его ещё нет", "MelonLoader (the mod loader), if it is not there yet"),
@@ -136,8 +146,28 @@ public partial class MainWindow : Window
                      L(".NET от Microsoft, если его нет на компьютере (скачается сам)", "Microsoft .NET, if the PC does not have it (downloaded for you)"),
                      L("перед установкой ваши сохранения копируются в «Документы\\Fell & Sell Plus»", "your saves are copied to \"Documents\\Fell & Sell Plus\" first"),
                  })
-            what.Children.Add(Bullet(line));
-        sp.Children.Add(what);
+            what.Children.Add(Bullet(line, wrapWidth: 400));
+        lower.Children.Add(what);
+
+        // Add-ons: separate mods, on by default for a fresh install, as they are for an update.
+        var addons = new StackPanel();
+        addons.Children.Add(new TextBlock { Text = Spaced(L("ДОПОЛНЕНИЯ", "ADD-ONS")), FontFamily = F("DisplayBold"), FontWeight = FontWeights.Bold, FontSize = 10.5, Foreground = B("Dim"), Margin = new Thickness(2, 0, 0, 12) });
+        bool fresh = !Setup.Installed(_game);
+        foreach (var a in Setup.Addons)
+        {
+            if (!_addonChoice.ContainsKey(a.File)) _addonChoice[a.File] = fresh ? a.OnByDefault : Setup.AddonEnabled(_game, a);
+            var label = new StackPanel();
+            label.Children.Add(new TextBlock { Text = L(a.NameRu, a.NameEn), FontFamily = F("TextSemi"), FontSize = 14, Foreground = B("Ink") });
+            label.Children.Add(new TextBlock { Text = L(a.DescRu, a.DescEn), FontSize = 12, Foreground = B("Dim"), TextWrapping = TextWrapping.Wrap, MaxWidth = 228, Margin = new Thickness(0, 2, 0, 0) });
+            var sw = new CheckBox { Style = (Style)FindResource("Switch"), Content = label, IsChecked = _addonChoice[a.File], Margin = new Thickness(0, 0, 0, 14), VerticalContentAlignment = VerticalAlignment.Top };
+            var file = a.File;
+            sw.Checked += (_, _) => _addonChoice[file] = true;
+            sw.Unchecked += (_, _) => _addonChoice[file] = false;
+            addons.Children.Add(sw);
+        }
+        Grid.SetColumn(addons, 1);
+        lower.Children.Add(addons);
+        sp.Children.Add(lower);
         Body.Children.Add(sp);
 
         var actions = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom };
@@ -154,12 +184,14 @@ public partial class MainWindow : Window
         UpdateFound();
     }
 
-    UIElement Bullet(string text)
+    UIElement Bullet(string text, double wrapWidth = 0)
     {
         var r = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(2, 0, 0, 9) };
         var d = new Rectangle { Width = 7, Height = 7, RadiusX = 2, RadiusY = 2, Fill = B("Brand"), RenderTransformOrigin = new Point(0.5, 0.5), RenderTransform = new RotateTransform(45), VerticalAlignment = VerticalAlignment.Center };
         r.Children.Add(d);
-        r.Children.Add(new TextBlock { Text = text, FontSize = 13.5, Foreground = new SolidColorBrush(Color.FromRgb(0xD9, 0xD3, 0xEA)), Margin = new Thickness(12, 0, 0, 0) });
+        var t = new TextBlock { Text = text, FontSize = 13.5, Foreground = new SolidColorBrush(Color.FromRgb(0xD9, 0xD3, 0xEA)), Margin = new Thickness(12, 0, 0, 0) };
+        if (wrapWidth > 0) { t.TextWrapping = TextWrapping.Wrap; t.MaxWidth = wrapWidth; }
+        r.Children.Add(t);
         return r;
     }
 
@@ -226,7 +258,13 @@ public partial class MainWindow : Window
             MessageBox.Show(this, L("Закройте программу настроек Fell & Sell Plus и нажмите ещё раз.", "Close the Fell & Sell Plus settings app, then press again."), "Fell & Sell Plus");
             return;
         }
-        if (!Setup.CanWrite(_game)) { Elevate("--game=\"" + _game + "\""); return; }
+        foreach (var a in Setup.Addons) // not shown yet (elevated relaunch without the list): keep what is there
+            if (!_addonChoice.ContainsKey(a.File)) _addonChoice[a.File] = !Setup.Installed(_game) ? a.OnByDefault : Setup.AddonEnabled(_game, a);
+        if (!Setup.CanWrite(_game))
+        {
+            Elevate("--game=\"" + _game + "\" --addons=" + string.Join(",", _addonChoice.Select(kv => kv.Key + ":" + (kv.Value ? "1" : "0"))));
+            return;
+        }
 
         RenderWorking(L("Устанавливаю…", "Installing…"), new[]
         {
@@ -254,6 +292,7 @@ public partial class MainWindow : Window
 
                 Step("files", "run");
                 Setup.Unpack(game);
+                Setup.InstallAddons(game, _addonChoice);
                 Setup.TieredCompilationOff(game);
                 Step("files", "ok", L("MelonLoader, мод и настройки на месте", "MelonLoader, the mod and settings are in place"));
 

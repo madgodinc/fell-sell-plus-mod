@@ -18,7 +18,7 @@ namespace FellSellPlus.Configurator;
 // location shot for every section and the game's icons, so a player recognises what each part is.
 public partial class MainWindow : Window
 {
-    static readonly string[] Order = { "Prayers", "Skills", "Progression", "Challenge", "Loot", "LootFilter", "Inventory", "Shop", "Crafting", "Info", "Console", "Dev" };
+    static readonly string[] Order = { "Prayers", "Skills", "Progression", "Challenge", "Loot", "LootFilter", "Inventory", "Shop", "Crafting", "Addons", "Info", "Console", "Dev" };
 
     string _game, _lang, _current = "Prayers", _query = "";
     List<Setting> _settings = new();
@@ -88,8 +88,13 @@ public partial class MainWindow : Window
         RenderAll();
     }
 
+    static readonly HashSet<string> CoopKeys = new() { "MenuButton", "PlayerName", "FollowIntoRuns", "WaitForPlayers", "NoPause", "LootCut", "ReviveRadius", "ReviveSeconds" };
+
     static string SectionOf(Setting s)
     {
+        if (s.Section == "FellSellHorde" || s.Section == "FellSellCharacter") return "Addons";
+        // Of the co-op add-on only the player settings show; the connection keys stay in the cfg.
+        if (s.Section == "FellSellPlus_Coop") return CoopKeys.Contains(s.Key) ? "Addons" : "Coop";
         var sec = s.Section.Replace("FellSellPlus_", "");
         if (sec == "Challenge_Loot") return "Loot";
         if (sec.StartsWith("Challenge")) return "Challenge";
@@ -257,7 +262,7 @@ public partial class MainWindow : Window
     // Template values = the mod defaults plus the template's own changes.
     Dictionary<string, string> TemplateValues(ModTemplate t)
     {
-        var d = _settings.Where(s => SectionOf(s) != "Dev" && SectionOf(s) != "Coop").ToDictionary(s => s.Id, s => s.Default);
+        var d = _settings.Where(s => SectionOf(s) != "Dev" && s.Section != "FellSellPlus_Coop").ToDictionary(s => s.Id, s => s.Default);
         foreach (var kv in t.Over) if (d.ContainsKey(kv.Key)) d[kv.Key] = kv.Value;
         return d;
     }
@@ -340,7 +345,7 @@ public partial class MainWindow : Window
         {
             if (sec == "Dev" && !DevMode) continue; // debugging switches: only with --dev
             var items = _settings.Where(s => SectionOf(s) == sec).ToList();
-            if (items.Count == 0) continue;
+            if (items.Count == 0 && sec != "Addons") continue;
             bool selected = sec == _current && _query.Length == 0;
             int changed = items.Count(s => s.Changed);
             var (title, sub) = Texts.Section(sec, _lang);
@@ -356,7 +361,7 @@ public partial class MainWindow : Window
             if (selected)
                 g.Children.Add(new Border { Width = 3, CornerRadius = new CornerRadius(2), Background = B("BrandV"), HorizontalAlignment = HorizontalAlignment.Left, Margin = new Thickness(0, 10, 0, 10) });
 
-            var icon = new Image { Source = Art("icons/" + sec + ".png"), Width = 30, Height = 30, Margin = new Thickness(10, 8, 0, 8), Opacity = selected ? 1 : 0.82 };
+            var icon = new Image { Source = Art("icons/" + sec + ".png") ?? Art("icons/Crafting.png"), Width = 30, Height = 30, Margin = new Thickness(10, 8, 0, 8), Opacity = selected ? 1 : 0.82 };
             RenderOptions.SetBitmapScalingMode(icon, BitmapScalingMode.HighQuality);
             g.Children.Add(icon);
             var text = new StackPanel { VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(4, 8, 8, 8) };
@@ -422,9 +427,11 @@ public partial class MainWindow : Window
                                      "Each value below either comes \"from preset\" or is your own number. 1 = the normal game, above 1 = harder or more, below 1 = easier or less."), false));
         }
 
+        if (_current == "Addons") Page.Children.Add(Panel(null, Addons.All.Select(AddonRow)));
+
         foreach (var grp in items.Where(s => !(s.Key == "Preset" && s.Section == "FellSellPlus_Challenge")).GroupBy(s => s.Section))
         {
-            string head = _current == "Challenge" ? Texts.Group(grp.Key.Replace("FellSellPlus_", ""), _lang) : null;
+            string head = _current == "Challenge" || grp.Key == "FellSellHorde" || grp.Key == "FellSellCharacter" || grp.Key == "FellSellPlus_Coop" ? Texts.Group(grp.Key.Replace("FellSellPlus_", ""), _lang) : null;
             Page.Children.Add(Panel(head, grp.Select(Row)));
         }
     }
@@ -593,6 +600,44 @@ public partial class MainWindow : Window
     }
 
     void Changed() { MarkDirty(); RenderTemplates(); RenderPage(); RenderIndex(); }
+
+    // An add-on switch acts at once (it moves the mod's dll), unlike settings that wait for Save.
+    UIElement AddonRow(Addons.Addon a)
+    {
+        var g = new Grid { MinHeight = 68 };
+        g.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(18) });
+        g.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+        g.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(220) });
+
+        bool present = Addons.Present(_game, a), on = Addons.On(_game, a);
+        var text = new StackPanel { VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(0, 12, 20, 12) };
+        text.Children.Add(new TextBlock { Text = L(a.NameRu, a.NameEn), FontFamily = F("TextSemi"), FontSize = 15, TextWrapping = TextWrapping.Wrap });
+        text.Children.Add(new TextBlock
+        {
+            Text = present ? L(a.HintRu, a.HintEn) : L("Не установлено. Поставьте через установщик Fell & Sell Plus.", "Not installed. Add it with the Fell & Sell Plus setup."),
+            FontSize = 12.5, Foreground = B("Dim"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 3, 0, 0), LineHeight = 18,
+        });
+        Grid.SetColumn(text, 1);
+        g.Children.Add(text);
+
+        var cb = new CheckBox { Style = (Style)FindResource("Switch"), IsChecked = on, IsEnabled = present, VerticalAlignment = VerticalAlignment.Center };
+        cb.Content = new TextBlock { Text = on ? L("включено", "on") : L("выключено", "off"), FontSize = 13, Foreground = on ? B("Ink") : B("Faint") };
+        cb.Click += (_, _) =>
+        {
+            if (System.Diagnostics.Process.GetProcessesByName("Fell & Sell").Length > 0)
+            {
+                MessageBox.Show(this, L("Закройте игру, потом переключайте дополнения.", "Close the game first, then switch add-ons."), "Fell & Sell Plus");
+                cb.IsChecked = on;
+                return;
+            }
+            try { Addons.Set(_game, a, cb.IsChecked == true); }
+            catch (Exception e) { MessageBox.Show(this, e.Message, "Fell & Sell Plus"); }
+            RenderPage();
+        };
+        Grid.SetColumn(cb, 2);
+        g.Children.Add(cb);
+        return g;
+    }
 
     static readonly Dictionary<string, string[]> Choices = new()
     {

@@ -99,6 +99,39 @@ internal static class DevCommands
                     if (rx.IsMatch(t.name)) sb.AppendLine($"{t.name} {t.position} active={t.gameObject.activeInHierarchy}");
                 return sb.ToString();
             }
+            case "inspect": // hierarchy of the first object with this exact name: transforms, meshes, renderers
+            {
+                var go = GameObject.Find(a[1]);
+                if (go == null)
+                    foreach (var t in UnityEngine.Object.FindObjectsOfType<Transform>()) if (t.name == a[1]) { go = t.gameObject; break; }
+                if (go == null) return "not found";
+                var sb = new StringBuilder();
+                void Walk(Transform t, string ind)
+                {
+                    var mf = t.GetComponent<MeshFilter>();
+                    var r = t.GetComponent<Renderer>();
+                    sb.AppendLine($"{ind}{t.name} lpos={t.localPosition} lrot={t.localEulerAngles} lscale={t.localScale} lossy={t.lossyScale} active={t.gameObject.activeSelf}"
+                        + (mf != null ? $" mesh={mf.sharedMesh?.name}" : "")
+                        + (r != null ? $" r={r.enabled} b={r.bounds.size} mat={r.sharedMaterial?.name}" : ""));
+                    for (int i = 0; i < t.childCount; i++) Walk(t.GetChild(i), ind + "  ");
+                }
+                Walk(go.transform, "");
+                return sb.ToString();
+            }
+            case "aim": // point the camera at an object's centre (yaw and pitch) and report what the look ray hits
+            {
+                var go = GameObject.Find(a[1]);
+                if (go == null || fpc == null) return "not found";
+                var rs = go.GetComponentsInChildren<Renderer>();
+                var target = rs.Length > 0 ? rs[0].bounds.center : go.transform.position;
+                var cam = Camera.main.transform;
+                var dir = target - cam.position;
+                var flat = new Vector3(dir.x, 0, dir.z);
+                fpc.transform.rotation = Quaternion.LookRotation(flat);
+                fpc.verticalRotation = -Mathf.Atan2(dir.y, flat.magnitude) * Mathf.Rad2Deg; // the controller's own pitch
+                if (!Physics.Raycast(cam.position, dir.normalized, out var hit, 10f, fpc.interactionLayer.value, QueryTriggerInteraction.Collide)) return $"ray on the interaction layer hits nothing (pitch {fpc.verticalRotation:0})";
+                return $"ray hits {hit.collider.gameObject.name} layer {hit.collider.gameObject.layer} trigger={hit.collider.isTrigger} at {hit.distance:0.0} m; interaction mask {fpc.interactionLayer.value}";
+            }
             case "look":
             {
                 var it = fpc?.CurrentInteractable;
@@ -115,6 +148,7 @@ internal static class DevCommands
                 var st = go.GetComponentInChildren<PrayersStatue>(); if (st != null) { st.Interact(); return "statue"; }
                 var bk = go.GetComponentInChildren<SkillBookInteractable>(); if (bk != null) { bk.Interact(); return "book"; }
                 var al = go.GetComponentInChildren<GraveAltar>(); if (al != null) { al.Interact(); return "altar"; }
+                var ch = go.GetComponentInChildren<DungeonChest>(); if (ch != null) { ch.Interact(); return "chest"; }
                 return "no known interactable";
             }
             case "gold":
@@ -156,7 +190,7 @@ internal static class DevCommands
             case "addprayer":
             {
                 var pm = PrayersManager.Instance;
-                var pr = PrayersManager.GetPrayerByName(a[1]);
+                var pr = PrayersManager.GetPrayerByName(string.Join(" ", a.Skip(1)));
                 if (pr == null) return "unknown prayer";
                 pm.AddPrayer(pr);
                 return $"added {pr.name}";
@@ -219,6 +253,30 @@ internal static class DevCommands
                         return "gave " + items[i].name;
                     }
                 return "not found";
+            }
+            case "equip": // equip the first carried item matching the name into the right (or "left") hand
+            {
+                string step = "args";
+                try
+                {
+                    bool left = a.Length > 2 && a[a.Length - 1] == "left";
+                    string q = string.Join(" ", a.Skip(1).Take(a.Length - 1 - (left ? 1 : 0)));
+                    step = "slots";
+                    var inv = InventoryManager.Instance;
+                    var slots = inv.inventorySlots;
+                    for (int i = 0; slots != null && i < slots.Count; i++)
+                    {
+                        var sl = slots[i];
+                        if (sl == null || sl.item == null) continue;
+                        string n = sl.item.name;
+                        if (n == null || n.IndexOf(q, StringComparison.OrdinalIgnoreCase) < 0) continue;
+                        step = "equip " + n;
+                        inv.EquipToHand(sl, left);
+                        return "equipped " + n + (left ? " (left)" : "");
+                    }
+                    return "not in the backpack";
+                }
+                catch (Exception e) { return $"failed at {step}: {e.Message}"; }
             }
             case "devour": // consume the first carried item matching the name, report the step that fails
             {
@@ -290,12 +348,31 @@ internal static class DevCommands
             }
             case "points":
                 return $"skill points {PlayerProgressionManager._instance?.AvailableSkillPoints}";
+            case "runstat": // what the run recorder has counted so far in this run
+            {
+                var r = Info.RunRecorder.Current;
+                if (r == null) return "no run";
+                // The Bows mod's count of blocks its arrows went through, when that mod is loaded.
+                object pierced = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.GetName().Name == "FellSellBows")?.GetType("FellSellBows.BowsCoop")?.GetField("Pierced")?.GetValue(null);
+                return $"hits {r.Hits} crits {r.Crits} dealt {r.DamageDealt:0} overkill {r.Overkill:0} biggest {r.BiggestHit} kills {r.TotalKills} pierced blocks {pierced ?? "-"} by " + string.Join(", ", r.DamageDealtBySource.Select(kv => $"{kv.Key} {kv.Value:0}"));
+            }
             case "enemies":
             {
                 var sb = new StringBuilder();
                 foreach (var h in UnityEngine.Object.FindObjectsOfType<Il2CppEmeraldAI.EmeraldHealth>())
                     sb.AppendLine($"{h.gameObject.name} hp {h.CurrentHealth}/{h.StartingHealth} at {h.transform.position}");
                 return sb.ToString();
+            }
+            case "killall": // kill every living Emerald AI enemy (horde testing)
+            {
+                int n = 0;
+                foreach (var es in UnityEngine.Object.FindObjectsOfType<Il2CppEmeraldAI.EmeraldSystem>())
+                {
+                    var h = es.GetComponent<Il2CppEmeraldAI.EmeraldHealth>();
+                    if (h == null || h.CurrentHealth <= 0) continue;
+                    Il2CppEmeraldAI.EmeraldAPI.Combat.KillAI(es); n++;
+                }
+                return $"killed {n}";
             }
             case "key": // press a key through the game's input (for keys the harness can't send)
                 return "unused";
