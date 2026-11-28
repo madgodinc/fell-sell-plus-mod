@@ -5,7 +5,8 @@ import sys
 from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageEnhance
 
 sprites, cfg, out = sys.argv[1], sys.argv[2], sys.argv[3]
-W, H = 1920, 480
+W, H = 1920, round(1920 * 372 / 1300)  # drawn at 1920 wide, saved at Nexus's 1300x372
+DY = (H - 480) // 2
 
 # Background: two game shots side by side (village and dungeon), darkened and softened.
 left = Image.open(f"{sprites}/Shopping.png").convert("RGB")
@@ -46,7 +47,7 @@ draw = ImageDraw.Draw(bg)
 # Game wordmark (the game's own logo) and PLUS in the brand gradient.
 logo = Image.open(f"{sprites}/FellSellLogo.png").convert("RGBA")
 logo.thumbnail((900, 200), Image.LANCZOS)
-ly = 110
+ly = 110 + DY
 font_b = ImageFont.truetype(f"{cfg}/Fonts/Unbounded-Bold.ttf", 118)
 plus = "PLUS"
 pb = font_b.getbbox(plus)
@@ -74,9 +75,9 @@ bg.paste(grad, (px - 10, py - 10), mask)
 
 draw = ImageDraw.Draw(bg)
 font_t = ImageFont.truetype(f"{cfg}/Fonts/Manrope-SemiBold.ttf", 30)
-line = "New prayers and skills  ·  level 120  ·  Grandma's Legacy  ·  shop window  ·  loot filter"
+line = "Prayers, skills, Grandma's Legacy, shop window  ·  + Bows  ·  Horde  ·  Third person  ·  Co-op"
 tw = draw.textlength(line, font=font_t)
-draw.text(((W - tw) / 2, 345), line, font=font_t, fill=(217, 211, 234))
+draw.text(((W - tw) / 2, 345 + DY), line, font=font_t, fill=(217, 211, 234))
 
 # MGI mark and name, bottom right.
 mark = Image.open(f"{cfg}/Art/mgi-mark.png").convert("RGBA")
@@ -86,10 +87,10 @@ font_s = ImageFont.truetype(f"{cfg}/Fonts/Manrope-SemiBold.ttf", 15)
 w_mgi = draw.textlength("MGI", font=font_m)
 w_inc = draw.textlength("MAD GOD INC", font=font_s)
 total = mark.width + 12 + w_mgi + 12 + w_inc
-mx, my = int(W - 40 - total), H - 74
+mx, my = int(W - 40 - total), H - 74 - DY
 bg.alpha_composite(mark, (mx, my))
 draw.text((mx + mark.width + 12, my + 8), "MGI", font=font_m, fill=(255, 106, 61))
 draw.text((mx + mark.width + 12 + w_mgi + 12, my + 16), "MAD GOD INC", font=font_s, fill=(165, 159, 186))
 
-bg.convert("RGB").save(out, quality=92)
+bg.convert("RGB").resize((1300, 372), Image.LANCZOS).save(out, quality=92)
 print(out)

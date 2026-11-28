@@ -17,23 +17,25 @@
 
 ## Как играть
 
-Хост:
+Позвать друга (ты хост):
 
-1. В главном меню нажми «Кооператив» (под «Загрузить»).
-2. Нажми «Создать игру».
-3. Загрузи своё сохранение как обычно.
+1. Играй как обычно. В деревне нажми Esc и выбери «Позвать друга».
+2. Нажми «Пригласить» рядом с именем друга. Игра сразу становится совместной, выходить в главное меню и загружаться заново не нужно.
 
-Гость:
+Войти к другу (ты гость):
 
-1. В главном меню нажми «Кооператив».
-2. Рядом с именем друга, который создал игру, нажми «Войти».
-3. Загрузи своё сохранение.
+1. Когда друг позвал тебя или создал игру, в твоём меню появляется строка «<имя друга> играет: присоединиться». Она есть и в главном меню, и в меню паузы (Esc) в деревне.
+2. Нажми её. Из главного меню твоё последнее сохранение загрузится само. Из деревни ты подключишься на месте, без загрузки.
 
-Хост может нажать «Пригласить» рядом с именем друга: тому придёт приглашение в чат Steam. Если принять его при закрытой игре, игра запустится и подключится сама. Если игра уже открыта, приглашение не сработает: зайди в «Кооператив» и нажми «Войти».
+Приглашение также приходит другу в чат Steam. Если принять его при закрытой игре, игра запустится, сама загрузит последнее сохранение и подключится. Если игра уже открыта, приглашение из чата не сработает: нажми строку «... играет: присоединиться» в меню.
 
-С модом Fell & Sell Horde то же окно открывается в деревне: кнопка «Пригласить друга» в окне статуи жнеца. Ты сразу становишься хостом и видишь список друзей с кнопкой «Пригласить».
+Вверху экрана видно, что происходит: «Ждём друга», «Друг подключился: имя», «Друг отключился: имя».
 
-Выбор действует до закрытия игры. Чтобы играть одному, ничего не нажимай или выбери «Одиночная игра».
+Позвать друга и войти к другу можно из деревни или из главного меню. В походе (подземелье, лес) сначала вернись в деревню.
+
+С модом Fell & Sell Horde то же окно открывается кнопкой «Пригласить друга» в окне статуи жнеца.
+
+В окне «Кооператив» остались кнопки «Создать игру» (стать хостом без приглашения, друг войдёт сам) и «Одиночная игра» (выйти из совместной игры). Выбор действует до закрытия игры.
 
 ## Как это работает
 
@@ -90,23 +92,25 @@ Optional, for all players at once:
 
 ## How to play
 
-Host:
+Invite a friend (you host):
 
-1. In the main menu press "Co-op" (under "Load").
-2. Press "Host a game".
-3. Load your save as usual.
+1. Play as usual. In the village press Esc and pick "Invite a friend".
+2. Press "Invite" next to your friend's name. Your game becomes a co-op game on the spot: no trip to the main menu, no reload.
 
-Guest:
+Join a friend (you are the guest):
 
-1. In the main menu press "Co-op".
-2. Press "Join" next to the name of the friend who hosts.
-3. Load your save.
+1. Once your friend has invited you or hosts a game, your menu shows the line "<friend's name> is playing: join". It is in the main menu and in the pause menu (Esc) in the village.
+2. Press it. From the main menu your newest save loads by itself. From the village you connect where you stand, without loading.
 
-The host can press "Invite" next to a friend's name, which sends an invitation to Steam chat. Accepted while the game is closed, it starts the game and joins by itself. While the game is already open an invitation does nothing: open "Co-op" and press "Join".
+The invitation also arrives in your friend's Steam chat. Accepted while the game is closed, it starts the game, loads the newest save and joins by itself. While the game is already open the chat invitation does nothing: press the "... is playing: join" line in the menu.
 
-With the Fell & Sell Horde mod the same window opens in the village: "Invite a friend" in the reaper statue's window. You become the host at once and see your friends with "Invite" next to each.
+The top of the screen says what is going on: "Waiting for a friend", "Friend connected: name", "Friend disconnected: name".
 
-The choice lasts until you close the game. To play alone, press nothing or pick "Single player".
+Inviting and joining start in the village or in the main menu. On a run (dungeon, forest) go back to the village first.
+
+With the Fell & Sell Horde mod the same window opens from "Invite a friend" in the reaper statue's window.
+
+The "Co-op" window still has "Host a game" (host without an invitation, your friend joins by himself) and "Single player" (leave the co-op game). The choice lasts until you close the game.
 
 ## How it works
 

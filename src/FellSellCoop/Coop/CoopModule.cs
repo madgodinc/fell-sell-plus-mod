@@ -191,6 +191,7 @@ internal static class CoopModule
         try { _net.Dispose(); } catch { }
         _net = null; _failed = false; _firstSent = false; _held = null;
         SteamLobby.Detach();
+        CoopHud.Hide();
         Plugin.L.LogInfo("Co-op stopped.");
     }
 
@@ -348,6 +349,7 @@ internal static class CoopModule
                 rem = new Remote { FirstSeen = Time.unscaledTime };
                 _remotes[id] = rem;
                 Plugin.L.LogInfo($"Co-op: {name} connected ({PeerName(id)}), in {scene} at {pos}.");
+                CoopHud.Notice($"Друг подключился: {name}", $"Friend connected: {name}");
             }
             if (rem.Scene != scene && rem.Packets > 0) Plugin.L.LogInfo($"Co-op: {name} is now in {scene}.");
             if (rem.Body.Down != body.Down && rem.Packets > 0) Plugin.L.LogInfo(body.Down ? $"Co-op: {name} is down." : $"Co-op: {name} is back up.");
@@ -392,6 +394,7 @@ internal static class CoopModule
                 _remotes.Remove(id);
                 _heard.Remove(id);
                 Plugin.L.LogInfo($"Co-op: {rem.Name} disconnected.");
+                CoopHud.Notice($"Друг отключился: {rem.Name}", $"Friend disconnected: {rem.Name}", 15f);
                 continue;
             }
             bool here = rem.Scene == scene && FirstPersonController.Instance != null;

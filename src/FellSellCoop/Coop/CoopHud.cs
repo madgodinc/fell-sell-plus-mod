@@ -15,6 +15,21 @@ internal static class CoopHud
     static TextMeshProUGUI _text;
     static float _next;
     static bool _failed;
+    static readonly System.Collections.Generic.List<(string ru, string en, float until)> _notices = new();
+
+    // A line that stays for a few seconds: a friend connected, a friend left.
+    internal static void Notice(string ru, string en, float seconds = 10f)
+    {
+        _notices.Add((ru, en, Time.unscaledTime + seconds));
+        _next = 0f;
+    }
+
+    // The session ended: nothing ticks this display any more.
+    internal static void Hide()
+    {
+        _notices.Clear();
+        if (_root != null) _root.SetActive(false);
+    }
 
     public static void Tick()
     {
@@ -22,7 +37,8 @@ internal static class CoopHud
         _next = Time.unscaledTime + 0.25f;
         try
         {
-            string label = FirstPersonController.Instance != null ? Describe() : null;
+            // The co-op window says the same in its own words; the line would show through its veil.
+            string label = FirstPersonController.Instance != null && !CoopMenu.IsOpen ? Describe() : null;
             if (label == null) { if (_root != null) _root.SetActive(false); return; }
             if (_root == null) Build();
             _text.text = label;
@@ -40,6 +56,8 @@ internal static class CoopHud
         var sb = new StringBuilder();
         bool alone = true;
         foreach (var _ in CoopModule.Remotes) { alone = false; break; }
+        _notices.RemoveAll(n => Time.unscaledTime >= n.until);
+        foreach (var n in _notices) sb.AppendLine(ru ? n.ru : n.en);
         if (alone)
         {
             string lobby = SteamLobby.Status(ru);

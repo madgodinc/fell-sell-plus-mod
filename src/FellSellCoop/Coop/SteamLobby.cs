@@ -63,8 +63,8 @@ internal static class SteamLobby
     internal static string Status(bool ru)
     {
         if (!Active) return null;
-        if (_host) return ru ? "Лобби Steam открыто: ждём друзей" : "Steam lobby open: waiting for friends";
-        return _lobby == 0 ? (ru ? "Ищем игру друга в Steam..." : "Looking for a friend's game on Steam...") : (ru ? "В лобби друга, ждём хоста" : "In a friend's lobby, waiting for the host");
+        if (_host) return ru ? "Ждём друга (лобби Steam открыто)" : "Waiting for a friend (Steam lobby open)";
+        return _lobby == 0 ? (ru ? "Ищем игру друга в Steam..." : "Looking for your friend's game on Steam...") : (ru ? "Подключаемся к другу..." : "Connecting to your friend...");
     }
 
     // Steam's interfaces, taken once the game has started Steam (it has by the time the main menu shows).
